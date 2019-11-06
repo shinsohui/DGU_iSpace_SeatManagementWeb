@@ -120,7 +120,7 @@ button.button:hover {
 
    <%
       //User user = new User();//generate user
-      String userid = (String)request.getAttribute("id");
+      String userid = (String)session.getAttribute("id");
       String name=(String)session.getAttribute("name");   
    %>
 
