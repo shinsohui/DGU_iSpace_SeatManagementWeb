@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	This is the main page for iSpace seat management system~~~~~
+	This is the main page for iSpace seat management system
 	<%-- <p>
 		<a href="/iSpace/Home?action=login"> go to login page</a>
 	</p>--%>
