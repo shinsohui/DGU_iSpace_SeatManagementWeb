@@ -7,7 +7,9 @@
 <title>mainUI(before login)</title>
 </head>
 <body>
-	<p style="text-align:center;"><img src="/iSpace/view/mainlogo.png" style="width:400px; height:100px;"></p>
+	<p style="text-align:center;">
+	<a href="/iSpace/view/mainUI.jsp"><img src="/iSpace/view/mainlogo.png" style="width:300px; height:75px;"></a>
+	</p>
 	<table border="1" style="width:100%; text-align:center;">
 	<tr>
 	<td><a href="/iSpace/view/home.jsp">좌석현황 </a></td>
