@@ -46,7 +46,7 @@ public class Status extends HttpServlet {
          conn = DBmanager.getConnection();
       } catch (Exception e) {
          // TODO Auto-generated catch block
-        System.out.println("DoLogin DB connection error>>> "+e);
+        System.out.println("Status DB connection error>>> "+e);
       }
       try {
          Statement stmt = conn.createStatement();
@@ -88,20 +88,11 @@ public class Status extends HttpServlet {
 
       }catch (Exception e)
       {
-         System.out.println("!!!!!!!!!!!insert my_seatNo error!!!!!!!!!!");
+         System.out.println("!!!!status check error!!!");
          e.printStackTrace();
       }
 
-
-
    }
 
-   /**
-    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-    */
-   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      // TODO Auto-generated method stub
-      doGet(request, response);
-   }
 
 }

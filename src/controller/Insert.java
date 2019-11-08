@@ -48,9 +48,9 @@ public class Insert extends HttpServlet {
 
       try {
          conn = DBmanager.getConnection();
-      } catch (Exception e2) {
+      } catch (Exception e1) {
          // TODO Auto-generated catch block
-         e2.printStackTrace();
+    	 System.out.println("DB connection error on Insert"+e1);
       }
       try {
       String sql = "update SEAT set userID=? where seatNo=?";
