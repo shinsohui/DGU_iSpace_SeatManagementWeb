@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 import model.User;
 
 /**
- * Servlet implementation class DoLogin2
+ * Servlet implementation class DoLogin
  */
 @WebServlet("/DoLogin")
 public class DoLogin extends HttpServlet {
@@ -52,7 +52,7 @@ public class DoLogin extends HttpServlet {
          conn = DBmanager.getConnection();
       } catch (Exception e1) {
          // TODO Auto-generated catch block
-         e1.printStackTrace();
+    	  System.out.println("DB connection error on DoLogin"+e1);
       }
 
       try {

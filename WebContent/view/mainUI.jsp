@@ -26,5 +26,3 @@
 	</form>
 </body>
 </html>
-
-<%--ssh todo : project - properties -java - runtime - apache 9.0 check--%>
