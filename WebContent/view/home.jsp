@@ -306,7 +306,7 @@ body {
 							});
 				</script>
 				<form action="/iSpace/view/home.jsp" method="get">
-					<input type="submit" value="data">
+					<input type="submit" value="확인">
 				</form>
 			</div>
 		</article>
