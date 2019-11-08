@@ -60,8 +60,18 @@ body {
 .hiddenField {
 	display: none;
 }
-
-
+#pop {
+	padding: 3px;
+	width: 200px;
+	height: 35px;
+	background: #ccccff;
+	color: #ff3300;
+	position: absolute;
+	top: 10px;
+	left: 500px;
+	text-align: center;
+	border: 1px solid #000;
+}
 </style>
 
 <link rel="stylesheet" href="CSS/test.css">
@@ -91,14 +101,100 @@ body {
 				<h3><%=userid%> <%=name%> 님, WELCOME~~~~~~~~~:) <%=state%>
 				<p id="demo"></p>
 				</h3>
+<!-- <th><button class="button" data-modal="confirm">Contact Us</button></th> -->				
 			</tr>
 			<tr>
 				<th><input type="submit" value="1" name="button" /></th>
-
 				<th><input type="submit" value="2" name="button" /></th>
-				
 				<th><input type="submit" value="3" name="button"  /></th>
-				<!-- <th><button class="button" data-modal="confirm">Contact Us</button></th> -->
+				<th><input type="submit" value="4" name="button"  /></th>
+				<th><input type="submit" value="5" name="button"  /></th>
+				<th><input type="submit" value="6" name="button"  /></th>
+				<th><input type="submit" value="7" name="button"  /></th>
+				<th><input type="submit" value="8" name="button"  /></th>
+				<th><input type="submit" value="9" name="button"  /></th>
+				<th><input type="submit" value="10" name="button"  /></th>
+			</tr>
+			<tr>
+				<th><input type="submit" value="11" name="button"  /></th>
+				<th><input type="submit" value="12" name="button"  /></th>
+				<th><input type="submit" value="13" name="button"  /></th>
+				<th><input type="submit" value="14" name="button"  /></th>
+				<th><input type="submit" value="15" name="button"  /></th>
+				<th><input type="submit" value="16" name="button"  /></th>	
+				<th><input type="submit" value="17" name="button"  /></th>
+				<th><input type="submit" value="18" name="button"  /></th>
+				<th><input type="submit" value="19" name="button"  /></th>
+				<th><input type="submit" value="20" name="button"  /></th>
+			</tr>
+			<tr>
+				<th><input type="submit" value="21" name="button"  /></th>
+				<th><input type="submit" value="22" name="button"  /></th>
+				<th><input type="submit" value="23" name="button"  /></th>
+				<th><input type="submit" value="24" name="button"  /></th>
+				<th><input type="submit" value="25" name="button"  /></th>
+				<th><input type="submit" value="26" name="button"  /></th>	
+				<th><input type="submit" value="27" name="button"  /></th>
+				<th><input type="submit" value="28" name="button"  /></th>
+				<th><input type="submit" value="29" name="button"  /></th>
+				<th><input type="submit" value="30" name="button"  /></th>
+			</tr>
+			<tr>
+				<th><input type="submit" value="31" name="button"  /></th>
+				<th><input type="submit" value="32" name="button"  /></th>
+				<th><input type="submit" value="33" name="button"  /></th>
+				<th><input type="submit" value="34" name="button"  /></th>
+				<th><input type="submit" value="35" name="button"  /></th>
+				<th><input type="submit" value="36" name="button"  /></th>	
+				<th><input type="submit" value="37" name="button"  /></th>
+				<th><input type="submit" value="38" name="button"  /></th>
+				<th><input type="submit" value="39" name="button"  /></th>
+				<th><input type="submit" value="40" name="button"  /></th>
+			</tr>
+			<tr>
+				<th><input type="submit" value="41" name="button"  /></th>
+				<th><input type="submit" value="42" name="button"  /></th>
+				<th><input type="submit" value="43" name="button"  /></th>
+				<th><input type="submit" value="44" name="button"  /></th>
+				<th><input type="submit" value="45" name="button"  /></th>
+				<th><input type="submit" value="46" name="button"  /></th>	
+				<th><input type="submit" value="47" name="button"  /></th>
+				<th><input type="submit" value="48" name="button"  /></th>
+				<th><input type="submit" value="49" name="button"  /></th>
+				<th><input type="submit" value="50" name="button"  /></th>
+			</tr>
+			<tr>
+				<th><input type="submit" value="51" name="button"  /></th>
+				<th><input type="submit" value="52" name="button"  /></th>
+				<th><input type="submit" value="53" name="button"  /></th>
+				<th><input type="submit" value="54" name="button"  /></th>
+				<th><input type="submit" value="55" name="button"  /></th>
+				<th><input type="submit" value="56" name="button"  /></th>	
+				<th><input type="submit" value="57" name="button"  /></th>
+				<th><input type="submit" value="58" name="button"  /></th>
+				<th><input type="submit" value="59" name="button"  /></th>
+				<th><input type="submit" value="60" name="button"  /></th>
+			</tr>
+			<tr>
+				<th><input type="submit" value="61" name="button"  /></th>
+				<th><input type="submit" value="62" name="button"  /></th>
+				<th><input type="submit" value="63" name="button"  /></th>
+				<th><input type="submit" value="64" name="button"  /></th>
+				<th><input type="submit" value="65" name="button"  /></th>
+				<th><input type="submit" value="66" name="button"  /></th>	
+				<th><input type="submit" value="67" name="button"  /></th>
+				<th><input type="submit" value="68" name="button"  /></th>
+				<th><input type="submit" value="69" name="button"  /></th>
+				<th><input type="submit" value="70" name="button"  /></th>
+			</tr>
+			<tr>
+				<th><input type="submit" value="71" name="button"  /></th>
+				<th><input type="submit" value="72" name="button"  /></th>
+				<th><input type="submit" value="73" name="button"  /></th>
+				<th><input type="submit" value="74" name="button"  /></th>
+				<th><input type="submit" value="75" name="button"  /></th>
+				<th><input type="submit" value="76" name="button"  /></th>	
+				<th><input type="submit" value="77" name="button"  /></th>
 			</tr>
 		</table>
 	</form>
@@ -202,10 +298,8 @@ body {
 		<div style="height: 20px;"><%=seatNo%>번 좌석에 입실하시겠습니까?</div>
 		<form action="/iSpace/Insert" method="get">
 		<input type="submit" value="<%=seatNo%>" name="button"> 
+		<input type="button" value="close">
 		</form>
-		<div id="close">
-			<input type="button" value="close">
-		</div>
 	</div>
 	
 	<!--<input type="submit" value="1" name="button" onClick="javascript:goDetail();" /> -->

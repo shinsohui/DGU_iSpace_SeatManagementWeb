@@ -37,12 +37,12 @@ a, a:hover, a:visited {
 	padding: 5px;
 }
 
-#close {
+/* #close {
 	width: 50px;
 	margin: auto;
 	cursor: pointer;
 	font-weight: bold;
-}
+} */
 </style>
 
 
@@ -71,13 +71,14 @@ a, a:hover, a:visited {
 	</div>
 
 	<div id="pop" style="display: none;">
-		<div style="height: 20px;">입실하시겠습니까?</div>
+		입실하시겠습니까?
 		<form action="iSpace/Insert" method="GET">
 		<input type="submit" value="확인"> 
+		<input type="button" value="close">
 		</form>
-		<div id="close">
-			<input type="button" value="close">
-		</div>
+		<!-- <div id="close"> -->
+		
+		<!-- </div> -->
 	</div>
 
 

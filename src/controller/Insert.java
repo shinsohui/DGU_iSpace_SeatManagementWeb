@@ -53,10 +53,10 @@ public class Insert extends HttpServlet {
          e2.printStackTrace();
       }
       try {
-      String sql = "update USER set my_seatNo=? where id=?";
+      String sql = "update SEAT set userID=? where seatNo=?";
       PreparedStatement pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1,my_seatNo);
-      pstmt.setString(2,id);
+      pstmt.setString(1,id);
+      pstmt.setString(2,my_seatNo);
             
       pstmt.execute();
       
