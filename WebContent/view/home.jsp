@@ -279,9 +279,6 @@ body {
 	}
 	
 </script>
-
-
-
 	<div style="height: 1000px;"></div>
 
 	<!-- 팝업뜰때 배경 -->
