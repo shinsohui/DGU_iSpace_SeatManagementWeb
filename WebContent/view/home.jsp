@@ -63,7 +63,19 @@ body {
 
 #pop {
 	padding: 3px;
-	width: 200px;
+	width: 250px;
+	height: 35px;
+	background: #ccccff;
+	color: #ff3300;
+	position: absolute;
+	top: 10px;
+	left: 500px;
+	text-align: center;
+	border: 1px solid #000;
+}
+#pop2 {
+	padding: 3px;
+	width: 250px;
 	height: 35px;
 	background: #ccccff;
 	color: #ff3300;
@@ -76,7 +88,7 @@ body {
 </style>
 
 <link rel="stylesheet" href="CSS/test.css">
-<title>New Document</title>
+<title>home</title>
 <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
 <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
@@ -315,9 +327,17 @@ body {
 	<div id="pop" style="display: none;">
 		<div style="height: 20px;"><%=seatNo%>번 좌석에 입실하시겠습니까?
 		</div>
-		<form action="/iSpace/Insert" method="get">
-			<input type="submit" value="<%=seatNo%>" name="button"> <input
-				type="button" value="close">
+		<form action="/iSpace/CheckIn" method="get">
+			<input type="submit" value="<%=seatNo%>" name="button"> 
+			<input type="button" value="close">
+		</form>
+	</div>
+	<div id="pop2" style="display: none;">
+		<div style="height: 20px;"><%=seatNo%>번 좌석에서 퇴실하시겠습니까?
+		</div>
+		<form action="/iSpace/CheckOut" method="get">
+			<input type="submit" value="<%=seatNo%>" name="button"> 
+			<input type="button" value="close">
 		</form>
 	</div>
 
@@ -352,18 +372,13 @@ body {
 		}
 	 	else if(state.equals("내자리")){
 	%>
+	<!-- 퇴실시키는 부분  -->
 	<script>
-	function checkOUT() {
-		var txt;
-		  var r = confirm("퇴실하시겠습니까?");
-		  if (r == true) {
-		    txt = "You pressed OK!";
-		  } else {
-		    txt = "You pressed Cancel!";
-		  }
-		  document.getElementById("demo").innerHTML = txt;
-	}
-	checkOUT();
+	$('#pop2').show();
+	$('#close').click(function() {
+		$('#pop2').hide();
+	});
+	</script>
 	</script>
 	<%
 		 }	

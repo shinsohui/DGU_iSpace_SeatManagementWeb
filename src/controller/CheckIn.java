@@ -19,14 +19,14 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class Insert
  */
-@WebServlet("/Insert")
-public class Insert extends HttpServlet {
+@WebServlet("/CheckIn")
+public class CheckIn extends HttpServlet {
    private static final long serialVersionUID = 1L;
 
    /**
     * @see HttpServlet#HttpServlet()
     */
-   public Insert() {
+   public CheckIn() {
       super();
       // TODO Auto-generated constructor stub
    }
@@ -48,9 +48,9 @@ public class Insert extends HttpServlet {
 
       try {
          conn = DBmanager.getConnection();
-      } catch (Exception e1) {
+      } catch (Exception e) {
          // TODO Auto-generated catch block
-    	 System.out.println("DB connection error on Insert"+e1);
+    	 System.out.println("DB connection error on checkOut"+e);
       }
       try {
       String sql = "update SEAT set userID=? where seatNo=?";
