@@ -1,7 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -49,25 +51,54 @@ public class Status extends HttpServlet {
         System.out.println("Status DB connection error>>> "+e);
       }
       try {
-         Statement stmt = conn.createStatement();
-         String sql = "select userId from SEAT where seatNo="+select;
-         ResultSet rs = stmt.executeQuery(sql);
-         String seating="newwwwww";
-         rs.next();
-         seating = rs.getString("userId"); //그 자리에 있는 사람 아이디 반환
+    	  
+    	//입실 중복 확인 
 
+          
+          String sql2="select count(*) as `count` from SEAT where userID=?";
 
+          PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+          pstmt2.setString(1, id);
+          ResultSet rs2=pstmt2.executeQuery();
+          
+          rs2.next();
+          int count=rs2.getInt("count");
+          
+          if(count>0) {
+         	 PrintWriter out = response.getWriter();
+              out.println("<script>alert('You already have a selected seat.'); location.href='/iSpace/view/home.jsp'</script>");
+              out.flush();
+              return;
+          }
+          
+         DBmanager.close(pstmt2);
+         
+         String sql = "select userID from SEAT where seatNo=?";
+         PreparedStatement pstmt = conn.prepareStatement(sql);
+         pstmt.setString(1, select);
+         
+         ResultSet rs=pstmt.executeQuery();
+         if(rs.next()) {//그 자리에 있는 사람 아이디 반환
+        	 
+         }
+         
+         String seatOwner=rs.getString("userID");
+
+         DBmanager.close(pstmt);
+         
+         
+         
          // String seating = rs.getString("userId"); //그 자리에 있는 사람 아이디 반환
          // 사용자있으면 그사람 학번 없으면 none(default)
-         System.out.println("seating : "+seating);
+         System.out.println("seating : "+seatOwner);
          //      
 
-         String state="0";
+         String state="null";
+         
 
-
-         if(seating.equals(id)) { //선택한 자리가 내자리면
+         if(seatOwner.equals(id)) { //선택한 자리가 내자리면
             state="내자리";
-         }else if(seating.equals("none")) { //default value
+         }else if(seatOwner.equals("none")) { //default value
             // 빈자리
             state="빈자리";
             //      }else if(!seating.equals(id)){
@@ -83,7 +114,7 @@ public class Status extends HttpServlet {
          RequestDispatcher dispatcher=request.getRequestDispatcher(page);
          dispatcher.forward(request, response);   
 
-         DBmanager.close(stmt);
+         
          DBmanager.close(conn);
 
       }catch (Exception e)

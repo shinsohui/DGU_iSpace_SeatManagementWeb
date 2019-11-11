@@ -57,19 +57,27 @@ public class CheckIn extends HttpServlet {
       PreparedStatement pstmt = conn.prepareStatement(sql);
       pstmt.setString(1,id);
       pstmt.setString(2,my_seatNo);
-            
       pstmt.execute();
+      DBmanager.close(pstmt);
+      
+            
+      String sql2="update USER set my_seatNo=? where id=?";
+      PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+      pstmt2.setString(1,my_seatNo);
+      pstmt2.setString(2,id);
+      pstmt2.execute();
+      DBmanager.close(pstmt2);
+      
       
       page="/view/home.jsp";
       RequestDispatcher dispatcher=request.getRequestDispatcher(page);
       dispatcher.forward(request, response);   
       
-      DBmanager.close(pstmt);
       DBmanager.close(conn);
       
       }catch (Exception e)
        {
-         System.out.println("!!!!!!!!!!!insert my_seatNo error!!!!!!!!!!");
+         System.out.println("!!!!!!!!!!!CheckIn my_seatNo error!!!!!!!!!!");
          e.printStackTrace();
        }
        
