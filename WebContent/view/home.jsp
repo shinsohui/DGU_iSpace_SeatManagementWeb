@@ -92,29 +92,32 @@ body {
 <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
 <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-<!-- 드래그 할수 있는 기능을 사용하기 위해서 draggable();
- -->
+<!-- 드래그 할수 있는 기능을 사용하기 위해서 draggable(); -->
+
 <%
 	//User user = new User();//generate user
 	String userid = (String) session.getAttribute("id");
 	String name = (String) session.getAttribute("name");
 	String state = (String)request.getAttribute("state");
-	String seatNo=(String) request.getParameter("button");
-	
+	String seatNo=(String) request.getParameter("button"); 
+	String report=(String) session.getAttribute("report");/* 
+	String selected=(String) session.getAttribute("selected"); */
 	
 %>
-
 </head>
 
 <body>
 	<!-- <button onClick="javascript:goDetail('테스트');">팝업</button> -->
 
 	<p style="text-align: center;">
-		<img src="/iSpace/view/mainlogo.png"
+		<img src="/iSpace/view/Image/mainlogo.png"
 			style="width: 300px; height: 75px;">
 	</p>
 	<tr>
-		<h5 style="text-align:right;"><%=userid%> <%=name%> 님, WELCOME~~~~~~~~~:) <%=state%>
+		<h5 style="text-align:right;"> <b><%=userid%> <%=name%> 님</b>,
+		<img src="/iSpace/view/Image/reportimg.png" style="width: 20px; height: 20px;"> 
+		신고 <%=report%>회 
+		<img src="/iSpace/view/Image/reportimg.png" style="width: 20px; height: 20px;">
 			<p id="demo"></p>
 		</h5>
 		<!-- <th><button class="button" data-modal="confirm">Contact Us</button></th> -->
@@ -285,8 +288,8 @@ body {
 	<div id="mask"></div>
 
 	<!--Popup Start -->
-	<div id="layerbox" class="layerpop"
-		style="width: 700px; height: 350px;">
+	<form action="/iSpace/Report" method="get">
+	<div id="layerbox" class="layerpop" style="width: 700px; height: 350px;">
 		<article class="layerpop_area">
 			<div class="title">
 				<b>신고하기</b>
@@ -294,47 +297,55 @@ body {
 			<a href="javascript:popupClose();" class="layerpop_close"
 				id="layerbox_close"></a> <br>
 			<div class="content">
-				<big><b><%=seatNo%>번 좌석을 신고하시겠습니까?</b></big></br> 신고항목을 선택해주세요<br> <select
-					id="reason_selection">
-					<option value="reason1">너무 시끄러워요.</option>
-					<option value="reason2">오랫동안 부재인 좌석입니다.</option>
-					<option value="reason3">음식 섭취중입니다.</option>
-					<option value="reason4">기타</option>
+			
+				<big><b>신고될 좌석 번호 >> </b></big>
+				<select name="selected">
+					<option value="<%=seatNo%>"><%=seatNo%></option>
+				</select>
+				
+				<br><br> 신고항목을 선택해주세요<br> 
+				<select id="reason_selection" name="reason">
+					<option value="너무 시끄러워요." >너무 시끄러워요.</option>
+					<option value="오랫동안 부재인 좌석입니다." >오랫동안 부재인 좌석입니다.</option>
+					<option value="음식 섭취중입니다." >음식 섭취중입니다.</option>
+					<option value="기타" >기타</option>
 				</select> </br>
-				<textarea rows="4" cols="50" class="hiddenField" id="myTextBox"
+				<textarea rows="4" cols="50" name="reason" class="hiddenField" id="myTextBox"
 					placeholder="신고 내용을 기재해주세요."></textarea>
 				<script type="text/javascript">
 					$(document).ready(
 							function() {
 								$('#reason_selection').change(
 										function() {
-											$(this).val() == "reason4" ? $(
+											$(this).val() == "기타" ? $(
 													'#myTextBox').show() : $(
 													'#myTextBox').hide();
 										});
 							});
 				</script>
-				<form action="/iSpace/view/home.jsp" method="get">
-					<input type="submit" value="확인">
-				</form>
+				<br>
+				<input type="submit" value="확인">
+				
 			</div>
 		</article>
 	</div>
+	</form>
 
 	<div id="pop" style="display: none;">
 		<div style="height: 20px;"><%=seatNo%>번 좌석에 입실하시겠습니까?
 		</div>
 		<form action="/iSpace/CheckIn" method="get">
-			<input type="submit" value="<%=seatNo%>" name="button"> 
-			<input type="button" value="close">
+			<div style="display:inline;float:left;width:140px"><input type="submit" value="<%=seatNo%>" name="button"></div> 
+			<div style="display:inline;float:left;width:40px" id="close"><input type="button" value="close"></div>
 		</form>
 	</div>
+	
 	<div id="pop2" style="display: none;">
 		<div style="height: 20px;"><%=seatNo%>번 좌석에서 퇴실하시겠습니까?
 		</div>
 		<form action="/iSpace/CheckOut" method="get">
 			<input type="submit" value="<%=seatNo%>" name="button"> 
-			<input type="button" value="close">
+			<div id="close"><input type="button" value="close"></div>
 		</form>
 	</div>
 
@@ -375,7 +386,6 @@ body {
 	$('#close').click(function() {
 		$('#pop2').hide();
 	});
-	</script>
 	</script>
 	<%
 		 }	

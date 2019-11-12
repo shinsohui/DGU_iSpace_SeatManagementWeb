@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -47,6 +48,8 @@ public class DoLogin extends HttpServlet {
 
       
       String pass;
+      int report;
+      
       Connection conn = null;
       try {
          conn = DBmanager.getConnection();
@@ -56,24 +59,31 @@ public class DoLogin extends HttpServlet {
       }
 
       try {
-         Statement stmt = conn.createStatement();
-         String sql = "select * from USER where id = "+id;
-         ResultSet rs = stmt.executeQuery(sql);
+         String sql = "select * from USER where id=?";
+         PreparedStatement pstmt = conn.prepareStatement(sql);
+         pstmt.setString(1, id);
+         ResultSet rs = pstmt.executeQuery();
          rs.next();
+         
          pass = rs.getString("pw");
          
          if(pass.equals(pw)) {
             
             //
             String name=rs.getString("name");
+            String count=Integer.toString(rs.getInt("count"));
 
             session.setAttribute("id",id);
-            session.setAttribute("pw",pw);
+            session.setAttribute("pw",pw); //이거 필요한거 맞아 ㄱ-????????
             session.setAttribute("name",name);
+            session.setAttribute("report", count);
+            
             //
             
             request.setAttribute("NAME", rs.getString("name"));
             page="/view/home.jsp";
+            
+            
             RequestDispatcher dispatcher=request.getRequestDispatcher(page);
             dispatcher.forward(request, response);   
          }
@@ -85,7 +95,7 @@ public class DoLogin extends HttpServlet {
             out.flush();
          }
          DBmanager.close(rs);
-         DBmanager.close(stmt);
+         DBmanager.close(pstmt);
          DBmanager.close(conn);
       }catch(SQLException e) {
          System.out.println("only id error || id&& pw error");

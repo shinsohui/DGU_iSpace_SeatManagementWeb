@@ -68,7 +68,8 @@ public class CheckIn extends HttpServlet {
       pstmt2.execute();
       DBmanager.close(pstmt2);
       
-      
+//      
+//      session.setAttribute("selected", my_seatNo);
       page="/view/home.jsp";
       RequestDispatcher dispatcher=request.getRequestDispatcher(page);
       dispatcher.forward(request, response);   
