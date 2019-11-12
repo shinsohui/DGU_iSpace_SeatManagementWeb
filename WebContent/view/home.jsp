@@ -344,9 +344,13 @@ body {
 		<div style="height: 20px;"><%=seatNo%>번 좌석에서 퇴실하시겠습니까?
 		</div>
 		<form action="/iSpace/CheckOut" method="get">
-			<div style="display:inline;float:left;width:140px"><input type="submit" value="<%=seatNo%>" name="button"></div> 
-			<div style="display:inline;float:left;width:40px" id="close2"><input type="button" value="close"></div>
+			<div style="display:inline;float:left;width:60px"><input type="submit" value="<%=seatNo%>" name="button"></div> 
+			<div style="display:inline;float:left;width:60px" id="close2"><input type="button" value="close"></div>
 		</form>
+		<form action="/iSpace/Absence" method="get">
+			<div style="display:inline;float:left;width:60px" id="absence"><input type="submit" value="<%=seatNo%>" name="absence"></div>
+		</form>
+		
 	</div>
 
 	<%
