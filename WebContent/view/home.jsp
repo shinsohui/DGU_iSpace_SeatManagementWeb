@@ -543,7 +543,7 @@
                id="layerbox_close"></a> <br>
             <div class="content">
 
-<<<<<<< HEAD
+
                <big><b>신고될 좌석 번호 >></b></big> <select name="selected">
                   <option value="<%=seatNo%>"><%=seatNo%></option>
                </select> <br>
@@ -553,7 +553,7 @@
                   <option value="오랫동안 부재인 좌석입니다.">오랫동안 부재인 좌석입니다.</option>
                   <option value="음식 섭취중입니다.">음식 섭취중입니다.</option>
                   <option value="기타">기타</option>
-               </select> </br>
+               </select>
                <textarea rows="4" cols="50" name="reason" class="hiddenField"
                   id="myTextBox" placeholder="신고 내용을 기재해주세요."></textarea>
                <script type="text/javascript">
@@ -569,7 +569,7 @@
                         });
                </script>
                <br> <input type="submit" value="확인">
-=======
+
 	<div id="pop" style="display: none;">
 		<div style="height: 20px;"><%=seatNo%>번 좌석에 입실하시겠습니까?
 		</div>
@@ -583,10 +583,8 @@
 		<div style="height: 20px;"><%=seatNo%>번 좌석에서 퇴실하시겠습니까?
 		</div>
 		<form action="/iSpace/CheckOut" method="get">
-<%-- 			<div style="display:inline;float:left;width:60px"><input type="submit" value="<%=seatNo%>" name="button"></div> 
- --%>			<div style="display:inline;float:left;width:60px"><button value="<%=seatNo%>" name="button">퇴실</button></div> 
-<!-- 			<div style="display:inline;float:left;width:60px" id="close2"><input type="button" value="close"></div>
- -->			<div style="display:inline;float:left;width:60px" id="close2"><button value="close">Close</button></div>
+ 			<div style="display:inline;float:left;width:60px"><button value="<%=seatNo%>" name="button">퇴실</button></div> 
+ 			<div style="display:inline;float:left;width:60px" id="close2"><button value="close">Close</button></div>
 
 		</form>
 		<form action="/iSpace/Absence" method="get">
@@ -594,7 +592,6 @@
 		</form>
 		
 	</div>
->>>>>>> branch 'master' of https://github.com/wndnjs9878/SEED.git
 
             </div>
          </article>
