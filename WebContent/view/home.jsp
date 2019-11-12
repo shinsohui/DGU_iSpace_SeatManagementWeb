@@ -543,6 +543,7 @@
                id="layerbox_close"></a> <br>
             <div class="content">
 
+<<<<<<< HEAD
                <big><b>신고될 좌석 번호 >></b></big> <select name="selected">
                   <option value="<%=seatNo%>"><%=seatNo%></option>
                </select> <br>
@@ -568,6 +569,32 @@
                         });
                </script>
                <br> <input type="submit" value="확인">
+=======
+	<div id="pop" style="display: none;">
+		<div style="height: 20px;"><%=seatNo%>번 좌석에 입실하시겠습니까?
+		</div>
+		<form action="/iSpace/CheckIn" method="get">
+			<div style="display:inline;float:left;width:140px"><button value="<%=seatNo%>" name="button">입실</button></div> 
+			<div style="display:inline;float:left;width:40px" id="close"><button value="close">Close</button></div>
+		</form>
+	</div>
+	
+	<div id="pop2" style="display: none;">
+		<div style="height: 20px;"><%=seatNo%>번 좌석에서 퇴실하시겠습니까?
+		</div>
+		<form action="/iSpace/CheckOut" method="get">
+<%-- 			<div style="display:inline;float:left;width:60px"><input type="submit" value="<%=seatNo%>" name="button"></div> 
+ --%>			<div style="display:inline;float:left;width:60px"><button value="<%=seatNo%>" name="button">퇴실</button></div> 
+<!-- 			<div style="display:inline;float:left;width:60px" id="close2"><input type="button" value="close"></div>
+ -->			<div style="display:inline;float:left;width:60px" id="close2"><button value="close">Close</button></div>
+
+		</form>
+		<form action="/iSpace/Absence" method="get">
+			<div style="display:inline;float:left;width:60px" id="absence"><button value="<%=seatNo%>" name="absence">부재</button></div>
+		</form>
+		
+	</div>
+>>>>>>> branch 'master' of https://github.com/wndnjs9878/SEED.git
 
             </div>
          </article>
