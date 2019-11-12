@@ -335,8 +335,8 @@ body {
 		<div style="height: 20px;"><%=seatNo%>번 좌석에 입실하시겠습니까?
 		</div>
 		<form action="/iSpace/CheckIn" method="get">
-			<div style="display:inline;float:left;width:140px"><input type="submit" value="<%=seatNo%>" name="button"></div> 
-			<div style="display:inline;float:left;width:40px" id="close"><input type="button" value="close"></div>
+			<div style="display:inline;float:left;width:140px"><button value="<%=seatNo%>" name="button">입실</button></div> 
+			<div style="display:inline;float:left;width:40px" id="close"><button value="close">Close</button></div>
 		</form>
 	</div>
 	
@@ -344,11 +344,14 @@ body {
 		<div style="height: 20px;"><%=seatNo%>번 좌석에서 퇴실하시겠습니까?
 		</div>
 		<form action="/iSpace/CheckOut" method="get">
-			<div style="display:inline;float:left;width:60px"><input type="submit" value="<%=seatNo%>" name="button"></div> 
-			<div style="display:inline;float:left;width:60px" id="close2"><input type="button" value="close"></div>
+<%-- 			<div style="display:inline;float:left;width:60px"><input type="submit" value="<%=seatNo%>" name="button"></div> 
+ --%>			<div style="display:inline;float:left;width:60px"><button value="<%=seatNo%>" name="button">퇴실</button></div> 
+<!-- 			<div style="display:inline;float:left;width:60px" id="close2"><input type="button" value="close"></div>
+ -->			<div style="display:inline;float:left;width:60px" id="close2"><button value="close">Close</button></div>
+
 		</form>
 		<form action="/iSpace/Absence" method="get">
-			<div style="display:inline;float:left;width:60px" id="absence"><input type="submit" value="<%=seatNo%>" name="absence"></div>
+			<div style="display:inline;float:left;width:60px" id="absence"><button value="<%=seatNo%>" name="absence">부재</button></div>
 		</form>
 		
 	</div>
