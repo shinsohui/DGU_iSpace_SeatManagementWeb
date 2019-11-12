@@ -1,0 +1,36 @@
+@charset "UTF-8";
+.frame {
+	width: 960px;
+	height: 490px;
+	position: fixed;
+	opacity: 0.8;
+	border-radius: 10px;
+	top: 220px;
+	left: 275px;
+	background-color: #b8b8b8;
+}
+
+.whitebox {
+	background-color: white;
+	height: 280px;
+	position: fixed;
+	border-radius: 10px;
+	opacity: 0.8;
+	margin-right: 10px;
+	margin-top: 10px;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+#text1 {
+	color: #0A122A;
+	font-family: "바탕체";
+	margin-left: 10px;
+}
+
+.seatStyle1 {
+	background-color: skyblue;
+	height: 100px;
+	width: 20px;
+	position: relative;
+}
