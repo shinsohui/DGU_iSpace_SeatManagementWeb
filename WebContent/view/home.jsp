@@ -344,8 +344,8 @@ body {
 		<div style="height: 20px;"><%=seatNo%>번 좌석에서 퇴실하시겠습니까?
 		</div>
 		<form action="/iSpace/CheckOut" method="get">
-			<input type="submit" value="<%=seatNo%>" name="button"> 
-			<div id="close"><input type="button" value="close"></div>
+			<div style="display:inline;float:left;width:140px"><input type="submit" value="<%=seatNo%>" name="button"></div> 
+			<div style="display:inline;float:left;width:40px" id="close2"><input type="button" value="close"></div>
 		</form>
 	</div>
 
@@ -383,7 +383,7 @@ body {
 	<!-- 퇴실시키는 부분  -->
 	<script>
 	$('#pop2').show();
-	$('#close').click(function() {
+	$('#close2').click(function() {
 		$('#pop2').hide();
 	});
 	</script>
