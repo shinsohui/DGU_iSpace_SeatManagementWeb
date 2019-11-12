@@ -58,8 +58,6 @@ public class Report extends HttpServlet {
 			ResultSet rs=pstmt.executeQuery();
 			rs.next();
 			String seatOwner=rs.getString("id");  
-
-
 			DBmanager.close(pstmt);
 
 

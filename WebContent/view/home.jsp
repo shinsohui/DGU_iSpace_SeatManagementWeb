@@ -349,7 +349,6 @@ body {
 		</form>
 	</div>
 
-	<!--<input type="submit" value="1" name="button" onClick="javascript:goDetail();" /> -->
 	<%
 	if(state!=null){
 		if(state.equals("남의자리")){
