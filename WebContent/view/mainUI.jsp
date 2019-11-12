@@ -10,10 +10,10 @@
 
 <body>
 
-	<p style="text-align: center;">
+	  <p style="text-align: center;">
 		<a href="/iSpace/view/mainUI.jsp"><img
 			src="/iSpace/view/Image/mainlogo.png"
-			style="width: 300px; height: 75px;"></a>
+			style="width: 400px; height: 80px; padding-top:3px;"></a>
 	</p>
 	
 	<h5 style="text-align: right; text-indent: 100%; white-space: nowrap; overflow: hidden;">

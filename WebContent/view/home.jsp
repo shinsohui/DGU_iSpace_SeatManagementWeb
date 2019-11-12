@@ -8,9 +8,8 @@
 <style><%@include file="/view/CSS/home.css"%></style>
 
 
-<script src="http://code.jquery.com/jquery-1.10.1.js"></script><!-- 
-<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
-<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script> -->
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <!-- 드래그 할수 있는 기능을 사용하기 위해서 draggable(); -->
 
 <%
@@ -19,18 +18,20 @@
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
-   String report = (String) session.getAttribute("report");/* 
-  String selected=(String) session.getAttribute("selected"); */
+   String report = (String) session
+         .getAttribute("report");/* 
+                           String selected=(String) session.getAttribute("selected"); */
 %>
 </head>
 
 <body>
    <!-- <button onClick="javascript:goDetail('테스트');">팝업</button> -->
 
-   <p style="text-align: center;">
-      <img src="/iSpace/view/Image/mainlogo.png"
-         style="width: 300px; height: 75px;">
-   </p>
+  <p style="text-align: center;">
+		<a href="/iSpace/view/mainUI.jsp"><img
+			src="/iSpace/view/Image/mainlogo.png"
+			style="width: 400px; height: 80px; padding-top:3px;"></a>
+	</p>
       <h5 style="text-align: right;">
          <b><%=userid%> <%=name%> 님</b>, <img
             src="/iSpace/view/Image/reportimg.png"
@@ -38,7 +39,8 @@
          <img src="/iSpace/view/Image/reportimg.png"
             style="width: 20px; height: 20px;">
       </h5>
-      
+      <!-- <th><button class="button" data-modal="confirm">Contact Us</button></th> -->
+
    <table border="1" style="width: 100%; text-align: center;">
       <tr>
          <td><a href="/iSpace/view/home.jsp">좌석현황 </a></td>
@@ -49,12 +51,10 @@
       </tr>
    </table>
    <br>
-   <div class="frame" style="position: absolute;">
-
-			<div class="whitebox"
-				style="position: absolute; width: 700px; height: 460px; margin-left: 10px;">
-
-				<p style="text-align: center;">
+   <div class="frame">
+		<div class="whitebox" style="width: 700px; height: 460px; margin-left: 10px;">
+			<p style="text-align: center;">
+   				
    <form action="/iSpace/Status" method="get">
 <!--       <table>
          <tr>
@@ -473,7 +473,6 @@
    </form>
    </div>
    </div>
-   
 
    <script>
       function wrapWindowByMask() {
@@ -526,7 +525,6 @@
 
       }
    </script>
-   <div style="height: 1000px;"></div>
 
    <!-- 팝업뜰때 배경 -->
    <div id="mask"></div>
@@ -542,7 +540,6 @@
             <a href="javascript:popupClose();" class="layerpop_close"
                id="layerbox_close"></a> <br>
             <div class="content">
-
 
                <big><b>신고될 좌석 번호 >></b></big> <select name="selected">
                   <option value="<%=seatNo%>"><%=seatNo%></option>
@@ -568,30 +565,12 @@
                                  });
                         });
                </script>
-               <br> <input type="submit" value="확인">
-
-	<div id="pop" style="display: none;">
-		<div style="height: 20px;"><%=seatNo%>번 좌석에 입실하시겠습니까?
-		</div>
-		<form action="/iSpace/CheckIn" method="get">
-			<div style="display:inline;float:left;width:140px"><button value="<%=seatNo%>" name="button">입실</button></div> 
-			<div style="display:inline;float:left;width:40px" id="close"><button value="close">Close</button></div>
-		</form>
-	</div>
-	
-	<div id="pop2" style="display: none;">
-		<div style="height: 20px;"><%=seatNo%>번 좌석에서 퇴실하시겠습니까?
-		</div>
-		<form action="/iSpace/CheckOut" method="get">
- 			<div style="display:inline;float:left;width:60px"><button value="<%=seatNo%>" name="button">퇴실</button></div> 
- 			<div style="display:inline;float:left;width:60px" id="close2"><button value="close">Close</button></div>
-
-		</form>
-		<form action="/iSpace/Absence" method="get">
-			<div style="display:inline;float:left;width:60px" id="absence"><button value="<%=seatNo%>" name="absence">부재</button></div>
-		</form>
-		
-	</div>
+               <br><br> <div style="display: inline; float: left; width: 50px" >
+               <input type="submit" value="확인">
+               </div>
+                <div style="display: inline; float: left; width: 50px" id="close">
+         <button value="close">취소</button>
+      </div>
 
             </div>
          </article>
@@ -606,8 +585,8 @@
             <button value="<%=seatNo%>" name="button">입실</button>
          </div>
       </form>
-      <div style="display: inline; float: left; width: 60px" id="close">
-         <button value="close">Close</button>
+      <div style="display: inline; float: left; width: 60px" id="close1">
+         <button>취소 </button>
       </div>
    </div>
 
@@ -620,7 +599,7 @@
          </div>
       </form>
       <div style="display: inline; float: left; width: 60px" id="close2">
-         <button>Close</button>
+         <button>취소 </button>
       </div>
       <form action="/iSpace/Absence" method="get">
          <div style="display: inline; float: left; width: 60px">
@@ -629,13 +608,11 @@
       </form>
    </div>
 
-   <!--<input type="submit" value="1" name="button" onClick="javascript:goDetail();" /> -->
    <%
       if (state != null) {
          if (state.equals("남의자리")) {
    %>
 
-   <!-- <input type="submit" value="1" name="button" onClick="javascript:goDetail();" /> -->
    <script>
       //test();
       report();
@@ -643,14 +620,14 @@
 
    <!--Popup End -->
    <%
-      out.println(state);
-         } else if (state.equals("빈자리")) {
+/*       out.println(state);
+ */         } else if (state.equals("빈자리")) {
    %>
 
    <!-- 입실시키는 부분  -->
    <script>
       $('#pop').show();
-      $('#close').click(function() {
+      $('#close1').click(function() {
          $('#pop').hide();
       });
    </script>
@@ -668,8 +645,8 @@
    <%
       }
       } else {
-         out.println("Status에서 DB체크해서 넘어오는 거 error 1.내자리 2.빈자리 3.남의자리로 반환해야되는데 엉뚱한값 반환됨ㄱ- ");
-      }
+/*          out.println("Status에서 DB체크해서 넘어오는 거 error 1.내자리 2.빈자리 3.남의자리로 반환해야되는데 엉뚱한값 반환됨ㄱ- ");
+ */      }
    %>
 </body>
 </html>

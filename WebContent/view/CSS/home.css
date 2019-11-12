@@ -5,7 +5,7 @@
 	position: fixed;
 	opacity: 0.8;
 	border-radius: 10px;
-	top: 220px;
+	top: 240px;
 	left: 275px;
 	background-color: #b8b8b8;
 }
@@ -115,9 +115,6 @@ html {
 }
 
 
-body {
-   font-family: "¸¼Àº °íµñ"
-}
 
 #mask {
    position: absolute;
@@ -172,13 +169,13 @@ body {
 }
 
 #pop {
-   padding: 3px;
+   padding: 5px;
    width: 250px;
    height: 35px;
    background: #ccccff;
    color: #ff3300;
    position: absolute;
-   top: 10px;
+   top: 100px;
    left: 500px;
    text-align: center;
    border: 1px solid #000;
@@ -191,7 +188,7 @@ body {
    background: #ccccff;
    color: #ff3300;
    position: absolute;
-   top: 10px;
+   top: 100px;
    left: 500px;
    text-align: center;
    border: 1px solid #000;
