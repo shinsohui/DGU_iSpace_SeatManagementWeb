@@ -102,12 +102,13 @@ body {
 	String seatNo=(String) request.getParameter("button"); 
 	String report=(String) session.getAttribute("report");/* 
 	String selected=(String) session.getAttribute("selected"); */
+	String abtype=(String)request.getAttribute("abtype");
 	
 %>
 </head>
 
 <body>
-	<!-- <button onClick="javascript:goDetail('테스트');">팝업</button> -->
+	<!-- <button onClick="javascript:goDetail('테스트');">팝업  -->
 
 	<p style="text-align: center;">
 		<img src="/iSpace/view/Image/mainlogo.png"
@@ -120,7 +121,7 @@ body {
 		<img src="/iSpace/view/Image/reportimg.png" style="width: 20px; height: 20px;">
 			<p id="demo"></p>
 		</h5>
-		<!-- <th><button class="button" data-modal="confirm">Contact Us</button></th> -->
+		<!-- <th><button class="button" data-modal="confirm">Contact Us </th> -->
 	</tr>
 	<table border="1" style="width: 100%; text-align: center;">
 		<tr>
@@ -133,7 +134,7 @@ body {
 	</table>
 	<br>
 	<form action="/iSpace/Status" method="get">
-		<table>
+		<!-- <table>
 			<tr>
 				<th><input type="submit" value="1" name="button" /></th>
 				<th><input type="submit" value="2" name="button" /></th>
@@ -227,7 +228,326 @@ body {
 				<th><input type="submit" value="76" name="button" /></th>
 				<th><input type="submit" value="77" name="button" /></th>
 			</tr>
-		</table>
+		</table> -->
+		<input type="submit" value = "3DLAB" name = "button" 
+        style= "color: black; background:skyblue; position: absolute;
+        left: 40px; top: 10px; height: 100px; width: 30px;" >        
+   
+      <input type = "submit" value = "세미나실1" name = "button"
+       style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 130px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "세미나실2" name = "button"
+       style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 250px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "1" name = "button"
+       style= "color: black; background:skyblue; height: 30px; position: absolute; left: 120px; top: 10px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "2" name = "button"
+       style= "color: black; background:skyblue; height: 30px; position: absolute; left: 150px; top: 10px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "3" name = "button"
+       style= "color: black; background:skyblue; height: 30px; position: absolute; left: 195px; top: 10px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "4" name = "button"
+       style= "color: black; background:skyblue; height: 30px; position: absolute; left: 225px; top: 10px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "5" name = "button"
+       style= "color: black; background:skyblue; height: 30px; position: absolute; left: 255px; top: 10px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "6" name = "button"
+       style= "color: black; background:skyblue; height: 30px; position: absolute; left: 285px; top: 10px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "7" name = "button"
+       style= "color: black; background:skyblue; height: 30px; position: absolute; left: 330px; top: 10px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "8" name = "button"
+       style= "color: black; background:skyblue; height: 30px; position: absolute; left: 360px; top: 10px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "9" name = "button"
+       style= "color: black; background:skyblue; height: 30px; position: absolute; left: 390px; top: 10px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "10" name = "button"
+       style= "color: black; background:skyblue; height: 30px; position: absolute; left: 420px; top: 10px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "11" name = "button"
+       style= "color: black; background:skyblue; height: 30px; position: absolute; left: 450px; top: 10px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "12" name = "button"
+       style= "color: black; background:skyblue; height: 30px; position: absolute; left: 480px; top: 10px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "13" name = "button"
+       style= "color: black; background:skyblue; height: 30px; position: absolute; left: 510px; top: 10px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "14" name = "button"
+       style= "color: black; background:skyblue; height: 30px; position: absolute; left: 540px; top: 10px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "15" name = "button"
+       style= "color: black; background:skyblue; height: 30px; position: absolute; left: 585px; top: 10px;
+       width: 30px;"> 
+       
+       <input type = "submit" value = "16" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 140px; top: 80px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "17" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 120px; top: 120px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "18" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 160px; top: 120px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "19" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 120px; top: 160px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "20" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 160px; top: 160px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "21" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 120px; top: 200px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "22" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 160px; top: 200px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "23" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 120px; top: 240px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "24" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 160px; top: 240px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "25" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 140px; top: 280px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "26" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 230px; top: 90px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "27" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 270px; top: 90px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "28" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 230px; top: 130px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "29" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 270px; top: 130px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "30" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 330px; top: 90px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "31" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 370px; top: 90px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "32" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 330px; top: 130px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "33" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 370px; top: 130px;
+       width: 40px; border-radius: 18px"> 
+       
+        <input type = "submit" value = "34" name = "button"
+       style= "color: black; background:gray; height: 40px; position: absolute; left: 430px; top: 90px;
+       width: 40px; border-radius: 18px"> 
+       
+        <input type = "submit" value = "35" name = "button"
+       style= "color: black; background:gray; height: 40px; position: absolute; left: 470px; top: 90px;
+       width: 40px; border-radius: 18px"> 
+       
+        <input type = "submit" value = "36" name = "button"
+       style= "color: black; background:gray; height: 40px; position: absolute; left: 430px; top: 130px;
+       width: 40px; border-radius: 18px"> 
+       
+        <input type = "submit" value = "37" name = "button"
+       style= "color: black; background:gray; height: 40px; position: absolute; left: 470px; top: 130px;
+       width: 40px; border-radius: 18px"> 
+       
+      <input type = "submit" value = "38" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 230px; top: 180px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "39" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 270px; top: 180px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "40" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 230px; top: 220px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "41" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 270px; top: 220px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "42" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 330px; top: 180px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "43" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 370px; top: 180px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "44" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 330px; top: 220px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "45" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 370px; top: 220px;
+       width: 40px; border-radius: 18px"> 
+       
+        <input type = "submit" value = "46" name = "button"
+       style= "color: black; background:gray; height: 40px; position: absolute; left: 430px; top: 180px;
+       width: 40px; border-radius: 18px"> 
+       
+        <input type = "submit" value = "47" name = "button"
+       style= "color: black; background:gray; height: 40px; position: absolute; left: 470px; top: 180px;
+       width: 40px; border-radius: 18px"> 
+       
+        <input type = "submit" value = "48" name = "button"
+       style= "color: black; background:gray; height: 40px; position: absolute; left: 430px; top: 220px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "49" name = "button"
+       style= "color: black; background:gray; height: 40px; position: absolute; left: 470px; top: 220px;
+       width: 40px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "50" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 560px; top: 80px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "51" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 540px; top: 120px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "52" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 580px; top: 120px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "53" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 540px; top: 160px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "54" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 580px; top: 160px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "55" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 540px; top: 200px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "56" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 580px; top: 200px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "57" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 540px; top: 240px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "58" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 580px; top: 240px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "59" name = "button"
+       style= "color: black; background:skyblue; height: 40px; position: absolute; left: 560px; top: 280px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "60" name = "button"
+       style= "color: black; background:skyblue; height: 35px; position: absolute; left: 230px; top: 340px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "61" name = "button"
+       style= "color: black; background:skyblue; height: 35px; position: absolute; left: 270px; top: 340px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "62" name = "button"
+       style= "color: black; background:skyblue; height: 35px; position: absolute; left: 230px; top: 375px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "63" name = "button"
+       style= "color: black; background:skyblue; height: 35px; position: absolute; left: 270px; top: 375px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "64" name = "button"
+       style= "color: black; background:skyblue; height: 35px; position: absolute; left: 330px; top: 340px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "65" name = "button"
+       style= "color: black; background:skyblue; height: 35px; position: absolute; left: 370px; top: 340px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "66" name = "button"
+       style= "color: black; background:skyblue; height: 35px; position: absolute; left: 330px; top: 375px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "67" name = "button"
+       style= "color: black; background:skyblue; height: 35px; position: absolute; left: 370px; top: 375px;
+       width: 40px;"> 
+       
+        <input type = "submit" value = "68" name = "button"
+       style= "color: black; background:skyblue; height: 35px; position: absolute; left: 430px; top: 340px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "69" name = "button"
+       style= "color: black; background:skyblue; height: 35px; position: absolute; left: 470px; top: 340px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "70" name = "button"
+       style= "color: black; background:skyblue; height: 35px; position: absolute; left: 430px; top: 375px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "71" name = "button"
+       style= "color: black; background:skyblue; height: 35px; position: absolute; left: 470px; top: 375px;
+       width: 40px;"> 
+       
+       <input type = "submit" value = "72" name = "button"
+       style= "color: black; background:gray; height: 30px; position: absolute; left: 540px; top: 330px;
+       width: 30px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "73" name = "button"
+       style= "color: black; background:gray; height: 30px; position: absolute; left: 540px; top: 360px;
+       width: 30px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "74" name = "button"
+       style= "color: black; background:gray; height: 30px; position: absolute; left: 570px; top: 360px;
+       width: 30px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "75" name = "button"
+       style= "color: black; background:gray; height: 30px; position: absolute; left: 540px; top: 390px;
+       width: 30px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "76" name = "button"
+       style= "color: black; background:gray; height: 30px; position: absolute; left: 570px; top: 390px;
+       width: 30px; border-radius: 18px"> 
+       
+       <input type = "submit" value = "77" name = "button"
+       style= "color: black; background:gray; height: 30px; position: absolute; left: 540px; top: 420px;
+       width: 30px; border-radius: 18px"> 
 	</form>
 
 	<script>
@@ -367,8 +687,7 @@ body {
 	<!--Popup End -->
 	<% 
 		out.println(state);
-		}
-	 	else if(state.equals("빈자리")){
+		}else if(state.equals("빈자리")){
 	%>
 
 	<!-- 입실시키는 부분  -->
@@ -380,8 +699,7 @@ body {
 	</script>
 
 	<%
-		}
-	 	else if(state.equals("내자리")){
+		}else if(state.equals("내자리")){
 	%>
 	<!-- 퇴실시키는 부분  -->
 	<script>
@@ -391,10 +709,9 @@ body {
 	});
 	</script>
 	<%
-		 }	
-	}
-	else {
-		out.println("Status에서 DB체크해서 넘어오는 거 error 1.내자리 2.빈자리 3.남의자리로 반환해야되는데 엉뚱한값 반환됨ㄱ- ");
+	}else {
+		/* out.println("Status에서 DB체크해서 넘어오는 거 error 1.내자리 2.빈자리 3.남의자리로 반환해야되는데 엉뚱한값 반환됨ㄱ- ");
+	 */}
 	}
 	%>
 </body>

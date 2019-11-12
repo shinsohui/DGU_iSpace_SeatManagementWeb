@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,30 +34,35 @@ public class Absence extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(); //세션추가용
+		HttpSession session = request.getSession(); 
 		String absence=request.getParameter("absence");
-		String id=(String)session.getAttribute("id"); //현재 로그인 아이디 얻어옴
+//		String id=(String)session.getAttribute("id"); //현재 로그인 아이디 얻어옴
 		
 		Connection conn = null;
 		String page;
+		String abtype="0";
 
 		System.out.println(absence);
+		
 		try {
 			conn = DBmanager.getConnection();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("DB connection error on checkOut"+e);
+			System.out.println("DB connection error on Absence"+e);
 		}
 		try {
-			//--------checkout form 쿼리 수정필요
-			String sql = "update SEAT set userID=? where seatNo=?";
+			String sql = "update SEAT set absence=? where seatNo=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,"none");
-			//pstmt.setString(2,my_seatNo);
-
-			//checkout form--------
-
+			Date dt = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String currentTime = sdf.format(dt);
+			pstmt.setString(1,currentTime);
+			pstmt.setInt(2, Integer.parseInt(absence));
 			pstmt.execute();
+			
+			abtype="1";
+			
+			request.setAttribute("abtype", abtype);
 
 			page="/view/home.jsp";
 			RequestDispatcher dispatcher=request.getRequestDispatcher(page);
@@ -66,7 +73,7 @@ public class Absence extends HttpServlet {
 
 		}catch (Exception e)
 		{
-			System.out.println("!!!!!!!!!!!insert my_seatNo error!!!!!!!!!!");
+			System.out.println("!!!!!!!!!!!Absence error!!!!!!!!!!");
 			e.printStackTrace();
 		}
 
