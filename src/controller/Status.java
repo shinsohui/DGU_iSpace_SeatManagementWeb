@@ -53,41 +53,41 @@ public class Status extends HttpServlet {
 		try {
 
 			//입실 중복 확인 
-			String sql2="select count(*) as `count` from SEAT where userID=?";
-
-			PreparedStatement pstmt2 = conn.prepareStatement(sql2);
-			pstmt2.setString(1, id);
-			ResultSet rs2=pstmt2.executeQuery();
-
-			rs2.next();
-			int count=rs2.getInt("count");
-
-
-			DBmanager.close(pstmt2);
-
-			String sql = "select userID from SEAT where seatNo=?";
+			String sql="select count(*) as `count` from SEAT where userID=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, select);
-
+			pstmt.setString(1, id);
 			ResultSet rs=pstmt.executeQuery();
-			if(rs.next()) {//그 자리에 있는 사람 아이디 반환
-
-			}
-
-			String seatOwner=rs.getString("userID");
-
+			rs.next();
+			int count=rs.getInt("count");
 			DBmanager.close(pstmt);
+
+			
+			
+			String sql2 = "select userID from SEAT where seatNo=?";
+			PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setString(1, select);
+			ResultSet rs2=pstmt2.executeQuery();
+			rs2.next();
+			String seatOwner=rs2.getString("userID");
+			DBmanager.close(pstmt2);
+			
+			
+			String sql3 = "select count from USER where id=?";
+			PreparedStatement pstmt3 = conn.prepareStatement(sql3);
+			pstmt3.setString(1, id);
+			ResultSet rs3=pstmt3.executeQuery();
+			rs3.next();
+			int report=rs3.getInt("count");
+			DBmanager.close(pstmt3);
 
 
 
 			// String seating = rs.getString("userId"); //그 자리에 있는 사람 아이디 반환
 			// 사용자있으면 그사람 학번 없으면 none(default)
 			System.out.println("seating : "+seatOwner);
-			//      
-
 			String state="null";
 
-
+			
 
 			if(seatOwner.equals(id)) { //선택한 자리가 내자리면
 				state="내자리";
@@ -102,6 +102,13 @@ public class Status extends HttpServlet {
 				}
 
 				state="빈자리";
+				
+				if(report>3) {
+					PrintWriter out = response.getWriter();
+					out.println("<script>alert('You can not checkIN because you have been reported more than three times..'); location.href='/iSpace/view/home.jsp'</script>");
+					out.flush();
+					return;
+				}
 				//      }else if(!seating.equals(id)){
 			}else{
 				// 내자리 아니고 빈자리 아님 --> 남의 자리

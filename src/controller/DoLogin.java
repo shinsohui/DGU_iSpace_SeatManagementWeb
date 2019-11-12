@@ -48,6 +48,7 @@ public class DoLogin extends HttpServlet {
 
       
       String pass;
+  
       int report;
       
       Connection conn = null;
@@ -79,6 +80,7 @@ public class DoLogin extends HttpServlet {
             session.setAttribute("report", count);
             
             //
+ 
             
             request.setAttribute("NAME", rs.getString("name"));
             page="/view/home.jsp";

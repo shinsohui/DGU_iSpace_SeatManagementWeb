@@ -67,6 +67,12 @@ public class Report extends HttpServlet {
 			pstmt2.setString(2,reason);
 			pstmt2.execute();
 			DBmanager.close(pstmt2);
+			
+			String sql3 = "update USER set count=count+1 where id=?";
+			PreparedStatement pstmt3 = conn.prepareStatement(sql3);
+			pstmt3.setString(1,seatOwner);
+			pstmt3.execute();
+			DBmanager.close(pstmt3);
 
 
 			page="/view/home.jsp";
