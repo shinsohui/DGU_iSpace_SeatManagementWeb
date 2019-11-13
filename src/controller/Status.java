@@ -121,7 +121,6 @@ public class Status extends HttpServlet {
 			RequestDispatcher dispatcher=request.getRequestDispatcher(page);
 			dispatcher.forward(request, response);   
 
-
 			DBmanager.close(conn);
 
 		}catch (Exception e)
