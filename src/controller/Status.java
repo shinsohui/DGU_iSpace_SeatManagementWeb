@@ -20,112 +20,118 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet("/Status")
 public class Status extends HttpServlet {
-   private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-   /**
-    * @see HttpServlet#HttpServlet()
-    */
-   public Status() {
-      super();
-   }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Status() {
+		super();
+	}
 
-   /**
-    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-    */
-   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-      HttpSession session = request.getSession(); //세션추가용
+		HttpSession session = request.getSession(); //세션추가용
 
-      String select=request.getParameter("button"); //좌석버튼정보
-      String id=(String)session.getAttribute("id"); //현재 로그인 아이디 얻어옴
+		String select=request.getParameter("button"); //좌석버튼정보
+		String id=(String)session.getAttribute("id"); //현재 로그인 아이디 얻어옴
 
-      Connection conn = null;
-      String page;
+		Connection conn = null;
+		String page;
 
-      // System.out.println(my_seatNo);
+		// System.out.println(my_seatNo);
 
-      try {
-         conn = DBmanager.getConnection();
-      } catch (Exception e) {
-         // TODO Auto-generated catch block
-         System.out.println("Status DB connection error>>> "+e);
-      }
-      try {
+		try {
+			conn = DBmanager.getConnection();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Status DB connection error>>> "+e);
+		}
+		try {
 
-         //입실 중복 확인 
-         String sql2="select count(*) as `count` from SEAT where userID=?";
+			//입실 중복 확인 
+			String sql="select count(*) as `count` from SEAT where userID=?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			rs.next();
+			int count=rs.getInt("count");
+			DBmanager.close(pstmt);
 
-         PreparedStatement pstmt2 = conn.prepareStatement(sql2);
-         pstmt2.setString(1, id);
-         ResultSet rs2=pstmt2.executeQuery();
-
-         rs2.next();
-         int count=rs2.getInt("count");
-
-
-         DBmanager.close(pstmt2);
-
-         String sql = "select userID from SEAT where seatNo=?";
-         PreparedStatement pstmt = conn.prepareStatement(sql);
-         pstmt.setString(1, select);
-
-         ResultSet rs=pstmt.executeQuery();
-         if(rs.next()) {//그 자리에 있는 사람 아이디 반환
-
-         }
-
-         String seatOwner=rs.getString("userID");
-
-         DBmanager.close(pstmt);
-
-
-
-         // String seating = rs.getString("userId"); //그 자리에 있는 사람 아이디 반환
-         // 사용자있으면 그사람 학번 없으면 none(default)
-         System.out.println("seating : "+seatOwner);
-         //      
-
-         String state="null";
+			
+			
+			String sql2 = "select userID from SEAT where seatNo=?";
+			PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setString(1, select);
+			ResultSet rs2=pstmt2.executeQuery();
+			rs2.next();
+			String seatOwner=rs2.getString("userID");
+			DBmanager.close(pstmt2);
+			
+			
+			String sql3 = "select count from USER where id=?";
+			PreparedStatement pstmt3 = conn.prepareStatement(sql3);
+			pstmt3.setString(1, id);
+			ResultSet rs3=pstmt3.executeQuery();
+			rs3.next();
+			int report=rs3.getInt("count");
+			DBmanager.close(pstmt3);
 
 
 
-         if(seatOwner.equals(id)) { //선택한 자리가 내자리면
-            state="내자리";
-         }else if(seatOwner.equals("none")) { //default value
-            // 빈자리
-            
-            if(count>0) {
-               PrintWriter out = response.getWriter();
-               out.println("<script>alert('You already have a selected seat.'); location.href='/iSpace/view/home.jsp'</script>");
-               out.flush();
-               return;
-            }
+			// String seating = rs.getString("userId"); //그 자리에 있는 사람 아이디 반환
+			// 사용자있으면 그사람 학번 없으면 none(default)
+			System.out.println("seating : "+seatOwner);
+			String state="null";
 
-            state="빈자리";
-            //      }else if(!seating.equals(id)){
-         }else{
-            // 내자리 아니고 빈자리 아님 --> 남의 자리
-            state="남의자리";
-         }
+			
+
+			if(seatOwner.equals(id)) { //선택한 자리가 내자리면
+				state="내자리";
+			}else if(seatOwner.equals("none")) { //default value
+				// 빈자리
+				
+				if(count>0) {
+					PrintWriter out = response.getWriter();
+					out.println("<script>alert('You already have a selected seat.'); location.href='/iSpace/view/home.jsp'</script>");
+					out.flush();
+					return;
+				}
+
+				state="빈자리";
+				
+				if(report>3) {
+					PrintWriter out = response.getWriter();
+					out.println("<script>alert('You can not checkIN because you have been reported more than three times..'); location.href='/iSpace/view/home.jsp'</script>");
+					out.flush();
+					return;
+				}
+				//      }else if(!seating.equals(id)){
+			}else{
+				// 내자리 아니고 빈자리 아님 --> 남의 자리
+				state="남의자리";
+			}
 
 
-         request.setAttribute("state", state); //데이터 실었음
+			request.setAttribute("state", state); //데이터 실었음
 
-         page="/view/home.jsp";
-         RequestDispatcher dispatcher=request.getRequestDispatcher(page);
-         dispatcher.forward(request, response);   
+			page="/view/home.jsp";
+			RequestDispatcher dispatcher=request.getRequestDispatcher(page);
+			dispatcher.forward(request, response);   
 
-         System.out.println("dkdkdkdkdkdkdkdkdk");
-         
-         DBmanager.close(conn);
 
-      }catch (Exception e)
-      {
-         System.out.println("!!!!status check error!!!");
-         e.printStackTrace();
-      }
+			DBmanager.close(conn);
 
-   }
+		}catch (Exception e)
+		{
+			System.out.println("!!!!status check error!!!");
+			e.printStackTrace();
+		}
+
+	}
 
 
 }

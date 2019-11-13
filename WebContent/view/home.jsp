@@ -18,8 +18,7 @@
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
-   String report = (String) session
-         .getAttribute("report");/* 
+   String report = (String) session.getAttribute("report");/* 
                            String selected=(String) session.getAttribute("selected"); */
 %>
 </head>
