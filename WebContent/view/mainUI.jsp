@@ -19,7 +19,7 @@
 	<h5 style="text-align: right; text-indent: 100%; white-space: nowrap; overflow: hidden;">
     no content </h5>
 	
-	<table border="1" style="width:100%; text-align:center;">
+	<!-- <table border="1" style="width:100%; text-align:center;">
    <tr>
    <td><a href="/iSpace/view/home.jsp">좌석현황 </a></td>
    <td>공지사항 </td>
@@ -27,8 +27,34 @@
    <td>분실물센터 </td>
    <td>MY PAGE </td>
    </tr>
-   </table>
-	<div class="frame" style="position: absolute;">
+   </table> -->
+   <nav id="topMenu" >
+         <ul>
+            <li class="topMenuLi"><a class="menuLink">좌석현황</a>
+               <ul class="submenu">
+                  <li><a href="about_.html" class="submenuLink"> </a></li>
+               </ul></li>
+            <li>|</li>
+
+            <li class="topMenuLi"><a class="menuLink">공지사항</a></li>
+
+            <li>|</li>
+
+            <li class="topMenuLi"><a class="menuLink">건의사항</a>
+               <ul class="submenu">
+
+               </ul></li>
+            <li>|</li>
+            <li class="topMenuLi"><a class="menuLink">분실물센터</a></li>
+            <li>|</li>
+            <li class="topMenuLi"><a class="menuLink">MY PAGE</a>
+               <ul class="submenu">
+
+               </ul></li>
+         </ul>
+      </nav>
+   
+	<div class="frame">
 
 			<div class="whitebox"
 				style="position: absolute; width: 700px; height: 460px; margin-left: 10px;">
@@ -282,7 +308,7 @@
 
 
 	<div class="whitebox"
-		style="width: 230px; background-color: white; left: 995px; top: 220px; height: 170px; ">
+		style="width: 230px; background-color: white; left: 995px; top: 240px; height: 170px; ">
 
 		<form action=/iSpace/DoLogin method="post" style="padding-top:55px; padding-left:28px;">
 			<table>
@@ -307,7 +333,7 @@
      </center>  -->
 
 	<div class="whitebox"
-		style="width: 230px; left: 995px; height: 280px; background-color: yellow; top: 400px">
+		style="width: 230px; left: 995px; height: 280px; background-color: yellow; top: 420px">
 		<br>
 		공지사항 자리 <br>이곳은 공지사항이 나타날 자리에요
 	</div>

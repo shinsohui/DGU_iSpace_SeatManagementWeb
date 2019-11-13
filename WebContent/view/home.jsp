@@ -41,7 +41,7 @@
       </h5>
       <!-- <th><button class="button" data-modal="confirm">Contact Us</button></th> -->
 
-   <table border="1" style="width: 100%; text-align: center;">
+<!--    <table border="1" style="width: 100%; text-align: center;">
       <tr>
          <td><a href="/iSpace/view/home.jsp">좌석현황 </a></td>
          <td>공지사항</td>
@@ -49,7 +49,34 @@
          <td>분실물센터</td>
          <td>MY PAGE</td>
       </tr>
-   </table>
+   </table> -->
+   <nav id="topMenu" >
+         <ul>
+            <li class="topMenuLi"><a class="menuLink">좌석현황</a>
+               <ul class="submenu">
+                  <li><a href="about_.html" class="submenuLink"> </a></li>
+               </ul></li>
+            <li>|</li>
+
+            <li class="topMenuLi"><a class="menuLink">공지사항</a></li>
+
+            <li>|</li>
+
+            <li class="topMenuLi"><a class="menuLink">건의사항</a>
+               <ul class="submenu">
+
+               </ul></li>
+            <li>|</li>
+            <li class="topMenuLi"><a class="menuLink">분실물센터</a></li>
+            <li>|</li>
+            <li class="topMenuLi"><a class="menuLink">MY PAGE</a>
+               <ul class="submenu">
+
+               </ul></li>
+         </ul>
+      </nav>
+   
+   
    <br>
    <div class="frame">
 		<div class="whitebox" style="width: 700px; height: 460px; margin-left: 10px;">
