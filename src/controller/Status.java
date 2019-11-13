@@ -114,6 +114,8 @@ public class Status extends HttpServlet {
 				// 내자리 아니고 빈자리 아님 --> 남의 자리
 				state="남의자리";
 			}
+			
+			
 			request.setAttribute("state", state); //데이터 실었음
 
 			page="/view/home.jsp";
