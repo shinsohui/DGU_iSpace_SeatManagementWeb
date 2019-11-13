@@ -189,6 +189,7 @@
        style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 250px;
        width: 30px;"> 
        
+<!--        시설이랑 좌석 분리	-->       
        <input type = "submit" value = "1" name = "button"
        style= "color: black; background:skyblue; height: 30px; position: absolute; left: 120px; top: 10px;
        width: 30px;"> 
