@@ -115,7 +115,6 @@ public class Status extends HttpServlet {
 				state="남의자리";
 			}
 			
-			
 			request.setAttribute("state", state); //데이터 실었음
 
 			page="/view/home.jsp";
