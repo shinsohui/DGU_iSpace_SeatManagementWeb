@@ -7,9 +7,7 @@
 <title>mainUI</title>
 <style><%@include file="/view/CSS/mainUI.css"%></style>
 </head>
-
 <body>
-
 	  <p style="text-align: center;">
 		<a href="/iSpace/view/mainUI.jsp"><img
 			src="/iSpace/view/Image/mainlogo.png"
@@ -60,18 +58,26 @@
 				style="position: absolute; width: 700px; height: 460px; margin-left: 10px;">
 
 				<p style="text-align: center;">
-				<form action="/iSpace/Status" method="get">
 
-					<input type="button" onclick="javascript:seatbtn()"  value="3DLAB" 
-						style="color: black; background: skyblue; position: absolute; left: 40px; top: 10px; height: 100px; width: 30px;">
+<!-- 				<input type="button" onclick="javascript:seatbtn()" value="3DLAB"
+					style="color: black; background: skyblue; position: absolute; left: 40px; top: 10px; height: 100px; width: 30px;"> 
+				<input type="button" onclick="javascript:seatbtn()" value="세미나실1"
+					style="color: black; background: skyblue; height: 100px; position: absolute; left: 40px; top: 130px; width: 30px;"> 
+				<input type="button" onclick="javascript:seatbtn()" value="세미나실2"
+					style="color: black; background: skyblue; height: 100px; position: absolute; left: 40px; top: 250px; width: 30px;">
+ -->
 
-					<input type="button" onclick="javascript:seatbtn()"  value="세미나실1" 
-						style="color: black; background: skyblue; height: 100px; position: absolute; left: 40px; top: 130px; width: 30px;">
+<!-- 	시설은 세로 정렬해야 돼서 버튼으로 바꿈
+ -->      
+ 	  <button onclick="javascript:seatbtn()" value="3DLAB"  style= "color: black; background:skyblue; position: absolute; left: 40px; top: 10px; height: 100px; 
+ 	   width: 30px;">3<br>D<br>L<br>A<br>B</button>
+      <button onclick="javascript:seatbtn()" value="세미나실1"  style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 130px;
+       width: 30px;">세<br>미<br>나<br>실<br>1</button>  
+   	  <button onclick="javascript:seatbtn()" value="세미나실2"  style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 250px;
+       width: 30px;">세<br>미<br>나<br>실<br>2</button>
 
-					<input type="button" onclick="javascript:seatbtn()"  value="세미나실2" 
-						style="color: black; background: skyblue; height: 100px; position: absolute; left: 40px; top: 250px; width: 30px;">
 
-					<input type="button" onclick="javascript:seatbtn()"  value="1" 
+				<input type="button" onclick="javascript:seatbtn()"  value="1" 
 						style="color: black; background: skyblue; height: 30px; position: absolute; left: 120px; top: 10px; width: 30px;">
 
 					<input type="button" onclick="javascript:seatbtn()"  value="2" 
@@ -301,7 +307,6 @@
 
 					<input type="button" onclick="javascript:seatbtn()"  value="77" 
 						style="color: black; background: gray; height: 30px; position: absolute; left: 540px; top: 420px; width: 30px; border-radius: 18px">
-				</form>
 			</div>
 	</div>
 

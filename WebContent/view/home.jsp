@@ -81,7 +81,9 @@
 		<div class="whitebox" style="width: 700px; height: 460px; margin-left: 10px;">
 			<p style="text-align: center;">
    				
-   <form action="/iSpace/Status" method="get">
+   <form action="/iSpace/Facility" method="get">
+<!--        시설		-->      
+<!--          시설 팝업 만들어야 됨-->   
 <!--       <table>
          <tr>
             <th><input type="submit" value="1" name="button" /></th>
@@ -177,18 +179,33 @@
             <th><input type="submit" value="77" name="button" /></th>
          </tr>
       </table> -->
-      <input type="submit" value = "3DLAB" name = "button" 
+      <!--        시설		-->      
+             
+      <button value="3DLAB" name="room" style= "color: black; background:skyblue; position: absolute;
+        left: 40px; top: 10px; height: 100px; width: 30px;">3<br>D<br>L<br>A<br>B</button>
+      <button value="세미나실1" name="room" style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 130px;
+       width: 30px;">세<br>미<br>나<br>실<br>1</button>  
+   	  <button value="3DLAB" name="room" style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 250px;
+       width: 30px;">세<br>미<br>나<br>실<br>2</button>
+  	 <!-- 
+  	 <input type="submit" value = "3DLAB" name = "room" 
         style= "color: black; background:skyblue; position: absolute;
-        left: 40px; top: 10px; height: 100px; width: 30px;" >        
-   
-      <input type = "submit" value = "세미나실1" name = "button"
+        left: 40px; top: 10px; height: 100px; width: 30px;" > 
+      <input type = "submit" value = "세미나실1" name = "room"
        style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 130px;
        width: 30px;"> 
        
-       <input type = "submit" value = "세미나실2" name = "button"
+       <input type = "submit" value = "세미나실2" name = "room"
        style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 250px;
        width: 30px;"> 
+       </form>
+      -->  
+     </form>
+      
        
+<!--        좌석		-->      
+   	<form action="/iSpace/Status" method="get">
+ 
        <input type = "submit" value = "1" name = "button"
        style= "color: black; background:skyblue; height: 30px; position: absolute; left: 120px; top: 10px;
        width: 30px;"> 
