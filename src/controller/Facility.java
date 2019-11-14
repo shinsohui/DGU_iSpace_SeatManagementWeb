@@ -20,7 +20,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/Facility")
 public class Facility extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -37,7 +36,7 @@ public class Facility extends HttpServlet {
 		HttpSession session = request.getSession();
 		String room=request.getParameter("room"); //선택한 room 정보
 		String id=(String)session.getAttribute("id"); //현재 로그인 아이디 얻어옴 
-
+		
 		Connection conn = null;
 		String page;
 		
@@ -79,13 +78,12 @@ public class Facility extends HttpServlet {
 			
 			String test="testing...facility";
 			request.setAttribute("test", test);
-
+			
 			page="/view/home.jsp";
 			RequestDispatcher dispatcher=request.getRequestDispatcher(page);
 			dispatcher.forward(request, response);   
-
+			
 			DBmanager.close(conn);
-
 			
 		}catch (Exception e)
 		{
