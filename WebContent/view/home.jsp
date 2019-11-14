@@ -18,8 +18,8 @@
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
-   String report = (String) session.getAttribute("report");/* 
-                           String selected=(String) session.getAttribute("selected"); */
+   String report = (String) session.getAttribute("report");
+                           
 %>
 </head>
 
@@ -633,6 +633,19 @@
          </div>
       </form>
    </div>
+   
+   <div id="pop3" style="display: none;">
+      <div style="height: 20px;"><%=seatNo%>번 좌석에 재입실하시겠습니까?
+      </div>
+      <form action="/iSpace/ReCheckIn" method="get">
+         <div style="display: inline; float: left; width: 60px">
+            <button value="<%=seatNo%>" name="button">재입실</button>
+         </div>
+      </form>
+      <div style="display: inline; float: left; width: 60px" id="close3">
+         <button>취소 </button>
+      </div>
+   </div>
 
    <%
       if (state != null) {
@@ -669,10 +682,20 @@
       });
    </script>
    <%
-      }
-      } else {
+      }else if(state.equals("재입실")){
+   	%>
+   	<script>
+      $('#pop3').show();
+      $('#close3').click(function() {
+         $('#pop3').hide();
+      });
+   </script>
+   	
+   	<%
+      }else {
 /*          out.println("Status에서 DB체크해서 넘어오는 거 error 1.내자리 2.빈자리 3.남의자리로 반환해야되는데 엉뚱한값 반환됨ㄱ- ");
  */      }
+      }
    %>
 </body>
 </html>
