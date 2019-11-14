@@ -19,31 +19,31 @@
 	
 	<!-- <table border="1" style="width:100%; text-align:center;">
    <tr>
-   <td><a href="/iSpace/view/home.jsp">ÁÂ¼®ÇöÈ²  </a></td>
-   <td>°øÁö»çÇ×</td>
-   <td>°ÇÀÇ»çÇ×</td>
-   <td>ºÐ½Ç¹°¼¾ÅÍ</td>
+   <td><a href="/iSpace/view/home.jsp">ì¢Œì„í˜„í™©  </a></td>
+   <td>ê³µì§€ì‚¬í•­</td>
+   <td>ê±´ì˜ì‚¬í•­</td>
+   <td>ë¶„ì‹¤ë¬¼ì„¼í„°</td>
    <td>MY PAGE </td>
    </tr>
    </table> -->
    <nav id="topMenu" >
          <ul>
-            <li class="topMenuLi"><a class="menuLink">ÁÂ¼®ÇöÈ² </a>
+            <li class="topMenuLi"><a class="menuLink">ì¢Œì„í˜„í™© </a>
                <ul class="submenu">
                   <li><a href="about_.html" class="submenuLink"> </a></li>
                </ul></li>
             <li>|</li>
 
-            <li class="topMenuLi"><a class="menuLink">°øÁö»çÇ× </a></li>
+            <li class="topMenuLi"><a class="menuLink">ê³µì§€ì‚¬í•­ </a></li>
 
             <li>|</li>
 
-            <li class="topMenuLi"><a class="menuLink">°ÇÀÇ»çÇ× </a>
+            <li class="topMenuLi"><a class="menuLink">ê±´ì˜ì‚¬í•­ </a>
                <ul class="submenu">
 
                </ul></li>
             <li>|</li>
-            <li class="topMenuLi"><a class="menuLink">ºÐ½Ç¹°¼¾ÅÍ </a></li>
+            <li class="topMenuLi"><a class="menuLink">ë¶„ì‹¤ë¬¼ì„¼í„° </a></li>
             <li>|</li>
             <li class="topMenuLi"><a class="menuLink">MY PAGE</a>
                <ul class="submenu">
@@ -62,10 +62,10 @@
 
  	  <button onclick="javascript:seatbtn()" value="3DLAB"  style= "color: black; background:skyblue; position: absolute; left: 40px; top: 10px; height: 100px; 
  	   width: 30px;">3<br>D<br>L<br>A<br>B</button>
-      <button onclick="javascript:seatbtn()" value="¼¼¹Ì³ª½Ç1"  style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 130px;
-       width: 30px;">¼¼<br>¹Ì<br>³ª<br>½Ç<br>1</button>  
-   	  <button onclick="javascript:seatbtn()" value="¼¼¹Ì³ª½Ç2"  style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 250px;
-       width: 30px;">¼¼<br>¹Ì<br>³ª<br>½Ç<br>2</button>  
+      <button onclick="javascript:seatbtn()" value="ì„¸ë¯¸ë‚˜ì‹¤1"  style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 130px;
+       width: 30px;">ì„¸<br>ë¯¸<br>ë‚˜<br>ì‹¤<br>1</button>  
+   	  <button onclick="javascript:seatbtn()" value="ì„¸ë¯¸ë‚˜ì‹¤2"  style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 250px;
+       width: 30px;">ì„¸<br>ë¯¸<br>ë‚˜<br>ì‹¤<br>2</button>  
 
 
 				<input type="button" onclick="javascript:seatbtn()"  value="1" 
@@ -335,7 +335,9 @@
 	<div class="whitebox"
 		style="width: 230px; left: 995px; height: 280px; background-color: yellow; top: 420px">
 		<br>
-		°øÁö»çÇ× ÀÚ¸® <br>°øÁö ½Å¼ºÇö
+
+		ê³µì§€ì‚¬í•­ ìžë¦¬ <br>ê³µì§€ ì£¼ì› 
+
 	</div>
 
 </body>
