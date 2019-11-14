@@ -19,31 +19,31 @@
 	
 	<!-- <table border="1" style="width:100%; text-align:center;">
    <tr>
-   <td><a href="/iSpace/view/home.jsp">좌석현황 </a></td>
-   <td>공지사항 </td>
-   <td>건의사항 </td>
-   <td>분실물센터 </td>
+   <td><a href="/iSpace/view/home.jsp">좌석현황  </a></td>
+   <td>공지사항</td>
+   <td>건의사항</td>
+   <td>분실물센터</td>
    <td>MY PAGE </td>
    </tr>
    </table> -->
    <nav id="topMenu" >
          <ul>
-            <li class="topMenuLi"><a class="menuLink">좌석현황</a>
+            <li class="topMenuLi"><a class="menuLink">좌석현황 </a>
                <ul class="submenu">
                   <li><a href="about_.html" class="submenuLink"> </a></li>
                </ul></li>
             <li>|</li>
 
-            <li class="topMenuLi"><a class="menuLink">공지사항</a></li>
+            <li class="topMenuLi"><a class="menuLink">공지사항 </a></li>
 
             <li>|</li>
 
-            <li class="topMenuLi"><a class="menuLink">건의사항</a>
+            <li class="topMenuLi"><a class="menuLink">건의사항 </a>
                <ul class="submenu">
 
                </ul></li>
             <li>|</li>
-            <li class="topMenuLi"><a class="menuLink">분실물센터</a></li>
+            <li class="topMenuLi"><a class="menuLink">분실물센터 </a></li>
             <li>|</li>
             <li class="topMenuLi"><a class="menuLink">MY PAGE</a>
                <ul class="submenu">
@@ -59,22 +59,13 @@
 
 				<p style="text-align: center;">
 
-<!-- 				<input type="button" onclick="javascript:seatbtn()" value="3DLAB"
-					style="color: black; background: skyblue; position: absolute; left: 40px; top: 10px; height: 100px; width: 30px;"> 
-				<input type="button" onclick="javascript:seatbtn()" value="세미나실1"
-					style="color: black; background: skyblue; height: 100px; position: absolute; left: 40px; top: 130px; width: 30px;"> 
-				<input type="button" onclick="javascript:seatbtn()" value="세미나실2"
-					style="color: black; background: skyblue; height: 100px; position: absolute; left: 40px; top: 250px; width: 30px;">
- -->
 
-<!-- 	시설은 세로 정렬해야 돼서 버튼으로 바꿈
- -->      
  	  <button onclick="javascript:seatbtn()" value="3DLAB"  style= "color: black; background:skyblue; position: absolute; left: 40px; top: 10px; height: 100px; 
  	   width: 30px;">3<br>D<br>L<br>A<br>B</button>
       <button onclick="javascript:seatbtn()" value="세미나실1"  style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 130px;
        width: 30px;">세<br>미<br>나<br>실<br>1</button>  
    	  <button onclick="javascript:seatbtn()" value="세미나실2"  style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 250px;
-       width: 30px;">세<br>미<br>나<br>실<br>2</button>
+       width: 30px;">세<br>미<br>나<br>실<br>2</button>  
 
 
 				<input type="button" onclick="javascript:seatbtn()"  value="1" 
@@ -335,7 +326,7 @@
 		</form>
 	</div>
 
-	<!--   <center>로그인자리?
+	<!--   <center>
       <iframe src = "login_frame.jsp" name = "login" width = "150" height = "125" 
       style = "margin-right: 2%; margin-top:2%; margin-bottom:2%" scrolling="no" frameborder="0"> </iframe> <br>
         <a href="join.jsp"><input type="submit" value="join us" style="color: blue; background-color: white"></a>
