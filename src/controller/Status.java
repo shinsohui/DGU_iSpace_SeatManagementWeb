@@ -147,7 +147,6 @@ public class Status extends HttpServlet {
 
 			DBmanager.close(conn);
 
-
 		}catch (Exception e)
 		{
 			System.out.println("!!!!status check error!!!");
