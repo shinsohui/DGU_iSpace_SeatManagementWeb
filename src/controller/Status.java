@@ -31,7 +31,6 @@ public class Status extends HttpServlet {
 	public Status() {
 		super();
 	}
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
