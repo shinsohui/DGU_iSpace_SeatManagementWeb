@@ -49,24 +49,24 @@
          <td>MY PAGE</td>
       </tr>
    </table> -->
-   <nav id="topMenu" >
+    <nav id="topMenu" >
          <ul>
-            <li class="topMenuLi"><a class="menuLink">좌석현황</a>
+            <li class="topMenuLi"><a class="menuLink">SEAT </a>
                <ul class="submenu">
                   <li><a href="about_.html" class="submenuLink"> </a></li>
                </ul></li>
             <li>|</li>
 
-            <li class="topMenuLi"><a class="menuLink">공지사항</a></li>
+            <li class="topMenuLi"><a class="menuLink">NOTICE </a></li>
 
             <li>|</li>
 
-            <li class="topMenuLi"><a class="menuLink">건의사항</a>
+            <li class="topMenuLi"><a class="menuLink">SUGGEST </a>
                <ul class="submenu">
 
                </ul></li>
             <li>|</li>
-            <li class="topMenuLi"><a class="menuLink">분실물센터</a></li>
+            <li class="topMenuLi"><a class="menuLink">LOST&FOUND </a></li>
             <li>|</li>
             <li class="topMenuLi"><a class="menuLink">MY PAGE</a>
                <ul class="submenu">
