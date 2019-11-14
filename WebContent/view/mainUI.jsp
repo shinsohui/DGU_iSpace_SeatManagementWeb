@@ -344,7 +344,7 @@
 	<div class="whitebox"
 		style="width: 230px; left: 995px; height: 280px; background-color: yellow; top: 420px">
 		<br>
-		공지사항 자리 <br>공지 자리 
+		공지사항 자리 <br>공지
 	</div>
 
 </body>
