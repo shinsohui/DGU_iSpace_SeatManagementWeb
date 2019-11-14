@@ -40,7 +40,6 @@ public class Absence extends HttpServlet {
 		
 		Connection conn = null;
 		String page;
-		String abtype="0";
 
 		System.out.println(absence);
 		
@@ -59,11 +58,9 @@ public class Absence extends HttpServlet {
 			pstmt.setString(1,currentTime);
 			pstmt.setInt(2, Integer.parseInt(absence));
 			pstmt.execute();
-			
-			abtype="1";
-			
-			request.setAttribute("abtype", abtype);
 
+			
+			
 			page="/view/home.jsp";
 			RequestDispatcher dispatcher=request.getRequestDispatcher(page);
 			dispatcher.forward(request, response);   
@@ -78,14 +75,6 @@ public class Absence extends HttpServlet {
 		}
 
 	
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

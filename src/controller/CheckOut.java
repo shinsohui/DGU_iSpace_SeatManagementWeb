@@ -53,14 +53,29 @@ public class CheckOut extends HttpServlet {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,"none");
 			pstmt.setString(2,my_seatNo);
-
 			pstmt.execute();
+			DBmanager.close(pstmt);
+
+			
+			String sql2 = "update SEAT set absence=null where seatNo=?";
+			PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setString(1,my_seatNo);
+			pstmt2.execute();
+			DBmanager.close(pstmt2);
+			
+			
+			String sql3 = "update USER set my_seatNo=0 where id=?";
+			PreparedStatement pstmt3 = conn.prepareStatement(sql3);
+			pstmt3.setString(1,id);
+
+			pstmt3.execute();
+			DBmanager.close(pstmt3);
+			
 
 			page="/view/home.jsp";
 			RequestDispatcher dispatcher=request.getRequestDispatcher(page);
 			dispatcher.forward(request, response);   
 
-			DBmanager.close(pstmt);
 			DBmanager.close(conn);
 
 		}catch (Exception e)
