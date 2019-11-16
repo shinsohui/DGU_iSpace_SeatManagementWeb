@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -112,8 +113,58 @@ public class Status extends HttpServlet {
 					System.out.println("state에 들어가는거야 ");
 					state="내자리";					
 				}else {
+					Date cal =new Date();
+					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					String temp=df.format(cal.getTime());
+//					System.out.println("test: " +temp);
+					Date before=df.parse(absence);
+					Date now=df.parse(temp);
+//					System.out.println(now.getTime() +"-"+before.getTime()+"="+(now.getTime()-before.getTime()));
 
+					long compare=now.getTime()-before.getTime();
+//					System.out.println("compare 나누기 전 : "+compare);
+					compare=compare/(60*1000);//시간 차이 분으로 구하기 위함
+					//초 : /1000
+					//분 : /60*1000
+					//시 : /60*60*1000
+
+					compare = Math.abs(compare);
+					System.out.println("compare:"+compare);
+					if(compare>29) {
+						PrintWriter out = response.getWriter();
+						out.println("<script>alert('You have been forced out of the SEAT.'); location.href='/iSpace/view/home.jsp'</script>");
+						out.flush();
+						System.out.println("30분 지났어 임마 ㅋ ");
+						//seat 테이블에서 사용자 none으로 초기화.  
+						String sql11 = "update SEAT set userID=? where seatNo=?";
+						PreparedStatement pstmt11 = conn.prepareStatement(sql11);
+						pstmt11.setString(1,"none");
+						pstmt11.setString(2,select);
+						pstmt11.execute();
+						DBmanager.close(pstmt11);
+
+						//seat 테이블에서 부재 0으로 초기화.
+						String sql22 = "update SEAT set absence=null where seatNo=?";
+						PreparedStatement pstmt22 = conn.prepareStatement(sql22);
+						pstmt22.setString(1,select);
+						pstmt22.execute();
+						DBmanager.close(pstmt22);
+
+						//user 테이블에서 자리 0으로 초기화. 
+						String sql33 = "update USER set my_seatNo=0 where id=?";
+						PreparedStatement pstmt33 = conn.prepareStatement(sql33);
+						pstmt33.setString(1,id);
+
+						pstmt33.execute();
+						DBmanager.close(pstmt33);
+						return;
+
+					}
+					else {
 						state="재입실";
+					}
+
+
 				}
 			}else if(seatOwner.equals("none")) { //default value
 				// 빈자리

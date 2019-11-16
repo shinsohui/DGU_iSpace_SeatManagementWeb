@@ -49,6 +49,7 @@ public class CheckOut extends HttpServlet {
 			System.out.println("DB connection error on checkOut"+e);
 		}
 		try {
+			//seat 테이블에서 사용자 none으로 초기화.  
 			String sql = "update SEAT set userID=? where seatNo=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,"none");
@@ -56,14 +57,14 @@ public class CheckOut extends HttpServlet {
 			pstmt.execute();
 			DBmanager.close(pstmt);
 
-			
+			//seat 테이블에서 부재 0으로 초기화.
 			String sql2 = "update SEAT set absence=null where seatNo=?";
 			PreparedStatement pstmt2 = conn.prepareStatement(sql2);
 			pstmt2.setString(1,my_seatNo);
 			pstmt2.execute();
 			DBmanager.close(pstmt2);
 			
-			
+			//user 테이블에서 자리 0으로 초기화. 
 			String sql3 = "update USER set my_seatNo=0 where id=?";
 			PreparedStatement pstmt3 = conn.prepareStatement(sql3);
 			pstmt3.setString(1,id);
