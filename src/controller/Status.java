@@ -73,6 +73,7 @@ public class Status extends HttpServlet {
 			ResultSet rs2=pstmt2.executeQuery();
 			rs2.next();
 			String seatOwner=rs2.getString("userID");
+			System.out.println(seatOwner);
 			DBmanager.close(pstmt2);
 
 			
@@ -145,7 +146,7 @@ public class Status extends HttpServlet {
 						
 						//강제퇴실처리시킴 
 						//seat 테이블에서 사용자 none,부재 0으로 초기화.  
-						String sql11 = "update SEAT set userID=?, absence=null where seatNo=?";
+						String sql11 = "update SEAT set userID=?,absence=null where seatNo=?";
 						PreparedStatement pstmt11 = conn.prepareStatement(sql11);
 						pstmt11.setString(1,"none");
 						pstmt11.setString(2,select);
@@ -284,8 +285,28 @@ public class Status extends HttpServlet {
 
 				//      }else if(!seating.equals(id)){
 			}else{
+				
+				String sql7 = "select absence from SEAT where userID=?";
+				PreparedStatement pstmt7 = conn.prepareStatement(sql7);
+				pstmt7.setString(1, seatOwner);
+				ResultSet rs7=pstmt7.executeQuery();
+				//			rs4.next();
+				if(rs7.next()==false) {
+					seatOwner="none";
+				}else {
+					absence=rs7.getString("absence");
+				}
+				DBmanager.close(pstmt7);
 				// 내자리 아니고 빈자리 아님 --> 남의 자리
-				state="남의자리";
+				if(absence==null) {
+					System.out.println(absence);
+					state="남의자리";
+				}else {
+					PrintWriter out = response.getWriter();
+					out.println("<script>alert('Absence SEAT.'); location.href='/iSpace/view/home.jsp'</script>");
+					out.flush();
+				}
+				
 			}
 
 			request.setAttribute("state", state); //데이터 실었음
