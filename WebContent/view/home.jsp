@@ -97,7 +97,7 @@
 		<div class="whitebox" style="width: 700px; height: 460px; margin-left: 10px;">
 			<p style="text-align: center;">
    				
-   <form action="/iSpace/Facility" method="get">
+ 
 <!--        시설		-->      
 <!--          시설 팝업 만들어야 됨-->   
 <!--       <table>
@@ -196,15 +196,20 @@
          </tr>
       </table> -->
       <!--        시설		-->      
-             
+      
       <button value="3DLAB" name="room" style= "color: black; background:skyblue; position: absolute;
         left: 40px; top: 10px; height: 100px; width: 30px;">3<br>D<br>L<br>A<br>B</button>
-      <button value="세미나실1" name="room" style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 130px;
+
+      <!-- <form action="/iSpace/Facility" method="post">   -->
+      <button value="seminar1" id="room" name="room1" style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 130px;
        width: 30px;">세<br>미<br>나<br>실<br>1</button>  
-   	  <button value="3DLAB" name="room" style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 250px;
+   	  <!-- </form>
+   	  <form action="/iSpace/Facility" method="post">  --> 
+   	  <button value="seminar2" id="room" name="room2" style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 250px;
        width: 30px;">세<br>미<br>나<br>실<br>2</button>
-  	 <!-- 
-  	 <input type="submit" value = "3DLAB" name = "room" 
+      <!--  </form> -->
+  	 
+  	 <!-- <input type="submit" value = "3DLAB" name = "room" 
         style= "color: black; background:skyblue; position: absolute;
         left: 40px; top: 10px; height: 100px; width: 30px;" > 
       <input type = "submit" value = "세미나실1" name = "room"
@@ -214,10 +219,10 @@
        <input type = "submit" value = "세미나실2" name = "room"
        style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 250px;
        width: 30px;"> 
-       </form>
-      -->  
-     </form>
-      
+       </form> -->
+       
+  <!--    </form>
+       -->
        
 <!--        좌석		-->      
    	<form action="/iSpace/Status" method="get">
@@ -558,6 +563,37 @@
          </article>
       </div>
    </form>
+   
+   
+   
+   <!-- 시설예약  -->
+   <div id="reserve" style="display: none;">
+      <div style="height: 20px;">시설 예약 </div>
+      
+      
+      <form action="/iSpace/CheckIn" method="get">
+         <div style="display: inline; float: left; width: 60px">
+            <button value="<%=seatNo%>" name="button">입실</button>
+         </div>
+      </form>
+      <div style="display: inline; float: left; width: 60px" id="close4">
+         <button>취소 </button>
+      </div>
+   </div>
+   
+   <script>
+   $('#room').click(function() {
+   $('#reserve').toggle(0,function() {
+    $('#close4').click(function() {
+         $('#reserve').hide();
+      });
+  	});
+	});
+   </script>
+   
+   
+   
+   
 
    <div id="pop" style="display: none;">
       <div style="height: 20px;"><%=seatNo%>번 좌석에 입실하시겠습니까?

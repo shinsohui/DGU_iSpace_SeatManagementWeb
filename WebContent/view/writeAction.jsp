@@ -24,7 +24,6 @@
 <%
    //User user = new User();//generate user
    String userid = (String) session.getAttribute("id");
-   //String useridd= (String) session.setAttribute("userid");
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");

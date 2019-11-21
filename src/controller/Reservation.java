@@ -18,13 +18,13 @@ import javax.servlet.http.HttpSession;
  * Servlet implementation class Facility
  */
 //seminar
-@WebServlet("/Facility")
-public class Facility extends HttpServlet {
+@WebServlet("/Reservation")
+public class Reservation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Facility() {
+    public Reservation() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,7 +45,7 @@ public class Facility extends HttpServlet {
 			conn = DBmanager.getConnection();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("Facility DB connection error>>> "+e);
+			System.out.println("Reservation DB connection error>>> "+e);
 		}
 		try {
 		//시설 DB 만들고 쿼리 바꾸기
@@ -75,9 +75,10 @@ public class Facility extends HttpServlet {
 
 
 			// String seating = rs.getString("userId"); //그 자리에 있는 사람 아이디 반환
-			System.out.println("facility check : "+room);
+			System.out.println("reservation check : "+room);
 			
-			String test="testing...facility";
+			String test="reservation...facility";
+			
 			request.setAttribute("test", test);
 			
 			page="/view/home.jsp";

@@ -76,7 +76,7 @@
             <p style="text-align: center;">
 
 
-      <button onclick="javascript:seatbtn()" value="3DLAB"  style= "color: black; background:skyblue; position: absolute; left: 40px; top: 10px; height: 100px; 
+      <button value="3DLAB"  style= "color: black; background:skyblue; position: absolute; left: 40px; top: 10px; height: 100px; 
        width: 30px;">3<br>D<br>L<br>A<br>B</button>
       <button onclick="javascript:seatbtn()" value="seminar1"  style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 130px;
        width: 30px;">S<br>E<br>M<br>I<br>N<br>A<br>R<br>1</button>  

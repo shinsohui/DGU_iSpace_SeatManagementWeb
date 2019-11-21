@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 import controller.DBmanager;
 
 public class noticeDAO {
@@ -16,21 +19,19 @@ public class noticeDAO {
 	        if(instance == null ) instance = new noticeDAO();
 	        return instance;
 	    }*/
+	
 
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 
 	public noticeDAO() {
+		
 		try {
-			String driver = "com.mysql.jdbc.Driver";
-			String url = "jdbc:mysql://13.124.48.223:3306/SEED";
-			String username = "root";
-			String password = "1234";
-			conn = DriverManager.getConnection(url, username, password);
-			Class.forName(driver);
+			conn = DBmanager.getConnection();
 		} catch (Exception e) {
-			e.printStackTrace();
+			// TODO Auto-generated catch block
+			System.out.println("notice DB connection error>>> "+e);
 		}
 	}
 
@@ -100,6 +101,10 @@ public class noticeDAO {
 				notice.setNoticeId(rs.getInt(1));
 				notice.setNoticeTitle(rs.getString(2));
 				notice.setUserId(rs.getString(3));
+//				Date date=new Date();
+//				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//				String currentTime = sdf.format(date);
+//				notice.setNoticeDate(currentTime);
 				notice.setNoticeDate(rs.getString(4));
 				notice.setNoticeContent(rs.getString(5));
 				notice.setNoticeAvailable(rs.getInt(6));
@@ -115,7 +120,7 @@ public class noticeDAO {
 
 	public boolean nextPage(int pageNumber) {
 		String SQL = "SELECT * FROM NOTICE WHERE noticeId < ? AND noticeAvailable = 1";
-		ArrayList<notice> list = new ArrayList<notice>();
+		
 		try {
 
 			PreparedStatement pstmt = conn.prepareStatement(SQL);

@@ -25,10 +25,7 @@ public class ColorDAO {
 		String sql="";
 		PreparedStatement pstmt;
 		ResultSet rs;
-		Date cal =new Date();
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		//		 String nowdate=df.format(cal.getTime());
-
+		
 		try {
 			conn = DBmanager.getConnection();
 		} catch (Exception e) {
