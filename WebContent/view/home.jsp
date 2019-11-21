@@ -77,7 +77,7 @@
 
             <li>|</li>
 
-            <li class="topMenuLi"><a class="menuLink">SUGGEST </a>
+            <li class="topMenuLi"><a class="menuLink" href="notice.jsp">SUGGEST </a>
                <ul class="submenu">
 
                </ul></li>

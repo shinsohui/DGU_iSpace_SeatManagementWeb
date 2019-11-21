@@ -138,7 +138,7 @@ public class Status extends HttpServlet {
 
 					compare = Math.abs(compare);
 					System.out.println("compare:"+compare);
-					if(compare>2) {
+					if(compare>5) {
 						PrintWriter out = response.getWriter();
 						out.println("<script>alert('You have been forced out of the SEAT.'); location.href='/iSpace/view/home.jsp'</script>");
 						out.flush();

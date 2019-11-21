@@ -54,7 +54,7 @@
 
             <li>|</li>
 
-            <li class="topMenuLi"><a class="menuLink">SUGGEST </a>
+            <li class="topMenuLi"><a class="menuLink" href="notice.jsp">SUGGEST </a>
                <ul class="submenu">
 
                </ul></li>
@@ -81,7 +81,7 @@
       <button onclick="javascript:seatbtn()" value="seminar1"  style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 130px;
        width: 30px;">S<br>E<br>M<br>I<br>N<br>A<br>R<br>1</button>  
         <button onclick="javascript:seatbtn()" value="seminar2"  style= "color: black; background:skyblue; height: 100px; position: absolute; left: 40px; top: 250px;
-       width: 30px;">S<br>E<br>M<br>I<br>N<br>A<br>R<br>2<br>2</button>  
+       width: 30px;">S<br>E<br>M<br>I<br>N<br>A<br>R<br>2</button>  
 
 
             <input type="button" onclick="javascript:seatbtn()"  value="1" 

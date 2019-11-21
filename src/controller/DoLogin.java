@@ -81,13 +81,16 @@ public class DoLogin extends HttpServlet {
             
             //
  
-            
+//            response.setContentType("text/html");  
             request.setAttribute("NAME", rs.getString("name"));
-            page="/view/home.jsp";
+            page="/iSpace/view/home.jsp";
             
-            
-            RequestDispatcher dispatcher=request.getRequestDispatcher(page);
-            dispatcher.forward(request, response);   
+            response.sendRedirect(page);
+           
+//            
+//            
+//            RequestDispatcher dispatcher=request.getRequestDispatcher(page);
+//            dispatcher.forward(request, response);   
          }
          else {
             System.out.println("pw error");
