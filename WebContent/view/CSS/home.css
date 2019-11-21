@@ -207,13 +207,12 @@ html {
 }
 #reserve {
    padding: 3px;
-   width: 250px;
-   height: 35px;
+   width: 500px;
+   height: 500px;
    background: #ccccff;
    color: #ff3300;
    position: absolute;
    top: 100px;
    left: 500px;
-   text-align: center;
    border: 1px solid #000;
 }
