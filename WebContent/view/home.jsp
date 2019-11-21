@@ -633,6 +633,7 @@
 	</div><br> 
 	<div>
 	
+	
 	</div>
 	<b>대표자&nbsp&nbsp<%=userid%>&nbsp<%=name%></b><br>
 	<div id="user">
