@@ -3,6 +3,22 @@
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="board.notice"%>
 <%@ page import="board.noticeDAO"%>
+<%@ page import="javax.servlet.*" %>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<!-- 세션 유지를 위해  -->
+<%
+   //User user = new User();//generate user
+   String userid = (String) session.getAttribute("id");
+   String name = (String) session.getAttribute("name");
+   String state = (String) request.getAttribute("state");
+   String seatNo = (String) request.getParameter("button");
+   String report = (String) session.getAttribute("report");
+/*    String noticeId = (String) request.getParameter("noticeId");
+ */%>
 
 <!DOCTYPE html>
 <html>
@@ -17,49 +33,20 @@
 <body>
 
 	<%
-		//로긴한사람이라면	 userID라는 변수에 해당 아이디가 담기고 그렇지 않으면 null값
-		String userID = null;
-		if (session.getAttribute("userID") != null) {
-			userID = (String) session.getAttribute("userID");
-		} 
-		
-			/* 	//로그인 안한 경우
-		if(userID == null) {
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("alert('로그인을 하세요.')");
-			script.println("location.href = 'login.jsp'");
-			script.println("</script>");
+	 
+		 
+		int noticeId = 0;
+
+		if (request.getParameter("noticeId") != null) {
+			noticeId = Integer.parseInt(request.getParameter("noticeId"));
+			System.out.println("update.jsp noticeId : "+noticeId);
 		}
+
+		notice notice= new noticeDAO().getNotice(noticeId);
+		
+		/* HttpSession session = request.getSession();
 		 */
 		
-		int noticeID = 0;
-
-		if (request.getParameter("noticeID") != null) {
-			noticeID = Integer.parseInt(request.getParameter("noticeID"));
-		}
-
-		if (noticeID == 0) {
-
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("alert('유효하지 않은 글 입니다.')");
-			script.println("location.href = 'notice.jsp'");
-			script.println("</script>");
-			
-		}
-
-		notice notice = new noticeDAO().getNotice(noticeID);
-
-		if (!userID.equals(notice.getUserId())) {
-
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("alert('권한이 없습니다.')");
-			script.println("location.href = 'notice.jsp'");
-			script.println("</script>");				
-
-		}
 	%>
 
 
@@ -80,7 +67,7 @@
 
 		</div>
 
-		<div class="collapse navbar-collapse"
+		<!-- <div class="collapse navbar-collapse"
 			id="#bs-example-navbar-collapse-1">
 
 			<ul class="nav navbar-nav">
@@ -97,21 +84,21 @@
 						<li><a href="logoutAction.jsp">로그아웃</a></li>
 					</ul></li>
 			</ul>
-		</div>
+		</div> -->
 	</nav>
 
 	<!-- 게시판 -->
 
 	<div class="container">
 		<div class="row">
-			<form method="post" action="updateAction.jsp?noticeID=<%= noticeID %> ">
+			<form method="post" action="updateAction.jsp?noticeID=<%= noticeId%> ">
 				<table class="table table-striped"
 					style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 					
 						<tr>
-							<th colspan="2"
-								style="background-color: #eeeeee; text-align: center;">글 수정
+							<th colspan="2" style="background-color: #eeeeee; text-align: center;">
+							글 수정
 							</th>
 						</tr>
 					</thead>

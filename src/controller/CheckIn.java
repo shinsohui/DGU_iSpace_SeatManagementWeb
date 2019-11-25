@@ -3,10 +3,12 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -53,10 +55,14 @@ public class CheckIn extends HttpServlet {
     	 System.out.println("DB connection error on checkOut"+e);
       }
       try {
-      String sql = "update SEAT set userID=? where seatNo=?";
+      String sql = "update SEAT set userID=?,date=? where seatNo=?";
       PreparedStatement pstmt = conn.prepareStatement(sql);
       pstmt.setString(1,id);
-      pstmt.setString(2,my_seatNo);
+      Date date=new Date();
+      SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+      String currentTime=df.format(date);
+      pstmt.setString(2, currentTime);
+      pstmt.setString(3,my_seatNo);
       pstmt.execute();
       DBmanager.close(pstmt);
       

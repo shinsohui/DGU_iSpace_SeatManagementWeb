@@ -73,10 +73,18 @@ public class DoLogin extends HttpServlet {
             //
             String name=rs.getString("name");
             String count=Integer.toString(rs.getInt("count"));
+            String seatNo="";
+            if(rs.getInt("my_seatNo")==0) {
+            	seatNo="선택된 좌석이 없습니다.";
+            	
+            }else {
+            	seatNo=Integer.toString(rs.getInt("my_seatNo"));
+            }
 
             session.setAttribute("id",id);
-            session.setAttribute("pw",pw); //이거 필요한거 맞아 ㄱ-????????
+//            session.setAttribute("pw",pw); //이거 필요한거 맞아 ㄱ-????????
             session.setAttribute("name",name);
+            session.setAttribute("seatNo", seatNo);
             session.setAttribute("report", count);
             
             //

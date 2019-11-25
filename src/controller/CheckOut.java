@@ -50,19 +50,20 @@ public class CheckOut extends HttpServlet {
 		}
 		try {
 			//seat 테이블에서 사용자 none으로 초기화.  
-			String sql = "update SEAT set userID=? where seatNo=?";
+			//seat 테이블에서 부재 0으로 초기화.
+			String sql = "update SEAT set userID=?, absence=null, date=null where seatNo=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,"none");
 			pstmt.setString(2,my_seatNo);
 			pstmt.execute();
 			DBmanager.close(pstmt);
 
-			//seat 테이블에서 부재 0으로 초기화.
-			String sql2 = "update SEAT set absence=null where seatNo=?";
-			PreparedStatement pstmt2 = conn.prepareStatement(sql2);
-			pstmt2.setString(1,my_seatNo);
-			pstmt2.execute();
-			DBmanager.close(pstmt2);
+//			
+//			String sql2 = "update SEAT set absence=null where seatNo=?";
+//			PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+//			pstmt2.setString(1,my_seatNo);
+//			pstmt2.execute();
+//			DBmanager.close(pstmt2);
 			
 			//user 테이블에서 자리 0으로 초기화. 
 			String sql3 = "update USER set my_seatNo=0 where id=?";

@@ -91,11 +91,11 @@ public class Status extends HttpServlet {
 			//부재처리해놨는지 확인 
 			String sql4 = "select absence from SEAT where userID=?";
 			PreparedStatement pstmt4 = conn.prepareStatement(sql4);
-			pstmt4.setString(1, id);
+			pstmt4.setString(1, seatOwner);
 			ResultSet rs4=pstmt4.executeQuery();
 			//			rs4.next();
 			if(rs4.next()==false) {
-				seatOwner="none";
+				absence="none";
 			}else {
 				absence=rs4.getString("absence");
 			}
@@ -145,8 +145,8 @@ public class Status extends HttpServlet {
 						System.out.println("30분 지났어 임마 ㅋ ");
 						
 						//강제퇴실처리시킴 
-						//seat 테이블에서 사용자 none,부재 0으로 초기화.  
-						String sql11 = "update SEAT set userID=?,absence=null where seatNo=?";
+						//seat 테이블에서 사용자 none,부재 0, 입실한 날짜 0으로 초기화.  
+						String sql11 = "update SEAT set userID=?,absence=null, date=null where seatNo=?";
 						PreparedStatement pstmt11 = conn.prepareStatement(sql11);
 						pstmt11.setString(1,"none");
 						pstmt11.setString(2,select);
@@ -261,14 +261,14 @@ public class Status extends HttpServlet {
 					System.out.println("reportDateCompare:"+reportDateCompare);
 					System.out.println("report횟수 : "+report);
 					
-					if(reportDateCompare<1 && report>3) {
+					if(reportDateCompare<1) {
 						System.out.println("reportDateCompare<40 && report>3");
 						PrintWriter out = response.getWriter();
 						out.println("<script>alert('You can not checkIN because you have been reported more than three times..'); location.href='/iSpace/view/home.jsp'</script>");
 						out.flush();
 						return;
 					}
-					else if(reportDateCompare>=1 &&report>3) {
+					else if(reportDateCompare>=1) {
 						System.out.println("reportDateCompare>=40 &&report>3");
 						String sql66= "update USER set bandate=null where id=?";
 						PreparedStatement pstmt66 = conn.prepareStatement(sql66);
@@ -313,7 +313,7 @@ public class Status extends HttpServlet {
 
 			page="/view/home.jsp";
 			RequestDispatcher dispatcher=request.getRequestDispatcher(page);
-			dispatcher.forward(request, response);   
+			dispatcher.forward(request, response);
 
 			DBmanager.close(conn);
 

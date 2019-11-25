@@ -3,7 +3,10 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+
 import model.ColorBean;
 import controller.DBmanager;
 
@@ -17,7 +20,11 @@ public class ColorDAO {
         return instance;
     }
 
-   public void joinMember(ColorBean bean) {
+   public void seatColor(ColorBean bean) {
+	   
+//	   String sql="";
+//	   PreparedStatement pstmt;
+//	   ResultSet rs;
       Connection conn = null;
 
       try {
@@ -27,14 +34,47 @@ public class ColorDAO {
          System.out.println("ColorDAO DB connection error>>> "+e);
       }
       try {
-         String sql = "select userId,absence from SEAT";
-         PreparedStatement pstmt = conn.prepareStatement(sql);
-         ResultSet rs=pstmt.executeQuery();
+    	  
+//    	  String sql="select date from SEAT";
+//    	  PreparedStatement pstmt=conn.prepareStatement(sql);
+//    	  ResultSet rs=pstmt.executeQuery();
+//    	  int end=0;
+//    	  while(rs.next()&&end==0) {
+//    		  String temp=rs.getString("date");
+//    		  System.out.println(temp);
+//    		  while(temp!=null&&end==0) {
+//    			  
+//    			  
+//    			  System.out.println(temp);
+//    			  if(temp!=null) {
+////    		  String temp=rs.getString("date");
+//    				  Date date=new Date();
+//    				  SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+//    				  String currentTime=df.format(date);
+//    				  if(temp.equals(currentTime)==false) {
+//    					  sql="update SEAT set userID=?, absence=null, date=null";
+//    					  pstmt=conn.prepareStatement(sql);
+//    					  pstmt.setString(1, "none");
+//    					  rs=pstmt.executeQuery();
+//    					  
+//    				  }
+//    				  end=1;
+//    			  }
+//    		  
+//    	  }
+//    	}
 
+          String sql = "select userID,absence from SEAT";
+           PreparedStatement pstmt = conn.prepareStatement(sql);
+          ResultSet rs=pstmt.executeQuery();
+
+           
+           
+           
          ArrayList<String> color = new ArrayList<String>();
 
          while (rs.next()) {
-            if(rs.getString("userId").equals("none")) { 
+            if(rs.getString("userID").equals("none")) { 
                //              System.out.println("퇴실상태");
                color.add("skyblue");
             }else {
@@ -71,7 +111,11 @@ public class ColorDAO {
    } 
    
    public void room1Color(ColorBean bean) { //세미나실1 이용시간 색
-         Connection conn = null;
+	   
+//	   String sql="";
+//	   PreparedStatement pstmt;
+//	   ResultSet rs;
+      Connection conn = null;
 
          try {
             conn = DBmanager.getConnection();
@@ -80,9 +124,9 @@ public class ColorDAO {
             System.out.println("ColorDAO DB connection error>>> "+e);
          }
          try {
-            String sql = "select time,id from ROOM1";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            ResultSet rs=pstmt.executeQuery();
+             String sql = "select time,id from ROOM1";
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs=pstmt.executeQuery();
 
             ArrayList<String> color = new ArrayList<String>();
 
@@ -113,7 +157,10 @@ public class ColorDAO {
          }
       } 
    public void room2Color(ColorBean bean) { //세미나실2 이용시간 색
-         Connection conn = null;
+//	   String sql="";
+//	   PreparedStatement pstmt;
+//	   ResultSet rs;
+      Connection conn = null;
 
          try {
             conn = DBmanager.getConnection();
@@ -122,9 +169,9 @@ public class ColorDAO {
             System.out.println("ColorDAO DB connection error>>> "+e);
          }
          try {
-            String sql = "select time,id from ROOM2";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            ResultSet rs=pstmt.executeQuery();
+             String sql = "select time,id from ROOM2";
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs=pstmt.executeQuery();
 
             ArrayList<String> color = new ArrayList<String>();
 

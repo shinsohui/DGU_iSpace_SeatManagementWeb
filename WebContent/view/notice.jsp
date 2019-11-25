@@ -5,6 +5,9 @@
 <%@ page import = "board.notice"%>
 <%@ page import = "java.util.ArrayList"%> 		
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -156,19 +159,6 @@
 				
 				<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
 				
-				
-				
-
-	<!-- 검색 폼 영역 -->
-	<li id='liSearchOption'>
-		<div>
-			<select id='selSearchOption'>
-				<option value='A'>제목+내용</option>
-				<option value='T'>제목</option>
-				<option value='C'>내용</option>
-			</select> <input id='txtKeyWord' /> <input type='button' value='검색' />
-		</div>
-	</li>
 	</ul>
 	</div>
 </body>

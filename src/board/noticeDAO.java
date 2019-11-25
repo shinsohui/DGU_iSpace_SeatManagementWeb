@@ -160,7 +160,7 @@ public class noticeDAO {
 
 //수정 함수
 	public int update(int noticeId, String noticeTitle, String noticeContent) {
-		String SQL = "UPDATE NOTICE SET noticeTitle = ?, noticeContent = ?, WHERE noticeId = ?";
+		String SQL = "UPDATE NOTICE SET noticeTitle = ?, noticeContent = ? WHERE noticeId = ?";
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
@@ -178,7 +178,7 @@ public class noticeDAO {
 
 	public int delete(int noticeId) {
 
-		String SQL = "UPDATE NOITCE SET noticeAvailable = 0 WHERE noticeId = ?";
+		String SQL = "UPDATE NOTICE SET noticeAvailable = 0 WHERE noticeId = ?";
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);

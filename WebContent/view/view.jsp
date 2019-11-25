@@ -5,6 +5,20 @@
 <%@ page import="board.notice"%>
 <%@ page import="board.noticeDAO"%>
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<%
+   //User user = new User();//generate user
+   String userid = (String) session.getAttribute("id");
+   //String useridd= (String) session.setAttribute("userid");
+   String name = (String) session.getAttribute("name");
+   String state = (String) request.getAttribute("state");
+   String seatNo = (String) request.getParameter("button");
+   String report = (String) session.getAttribute("report");/* 
+                           String selected=(String) session.getAttribute("selected"); */
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,16 +33,17 @@
 <body>
 
 	<%
-        //로긴한사람이라면	 userID라는 변수에 해당 아이디가 담기고 그렇지 않으면 null값
-			String userId = null;
+   /*      //로긴한사람이라면	 userID라는 변수에 해당 아이디가 담기고 그렇지 않으면 null값
+			String userid = null;
 			if (session.getAttribute("userId") != null) {
-				userId = (String) session.getAttribute("userId");
+				userid = (String) session.getAttribute("userId");
 		
-			} 
+			}  */
 		int noticeId = 0; //지워진 글인지 판단하기위해
 
 		if (request.getParameter("noticeId") != null) {
 			noticeId = Integer.parseInt(request.getParameter("noticeId"));
+			System.out.println("view.jsp noticeId: "+noticeId);
 		}
 
 		if (noticeId == 0) {
@@ -40,47 +55,14 @@
 			script.println("</script>");
 
 		}
+		 session.setAttribute("noticeId",request.getParameter("noticeId"));
 
 		notice notice = new noticeDAO().getNotice(noticeId);
 	%>
 
-	<!-- 네비게이션  -->
-
-<!-- 	<nav class="navbar navbar-default">
-
-		<div class="navbar-header">
-
-			<button type="button" class="navbar-toggle collapsed"
-
-				data-toggle="collapse" data-target="bs-example-navbar-collapse-1"
-
-				aria-expaned="false">
-
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-
-					class="icon-bar"></span>
-
-			</button>
-
-			<a class="navbar-brand" href="main.jsp">JSP 게시판</a>
-
-		</div>
-
-		<div class="collapse navbar-collapse"
-
-			id="#bs-example-navbar-collapse-1">
-
-			<ul class="nav navbar-nav">
-
-				<li><a href="main.jsp">메인</a></li>
-
-				<li class="active"><a href="notice.jsp">게시판</a></li>
-
-			</ul> -->
-
 			<%
 				//라긴안된경우
-				if (userId == null) {
+				if (userid == null) {
 			%>
 
 			<ul class="nav navbar-nav navbar-right">
@@ -161,14 +143,18 @@
 			
 				<%
 				//글작성자 본인일시 수정 삭제 가능 
-					if(userId != null && userId.equals(notice.getUserId())){
+					if(userid != null && userid.equals(notice.getUserId())){
 
 				%>
-						<a href="Update.jsp?noticeId=<%= noticeId %>" class="btn btn-primary">수정</a>
-						<a href="delete.jsp?noticeId=<%= noticeId %>" class="btn btn-primary">삭제</a>
-				<%					
-					}
-				%>
+
+			 <a href="Update.jsp?noticeId=<%=noticeId%>" class="btn btn-primary">수정</a>
+			<!-- <form action="Update.jsp" method="get">
+			<input type="submit" value="수정" name="update">
+			</form> -->
+			<a href="deleteAction.jsp?noticeId=<%=noticeId%>" class="btn btn-primary">삭제</a>
+			<%
+				}
+			%>
 		</div>
 	</div>
 

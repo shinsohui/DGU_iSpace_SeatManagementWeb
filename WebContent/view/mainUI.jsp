@@ -8,7 +8,7 @@
 <jsp:setProperty name="colorBean" property="*" />
 <%
             ColorDAO dao = ColorDAO.getInstance();   
-            dao.joinMember(colorBean);
+            dao.seatColor(colorBean);
             ArrayList<String> color = (ArrayList<String>)colorBean.getColorList();
  %>
 <!DOCTYPE html>

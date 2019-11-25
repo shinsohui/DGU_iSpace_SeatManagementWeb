@@ -9,6 +9,18 @@
 	request.setCharacterEncoding("UTF-8");
 %>
 
+<!-- 세션 유지를 위해  -->
+<%
+   //User user = new User();//generate user
+   String userid = (String) session.getAttribute("id");
+   String name = (String) session.getAttribute("name");
+   String state = (String) request.getAttribute("state");
+   String seatNo = (String) request.getParameter("button");
+   String report = (String) session.getAttribute("report");
+   String noticeId = (String) session.getAttribute("noticeId");
+   //String noticeId = (String) request.getAttribute("noticeId");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,12 +30,12 @@
 <body>
 
 	<%
-		String userId = null;
+		/* String userId = null;
 		if (session.getAttribute("userId") != null) {//유저아이디이름으로 세션이 존재하는 회원들은 
 			userId = (String) session.getAttribute("userId");//유저아이디에 해당 세션값을 넣어준다.
-		}
+		} */
 		
-		if (userId == null) {
+		if (userid == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('로그인을 하세요.')");
@@ -32,15 +44,15 @@
 
 		} 
 
-		int noticeId = 0;
+		int index = 0;
 
-		if(request.getParameter("noticeId") != null){
+		if(noticeId != null){
 
-			noticeId = Integer.parseInt(request.getParameter("noticeId"));
+			index = Integer.parseInt(noticeId);
 
 		}
 
-		if(noticeId == 0) {
+		if(index == 0) {
 
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
@@ -50,9 +62,9 @@
 
 		}
 
-		notice notice = new noticeDAO().getNotice(noticeId);
+		notice notice = new noticeDAO().getNotice(index);
 
-		if(!userId.equals(notice.getUserId())) {
+		if(!userid.equals(notice.getUserId())) {
 			
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
@@ -64,7 +76,7 @@
 
 		else{
 			noticeDAO noticeDAO = new noticeDAO();
-			int result = noticeDAO.delete(noticeId);
+			int result = noticeDAO.delete(index);
 
 			if (result == -1) {
 

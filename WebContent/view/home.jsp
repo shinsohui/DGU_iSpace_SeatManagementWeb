@@ -9,7 +9,7 @@
 <jsp:setProperty name="colorBean" property="*" />
 <%
             ColorDAO dao = ColorDAO.getInstance();   
-            dao.joinMember(colorBean);
+            dao.seatColor(colorBean);
             ArrayList<String> color = (ArrayList<String>)colorBean.getColorList();
             dao.room1Color(colorBean);
             ArrayList<String> room1 = (ArrayList<String>)colorBean.getRoom1Color();
@@ -39,6 +39,7 @@
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
+   String myseatNo=(String)session.getAttribute("seatNo");
    String report = (String) session.getAttribute("report");
                            
 %>
@@ -57,13 +58,13 @@
 	<a href="/iSpace/view/home.jsp">home.jsp</a>
 	<a href="/iSpace/view/mainUI.jsp">mainUI.jsp</a>
 
-	<h5 style="text-align: right;">
+	<%-- <h5 style="text-align: right;">
 		<b><%=userid%> <%=name%> 님</b>, <img
 			src="/iSpace/view/Image/reportimg.png"
-			style="width: 20px; height: 20px;"> 신고<%=report%>회 <img
+			style="width: 20px; height: 20px;"> 좌석 <%=myseatNo%>번 <img
 			src="/iSpace/view/Image/reportimg.png"
 			style="width: 20px; height: 20px;">
-	</h5>
+	</h5> --%>
 	<!-- <th><button class="button" data-modal="confirm">Contact Us</button></th> -->
 
 	<!--    <table border="1" style="width: 100%; text-align: center;">
@@ -112,101 +113,8 @@
 
 				<!--        시설		-->
 				<!--          시설 팝업 만들어야 됨-->
-				<!--       <table>
-         <tr>
-            <th><input type="submit" value="1" name="button" /></th>
-            <th><input type="submit" value="2" name="button" /></th>
-            <th><input type="submit" value="3" name="button" /></th>
-            <th><input type="submit" value="4" name="button" /></th>
-            <th><input type="submit" value="5" name="button" /></th>
-            <th><input type="submit" value="6" name="button" /></th>
-            <th><input type="submit" value="7" name="button" /></th>
-            <th><input type="submit" value="8" name="button" /></th>
-            <th><input type="submit" value="9" name="button" /></th>
-            <th><input type="submit" value="10" name="button" /></th>
-         </tr>
-         <tr>
-            <th><input type="submit" value="11" name="button" /></th>
-            <th><input type="submit" value="12" name="button" /></th>
-            <th><input type="submit" value="13" name="button" /></th>
-            <th><input type="submit" value="14" name="button" /></th>
-            <th><input type="submit" value="15" name="button" /></th>
-            <th><input type="submit" value="16" name="button" /></th>
-            <th><input type="submit" value="17" name="button" /></th>
-            <th><input type="submit" value="18" name="button" /></th>
-            <th><input type="submit" value="19" name="button" /></th>
-            <th><input type="submit" value="20" name="button" /></th>
-         </tr>
-         <tr>
-            <th><input type="submit" value="21" name="button" /></th>
-            <th><input type="submit" value="22" name="button" /></th>
-            <th><input type="submit" value="23" name="button" /></th>
-            <th><input type="submit" value="24" name="button" /></th>
-            <th><input type="submit" value="25" name="button" /></th>
-            <th><input type="submit" value="26" name="button" /></th>
-            <th><input type="submit" value="27" name="button" /></th>
-            <th><input type="submit" value="28" name="button" /></th>
-            <th><input type="submit" value="29" name="button" /></th>
-            <th><input type="submit" value="30" name="button" /></th>
-         </tr>
-         <tr>
-            <th><input type="submit" value="31" name="button" /></th>
-            <th><input type="submit" value="32" name="button" /></th>
-            <th><input type="submit" value="33" name="button" /></th>
-            <th><input type="submit" value="34" name="button" /></th>
-            <th><input type="submit" value="35" name="button" /></th>
-            <th><input type="submit" value="36" name="button" /></th>
-            <th><input type="submit" value="37" name="button" /></th>
-            <th><input type="submit" value="38" name="button" /></th>
-            <th><input type="submit" value="39" name="button" /></th>
-            <th><input type="submit" value="40" name="button" /></th>
-         </tr>
-         <tr>
-            <th><input type="submit" value="41" name="button" /></th>
-            <th><input type="submit" value="42" name="button" /></th>
-            <th><input type="submit" value="43" name="button" /></th>
-            <th><input type="submit" value="44" name="button" /></th>
-            <th><input type="submit" value="45" name="button" /></th>
-            <th><input type="submit" value="46" name="button" /></th>
-            <th><input type="submit" value="47" name="button" /></th>
-            <th><input type="submit" value="48" name="button" /></th>
-            <th><input type="submit" value="49" name="button" /></th>
-            <th><input type="submit" value="50" name="button" /></th>
-         </tr>
-         <tr>
-            <th><input type="submit" value="51" name="button" /></th>
-            <th><input type="submit" value="52" name="button" /></th>
-            <th><input type="submit" value="53" name="button" /></th>
-            <th><input type="submit" value="54" name="button" /></th>
-            <th><input type="submit" value="55" name="button" /></th>
-            <th><input type="submit" value="56" name="button" /></th>
-            <th><input type="submit" value="57" name="button" /></th>
-            <th><input type="submit" value="58" name="button" /></th>
-            <th><input type="submit" value="59" name="button" /></th>
-            <th><input type="submit" value="60" name="button" /></th>
-         </tr>
-         <tr>
-            <th><input type="submit" value="61" name="button" /></th>
-            <th><input type="submit" value="62" name="button" /></th>
-            <th><input type="submit" value="63" name="button" /></th>
-            <th><input type="submit" value="64" name="button" /></th>
-            <th><input type="submit" value="65" name="button" /></th>
-            <th><input type="submit" value="66" name="button" /></th>
-            <th><input type="submit" value="67" name="button" /></th>
-            <th><input type="submit" value="68" name="button" /></th>
-            <th><input type="submit" value="69" name="button" /></th>
-            <th><input type="submit" value="70" name="button" /></th>
-         </tr>
-         <tr>
-            <th><input type="submit" value="71" name="button" /></th>
-            <th><input type="submit" value="72" name="button" /></th>
-            <th><input type="submit" value="73" name="button" /></th>
-            <th><input type="submit" value="74" name="button" /></th>
-            <th><input type="submit" value="75" name="button" /></th>
-            <th><input type="submit" value="76" name="button" /></th>
-            <th><input type="submit" value="77" name="button" /></th>
-         </tr>
-      </table> -->
+				<!--       
+	    -->
 				<!--        시설		-->
 
 				<button value="3DLAB" name="room"
@@ -477,6 +385,26 @@
 					style="color: black; background: <%=color.get(76)%>; height: 30px; position: absolute; left: 540px; top: 420px; width: 30px; border-radius: 18px">
 			</form>
 		</div>
+		<div class="whitebox" style="width: 230px; height: 230px; margin-left: 720px; text-align:center">
+		<h5>
+		<b><%=userid%> <%=name%> 님</b>
+		<br><img src="/iSpace/view/Image/reportimg.png"
+			style="width: 20px; height: 20px;">
+			<%
+				if(myseatNo.equals("선택된 좌석이 없습니다.")){
+			
+			%>
+			선택된 좌석이 없습니다.
+			<%
+				}else{			
+			%>
+			 좌석 <%=myseatNo%>번 
+			 <% } %><img
+			src="/iSpace/view/Image/reportimg.png"
+			style="width: 20px; height: 20px;">
+		</h5>
+		</div>
+		
 	</div>
 
 	<script>
@@ -594,7 +522,7 @@
 		<div>
 			<b>예약 날짜</b><br>
 			<%= cal.get(Calendar.YEAR)%>년
-			<%= cal.get(Calendar.MONTH)%>월
+			<%= cal.get(Calendar.MONTH)+1%>월
 			<%= cal.get(Calendar.DATE)%>일
 		</div><br>
 	<div><b>이용률</b><br>
@@ -619,8 +547,40 @@
 		style="color: black; background: <%=room1.get(8)%>;"> 
 	<input type="button" onclick="javascript:seatbtn()" value="18"
 		style="color: black; background: <%=room1.get(9)%>;">
+	
 	</div>
-	<br>	
+	<br>
+	
+	<div>
+	<b>시작시간</b> 
+	<select id="starttime">
+		<option value="9">9</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+		<option value="13">13</option>
+		<option value="14">14</option>
+		<option value="15">15</option>
+		<option value="16">16</option>
+		<option value="17">17</option>
+		<option value="18">18</option>
+	</select>
+	<b>끝난시간</b> 
+	<select id="endtime">
+		<option value="9">9</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+		<option value="13">13</option>
+		<option value="14">14</option>
+		<option value="15">15</option>
+		<option value="16">16</option>
+		<option value="17">17</option>
+		<option value="18">18</option>
+	</select>
+	</div><br>
+	
+		
 	
 	<div><b>사용인원</b><small>&nbsp&nbsp최소인원:6&nbsp&nbsp&nbsp최대인원:10</small>
 	<select id="total">

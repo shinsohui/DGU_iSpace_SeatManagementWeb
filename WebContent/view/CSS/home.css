@@ -2,7 +2,7 @@
 .frame {
 	width: 960px;
 	height: 490px;
-	position: fixed;
+	position: absolute;
 	opacity: 0.8;
 	border-radius: 10px;
 	top: 240px;
@@ -12,8 +12,8 @@
 
 .whitebox {
 	background-color: white;
-	height: 280px;
-	position: fixed;
+	
+	position: absolute;
 	border-radius: 10px;
 	opacity: 0.8;
 	margin-right: 10px;
@@ -67,7 +67,7 @@ html {
 } 
 .topMenuLi:hover .menuLink { /* 상위 메뉴의 li에 마우스오버 되었을 때 스타일 설정 */ 
   color: white; /* 글씨 색 blue */ 
-  background-color: #F2F2F2; /* 배경색을 밝은 회색으로 설정 */ 
+  background-color: #669999; /* 배경색을 밝은 회색으로 설정 */ 
 } 
 .submenuLink { /* 하위 메뉴의 a 태그 스타일 설정 */ 
   color: #2d2d2d; /* 글씨 색을 RGB(2D2D2D)로 설정 */ 
