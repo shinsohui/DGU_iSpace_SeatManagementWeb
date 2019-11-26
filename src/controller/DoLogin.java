@@ -51,7 +51,6 @@ public class DoLogin extends HttpServlet {
 
 		String pass;
 
-		int report;
 
 		Connection conn = null;
 		try {

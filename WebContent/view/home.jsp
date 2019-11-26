@@ -48,6 +48,7 @@
 <body>
 	<!-- <button onClick="javascript:goDetail('테스트');">팝업</button> -->
 
+
 	<p style="text-align: center;">
 		<a href="/iSpace/view/home.jsp"><img
 			src="/iSpace/view/Image/mainlogo.png"
@@ -76,12 +77,11 @@
          <td>MY PAGE</td>
       </tr>
    </table> -->
+   
+   <div align="center">
 	<nav id="topMenu">
 		<ul>
-			<li class="topMenuLi"><a class="menuLink">SEAT </a>
-				<ul class="submenu">
-					<li><a href="about_.html" class="submenuLink"> </a></li>
-				</ul></li>
+			<li class="topMenuLi"><a class="menuLink">SEAT </a></li>
 			<li>|</li>
 
 			<li class="topMenuLi"><a class="menuLink">NOTICE </a></li>
@@ -89,22 +89,22 @@
 			<li>|</li>
 
 			<li class="topMenuLi"><a class="menuLink" href="notice.jsp">SUGGEST
-			</a>
-				<ul class="submenu">
-
-				</ul></li>
+			</a></li>
+			
 			<li>|</li>
+			
 			<li class="topMenuLi"><a class="menuLink">LOST&FOUND </a></li>
 			<li>|</li>
 			<li class="topMenuLi"><a class="menuLink">MY PAGE</a>
-				<ul class="submenu">
-
-				</ul></li>
+				</li>
 		</ul>
 	</nav>
+	</div>
 
 
 	<br>
+	
+	
 	<div class="frame">
 		<div class="whitebox"
 			style="width: 700px; height: 460px; margin-left: 10px;">
@@ -385,6 +385,7 @@
 					style="color: black; background: <%=color.get(76)%>; height: 30px; position: absolute; left: 540px; top: 420px; width: 30px; border-radius: 18px">
 			</form>
 		</div>
+		
 		<div class="whitebox"
 			style="width: 230px; height: 230px; margin-left: 720px; text-align: center">
 			<h5>
@@ -405,11 +406,15 @@
 				%><img src="/iSpace/view/Image/reportimg.png"
 					style="width: 20px; height: 20px;">
 			</h5>
+			<form action="/iSpace/Logout" method="get">
+			<input type="submit" value="로그아웃" name="logout" id="logout">
+			</form>
+			
 		</div>
 
 	</div>
 
-
+	<form action="/iSpace/Report" method="get">
 	<div id="pop5" style="display: none;">
 		<div class="title">
 			<b>신고하기</b>
@@ -418,7 +423,7 @@
 			id="layerbox_close"></a> <br>
 		<div class="content">
 
-			<big><b>신고될 좌석 번호 >></b></big> <select name="selected">
+			<h3><b>신고될 좌석 번호 >></b></h3> <select name="selected">
 				<option value="<%=seatNo%>"><%=seatNo%></option>
 			</select> <br> <br> 신고항목을 선택해주세요<br> <select
 				id="reason_selection" name="reason">
@@ -450,7 +455,7 @@
 
 		</div>
 	</div>
-
+</form>
 
 
 

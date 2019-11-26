@@ -26,6 +26,27 @@
 
 <body>
    <!-- <button onClick="javascript:goDetail('테스트');">팝업</button> -->
+   
+   <input type="button" id="toggler" value="Toggler" onClick="action();" />
+<input type="button" id="togglee" value="Togglee" />
+
+
+
+
+<script>
+    var hidden = false;
+    function action() {
+        hidden = !hidden;
+        if(hidden) {
+            document.getElementById('togglee').style.visibility = 'hidden';
+        } else {
+            document.getElementById('togglee').style.visibility = 'visible';
+        }
+    }
+</script>
+   
+   
+   
 
   <p style="text-align: center;">
 		<a href="/iSpace/view/mainUI.jsp"><img

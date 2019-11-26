@@ -8,12 +8,11 @@
 <jsp:useBean id="colorBean" class="model.ColorBean" />
 <jsp:setProperty name="colorBean" property="*" />
 <%
-DateCheck datecheck=DateCheck.getInstance();
-datecheck.dateCheck();
+	DateCheck datecheck=DateCheck.getInstance();
+	datecheck.dateCheck();
 	PageManage dao = PageManage.getInstance();   
     dao.seatColor(colorBean);
     ArrayList<String> color = (ArrayList<String>)colorBean.getColorList();
-    
     
 %>
 <!DOCTYPE html>
@@ -47,12 +46,11 @@ datecheck.dateCheck();
    <td>MY PAGE </td>
    </tr>
    </table> -->
+   
+    <div align="center">
 	<nav id="topMenu">
 		<ul>
-			<li class="topMenuLi"><a class="menuLink">SEAT </a>
-				<ul class="submenu">
-					<li><a href="about_.html" class="submenuLink"> </a></li>
-				</ul></li>
+			<li class="topMenuLi"><a class="menuLink">SEAT </a></li>
 			<li>|</li>
 
 			<li class="topMenuLi"><a class="menuLink">NOTICE </a></li>
@@ -60,24 +58,24 @@ datecheck.dateCheck();
 			<li>|</li>
 
 			<li class="topMenuLi"><a class="menuLink" href="notice.jsp">SUGGEST
-			</a>
-				<ul class="submenu">
-
-				</ul></li>
+			</a></li>
+			
 			<li>|</li>
+			
 			<li class="topMenuLi"><a class="menuLink">LOST&FOUND </a></li>
 			<li>|</li>
 			<li class="topMenuLi"><a class="menuLink">MY PAGE</a>
-				<ul class="submenu">
-
-				</ul></li>
+				</li>
 		</ul>
 	</nav>
+	</div>
+	
+	
 
 	<div class="frame">
 
 		<div class="whitebox" id="seat"
-			style="position: absolute; width: 700px; height: 460px; margin-left: 10px;">
+			style="width:700px; height: 460px; margin-left: 10px;">
 
 			<p style="text-align: center;">
 
@@ -336,7 +334,7 @@ datecheck.dateCheck();
 
 
 	<div class="whitebox"
-		style="width: 230px; background-color: white; left: 995px; top: 240px; height: 170px;">
+		style="width: 230px; left: 995px; top: 240px; height: 170px;">
 
 		<form action=/iSpace/DoLogin method="post"
 			style="padding-top: 55px; padding-left: 28px;">
