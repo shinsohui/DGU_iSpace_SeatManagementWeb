@@ -1,8 +1,10 @@
 @charset "UTF-8";
+
+
 .frame {
 	width: 960px;
 	height: 490px;
-	position: fixed;
+	position: absolute;
 	opacity: 0.8;
 	border-radius: 10px;
 	top: 240px;
@@ -13,7 +15,7 @@
 .whitebox {
 	background-color: white;
 	height: 280px;
-	position: fixed;
+	position: absolute;
 	border-radius: 10px;
 	opacity: 0.8;
 	margin-right: 10px;

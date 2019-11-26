@@ -3,19 +3,20 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.sql.*"%>
-<%@ page import="model.ColorDAO"%>
-<%@ page import="java.util.*, java.text.*"%>
+<%@ page import="model.PageManage"%>
+<%@ page import="java.util.*,java.text.*"%>
 <jsp:useBean id="colorBean" class="model.ColorBean" />
 <jsp:setProperty name="colorBean" property="*" />
 <%
-            ColorDAO dao = ColorDAO.getInstance();   
-            dao.seatColor(colorBean);
-            ArrayList<String> color = (ArrayList<String>)colorBean.getColorList();
-            dao.room1Color(colorBean);
-            ArrayList<String> room1 = (ArrayList<String>)colorBean.getRoom1Color();
-            dao.room2Color(colorBean);
-            ArrayList<String> room2 = (ArrayList<String>)colorBean.getRoom2Color();
- %>
+	PageManage dao = PageManage.getInstance();
+
+	dao.seatColor(colorBean);
+	ArrayList<String> color = (ArrayList<String>) colorBean.getColorList();
+	dao.room1Color(colorBean);
+	ArrayList<String> room1 = (ArrayList<String>) colorBean.getRoom1Color();
+	dao.room2Color(colorBean);
+	ArrayList<String> room2 = (ArrayList<String>) colorBean.getRoom2Color();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,14 +35,13 @@
 <!-- 드래그 할수 있는 기능을 사용하기 위해서 draggable(); -->
 
 <%
-   //User user = new User();//generate user
-   String userid = (String) session.getAttribute("id");
-   String name = (String) session.getAttribute("name");
-   String state = (String) request.getAttribute("state");
-   String seatNo = (String) request.getParameter("button");
-   String myseatNo=(String)session.getAttribute("seatNo");
-   String report = (String) session.getAttribute("report");
-                           
+	//User user = new User();//generate user
+	String userid = (String) session.getAttribute("id");
+	String name = (String) session.getAttribute("name");
+	String state = (String) request.getAttribute("state");
+	String seatNo = (String) request.getParameter("button");
+	String myseatNo = (String) session.getAttribute("seatNo");
+	String report = (String) session.getAttribute("report");
 %>
 </head>
 
@@ -385,220 +385,165 @@
 					style="color: black; background: <%=color.get(76)%>; height: 30px; position: absolute; left: 540px; top: 420px; width: 30px; border-radius: 18px">
 			</form>
 		</div>
-		<div class="whitebox" style="width: 230px; height: 230px; margin-left: 720px; text-align:center">
-		<h5>
-		<b><%=userid%> <%=name%> 님</b>
-		<br><img src="/iSpace/view/Image/reportimg.png"
-			style="width: 20px; height: 20px;">
-			<%
-				if(myseatNo.equals("선택된 좌석이 없습니다.")){
-			
-			%>
-			선택된 좌석이 없습니다.
-			<%
-				}else{			
-			%>
-			 좌석 <%=myseatNo%>번 
-			 <% } %><img
-			src="/iSpace/view/Image/reportimg.png"
-			style="width: 20px; height: 20px;">
-		</h5>
+		<div class="whitebox"
+			style="width: 230px; height: 230px; margin-left: 720px; text-align: center">
+			<h5>
+				<b><%=userid%> <%=name%> 님</b> <br>
+				<img src="/iSpace/view/Image/reportimg.png"
+					style="width: 20px; height: 20px;">
+				<%
+					if (myseatNo.equals("선택된 좌석이 없습니다.")) {
+				%>
+				선택된 좌석이 없습니다.
+				<%
+					} else {
+				%>
+				좌석
+				<%=myseatNo%>번
+				<%
+					}
+				%><img src="/iSpace/view/Image/reportimg.png"
+					style="width: 20px; height: 20px;">
+			</h5>
 		</div>
-		
+
 	</div>
 
-	<script>
-      function wrapWindowByMask() {
-         //화면의 높이와 너비를 구한다.
-         var maskHeight = $(document).height();
-         var maskWidth = $(window).width();
 
-         //문서영역의 크기 
-         console.log("document 사이즈:" + $(document).width() + "*"
-               + $(document).height());
-         //브라우저에서 문서가 보여지는 영역의 크기
-         console.log("window 사이즈:" + $(window).width() + "*"
-               + $(window).height());
-
-         //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
-         $('#mask').css({
-            'width' : maskWidth,
-            'height' : maskHeight
-         });
-
-         //애니메이션 효과
-         //$('#mask').fadeIn(1000);      
-         $('#mask').fadeTo("slow", 0.5);
-      }
-
-      function popupOpen() {
-         $('.layerpop').css("position", "absolute");
-         //영역 가운데에 레이어를 뛰우기 위해 위치 계산 
-         $('.layerpop').css(
-               "top",
-               (($(window).height() - $('.layerpop').outerHeight()) / 2)
-                     + $(window).scrollTop());
-         $('.layerpop').css(
-               "left",
-               (($(window).width() - $('.layerpop').outerWidth()) / 2)
-                     + $(window).scrollLeft());
-         $('.layerpop').draggable();
-         $('#layerbox').show();
-      }
-
-      function popupClose() {
-         $('#layerbox').hide();
-         $('#mask').hide();
-      }
-
-      function report() {
-         /*팝업 오픈전 별도의 작업이 있을경우 구현*/
-         popupOpen(); //레이어 팝업창 오픈 
-         wrapWindowByMask(); //화면 마스크 효과 
-
-      }
-   </script>
-
-	<!-- 팝업뜰때 배경 -->
-	<div id="mask"></div>
-
-	<!--Popup Start -->
-	<form action="/iSpace/Report" method="get">
-		<div id="layerbox" class="layerpop"
-			style="width: 700px; height: 350px;">
-			<article class="layerpop_area">
-				<div class="title">
-					<b>신고하기</b>
-				</div>
-				<a href="javascript:popupClose();" class="layerpop_close"
-					id="layerbox_close"></a> <br>
-				<div class="content">
-
-					<big><b>신고될 좌석 번호 >></b></big> <select name="selected">
-						<option value="<%=seatNo%>"><%=seatNo%></option>
-					</select> <br> <br> 신고항목을 선택해주세요<br> <select
-						id="reason_selection" name="reason">
-						<option value="너무 시끄러워요.">너무 시끄러워요.</option>
-						<option value="오랫동안 부재인 좌석입니다.">오랫동안 부재인 좌석입니다.</option>
-						<option value="음식 섭취중입니다.">음식 섭취중입니다.</option>
-						<option value="기타">기타</option>
-					</select>
-					<textarea rows="4" cols="50" name="reason" class="hiddenField"
-						id="myTextBox" placeholder="신고 내용을 기재해주세요."></textarea>
-					<script type="text/javascript">
-                  $(document).ready(
-                        function() {
-                           $('#reason_selection').change(
-                                 function() {
-                                    $(this).val() == "기타" ? $(
-                                          '#myTextBox').show()
-                                          : $('#myTextBox')
-                                                .hide();
-                                 });
-                        });
-               </script>
-					<br>
-					<br>
-					<div style="display: inline; float: left; width: 50px">
-						<input type="submit" value="확인">
-					</div>
-					<div style="display: inline; float: left; width: 50px" id="close">
-						<button value="close">취소</button>
-					</div>
-
-				</div>
-			</article>
+	<div id="pop5" style="display: none;">
+		<div class="title">
+			<b>신고하기</b>
 		</div>
-	</form>
+		<a href="javascript:popupClose();" class="layerpop_close"
+			id="layerbox_close"></a> <br>
+		<div class="content">
+
+			<big><b>신고될 좌석 번호 >></b></big> <select name="selected">
+				<option value="<%=seatNo%>"><%=seatNo%></option>
+			</select> <br> <br> 신고항목을 선택해주세요<br> <select
+				id="reason_selection" name="reason">
+				<option value="너무 시끄러워요.">너무 시끄러워요.</option>
+				<option value="오랫동안 부재인 좌석입니다.">오랫동안 부재인 좌석입니다.</option>
+				<option value="음식 섭취중입니다.">음식 섭취중입니다.</option>
+				<option value="기타">기타</option>
+			</select>
+			<textarea rows="4" cols="50" name="reason" class="hiddenField"
+				id="myTextBox" placeholder="신고 내용을 기재해주세요."></textarea>
+			<script type="text/javascript">
+				$(document).ready(
+						function() {
+							$('#reason_selection').change(
+									function() {
+										$(this).val() == "기타" ? $('#myTextBox')
+												.show() : $('#myTextBox')
+												.hide();
+									});
+						});
+			</script>
+			<br> <br>
+			<div style="display: inline; float: left; width: 50px">
+				<input type="submit" value="확인">
+			</div>
+			<div style="display: inline; float: left; width: 50px" id="close5">
+				<button value="close">취소</button>
+			</div>
+
+		</div>
+	</div>
+
 
 
 
 	<!-- 시설예약  -->
 	<!-- 날짜, 시간,  -->
 	<form action="/iSpace/Reservation" method="get">
-	<div id="reserve" style="display: none;">
-	<div><b>시설 예약</b></div><br>
-		<% Calendar cal=Calendar.getInstance(); %>
-		<div>
-			<b>예약 날짜</b><br>
-			<%= cal.get(Calendar.YEAR)%>년
-			<%= cal.get(Calendar.MONTH)+1%>월
-			<%= cal.get(Calendar.DATE)%>일
-		</div><br>
-	<div><b>이용률</b><br>
-	
-	<input type="button" onclick="javascript:seatbtn()" value="9"
-		style="color: black; background: <%=room1.get(0)%>;"> 
-	<input type="button" onclick="javascript:seatbtn()" value="10"
-		style="color: black; background: <%=room1.get(1)%>;"> 
-	<input type="button" onclick="javascript:seatbtn()" value="11"
-		style="color: black; background: <%=room1.get(2)%>;"> 
-	<input type="button" onclick="javascript:seatbtn()" value="12"
-		style="color: black; background: <%=room1.get(3)%>;"> 
-	<input type="button" onclick="javascript:seatbtn()" value="13"
-		style="color: black; background: <%=room1.get(4)%>;"> 
-	<input type="button" onclick="javascript:seatbtn()" value="14"
-		style="color: black; background: <%=room1.get(5)%>;"> 
-	<input type="button" onclick="javascript:seatbtn()" value="15"
-		style="color: black; background: <%=room1.get(6)%>;"> 
-	<input type="button" onclick="javascript:seatbtn()" value="16"
-		style="color: black; background: <%=room1.get(7)%>;">
-	<input type="button" onclick="javascript:seatbtn()" value="17"
-		style="color: black; background: <%=room1.get(8)%>;"> 
-	<input type="button" onclick="javascript:seatbtn()" value="18"
-		style="color: black; background: <%=room1.get(9)%>;">
-	
-	</div>
-	<br>
-	
-	<div>
-	<b>시작시간</b> 
-	<select id="starttime">
-		<option value="9">9</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-	</select>
-	<b>끝난시간</b> 
-	<select id="endtime">
-		<option value="9">9</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-	</select>
-	</div><br>
-	
-		
-	
-	<div><b>사용인원</b><small>&nbsp&nbsp최소인원:6&nbsp&nbsp&nbsp최대인원:10</small>
-	<select id="total">
-		<option value="6">6</option>
-		<option value="7">7</option>
-		<option value="8">8</option>
-		<option value="9">9</option>
-		<option value="6">10</option>
-	</select>
-	</div><br> 
-	<div>
-	
-	
-	</div>
-	<b>대표자&nbsp&nbsp<%=userid%>&nbsp<%=name%></b><br>
-	<div id="user">
-	<small>이용자 학번&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp이용자 이름</small><br>
-<!-- 	<input type="text" name="id1">
+		<div id="reserve" style="display: none;">
+			<div>
+				<b>시설 예약</b>
+			</div>
+			<br>
+			<%
+				Calendar cal = Calendar.getInstance();
+			%>
+			<div>
+				<b>예약 날짜</b><br>
+				<%=cal.get(Calendar.YEAR)%>년
+				<%=cal.get(Calendar.MONTH) + 1%>월
+				<%=cal.get(Calendar.DATE)%>일
+			</div>
+			<br>
+			<div>
+				<b>이용률</b><br> <input type="button"
+					onclick="javascript:seatbtn()" value="9"
+					style="color: black; background: <%=room1.get(0)%>;"> <input
+					type="button" onclick="javascript:seatbtn()" value="10"
+					style="color: black; background: <%=room1.get(1)%>;"> <input
+					type="button" onclick="javascript:seatbtn()" value="11"
+					style="color: black; background: <%=room1.get(2)%>;"> <input
+					type="button" onclick="javascript:seatbtn()" value="12"
+					style="color: black; background: <%=room1.get(3)%>;"> <input
+					type="button" onclick="javascript:seatbtn()" value="13"
+					style="color: black; background: <%=room1.get(4)%>;"> <input
+					type="button" onclick="javascript:seatbtn()" value="14"
+					style="color: black; background: <%=room1.get(5)%>;"> <input
+					type="button" onclick="javascript:seatbtn()" value="15"
+					style="color: black; background: <%=room1.get(6)%>;"> <input
+					type="button" onclick="javascript:seatbtn()" value="16"
+					style="color: black; background: <%=room1.get(7)%>;"> <input
+					type="button" onclick="javascript:seatbtn()" value="17"
+					style="color: black; background: <%=room1.get(8)%>;"> <input
+					type="button" onclick="javascript:seatbtn()" value="18"
+					style="color: black; background: <%=room1.get(9)%>;">
+
+			</div>
+			<br>
+
+			<div>
+				<b>시작시간</b> <select id="starttime">
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+				</select> <b>끝난시간</b> <select id="endtime">
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+				</select>
+			</div>
+			<br>
+
+
+
+			<div>
+				<b>사용인원</b><small>&nbsp&nbsp최소인원:6&nbsp&nbsp&nbsp최대인원:10</small> <select
+					id="total">
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="6">10</option>
+				</select>
+			</div>
+			<br>
+			<div></div>
+			<b>대표자&nbsp&nbsp<%=userid%>&nbsp<%=name%></b><br>
+			<div id="user">
+				<small>이용자
+					학번&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp이용자 이름</small><br>
+				<!-- 	<input type="text" name="id1">
 	<input type="text" name="name1"><br>
 	<input type="text" name="id2">
 	<input type="text" name="name2"><br>
@@ -610,20 +555,26 @@
 	<input type="text" name="name5"><br>
 	<input type="text" name="id6">
 	<input type="text" name="name6"><br> -->
-	
-	<textarea rows="1" cols="15" id="id1"></textarea>
-	<textarea rows="1" cols="7" id="name1"></textarea><br>
-	<textarea rows="1" cols="15" id="id2"></textarea>
-	<textarea rows="1" cols="7" id="name2"></textarea><br>
-	<textarea rows="1" cols="15" id="id3"></textarea>
-	<textarea rows="1" cols="7" id="name3"></textarea><br>
-	<textarea rows="1" cols="15" id="id4"></textarea>
-	<textarea rows="1" cols="7" id="name4"></textarea><br>
-	<textarea rows="1" cols="15" id="id5"></textarea>
-	<textarea rows="1" cols="7" id="name5"></textarea><br>
-	<textarea rows="1" cols="15" id="id6"></textarea>
-	<textarea rows="1" cols="7" id="name6"></textarea><br>
-	<!-- <button id="append" onlick="append()">추가하기</button>
+
+				<textarea rows="1" cols="15" id="id1"></textarea>
+				<textarea rows="1" cols="7" id="name1"></textarea>
+				<br>
+				<textarea rows="1" cols="15" id="id2"></textarea>
+				<textarea rows="1" cols="7" id="name2"></textarea>
+				<br>
+				<textarea rows="1" cols="15" id="id3"></textarea>
+				<textarea rows="1" cols="7" id="name3"></textarea>
+				<br>
+				<textarea rows="1" cols="15" id="id4"></textarea>
+				<textarea rows="1" cols="7" id="name4"></textarea>
+				<br>
+				<textarea rows="1" cols="15" id="id5"></textarea>
+				<textarea rows="1" cols="7" id="name5"></textarea>
+				<br>
+				<textarea rows="1" cols="15" id="id6"></textarea>
+				<textarea rows="1" cols="7" id="name6"></textarea>
+				<br>
+				<!-- <button id="append" onlick="append()">추가하기</button>
 	<script>
 	function append(){
 		/* var txt1 = "<textarea ></textarea><br><textarea ></textarea><br>"; */ 
@@ -633,11 +584,11 @@
 	}
 	
 	</script> -->
-	
-	</div>
-	
-	
-	<!-- <script type="text/javascript">
+
+			</div>
+
+
+			<!-- <script type="text/javascript">
 	$(document).ready(function() {
     	$('#total').change(function() {
          	$(this).val() == "기타"?$('#myTextBox').show():$('#myTextBox').hide();
@@ -645,35 +596,30 @@
     });
 	
 	</script> -->
-	
-	
-	<div style="display: inline; float: left; width: 60px">
-			<button>예약하기</button>
-	</div>
-	<div style="display: inline; float: left; width: 60px" id="close4">
-		<button>취소</button>
-	</div>
-	</div>
+
+
+			<div style="display: inline; float: left; width: 60px">
+				<button>예약하기</button>
+			</div>
+			<div style="display: inline; float: left; width: 60px" id="close4">
+				<button>취소</button>
+			</div>
+		</div>
 	</form>
 
 	<script>
-   $('#room').click(function() {
-   $('#reserve').toggle(0,function() {
-    $('#close4').click(function() {
-         $('#reserve').hide();
-      });
-  	});
-	
-   
-	});/* 
-   $(function(){
-	    $("#date1").datepicker();
-	}); */
-	
-		  
-		  
-   
-   </script>
+		$('#room').click(function() {
+			$('#reserve').toggle(0, function() {
+				$('#close4').click(function() {
+					$('#reserve').hide();
+				});
+			});
+
+		});/* 
+		   $(function(){
+			    $("#date1").datepicker();
+			}); */
+	</script>
 
 
 
@@ -724,48 +670,50 @@
 	</div>
 
 	<%
-      if (state != null) {
-         if (state.equals("남의자리")) {
-   %>
+		if (state != null) {
+			if (state.equals("남의자리")) {
+	%>
 
 	<script>
-      //test();
-      report();
-   </script>
+		$('#pop5').show();
+		$('#close5').click(function() {
+			$('#pop5').hide();
+		});
+	</script>
 
 	<!--Popup End -->
 	<%
-/*       out.println(state);
- */         } else if (state.equals("빈자리")) {
-   %>
+		/*       out.println(state);
+				 */ } else if (state.equals("빈자리")) {
+	%>
 
 	<!-- 입실시키는 부분  -->
 	<script>
-      $('#pop').show();
-      $('#close1').click(function() {
-         $('#pop').hide();
-      });
-   </script>
+		$('#pop').show();
+		$('#close1').click(function() {
+			$('#pop').hide();
+		});
+	</script>
 
 	<%
-      } else if (state.equals("내자리")) {
-   %>
+		} else if (state.equals("내자리")) {
+	%>
 	<!-- 퇴실시키는 부분  -->
 	<script>
-      $('#pop2').show();
-      $('#close2').click(function() {
-         $('#pop2').hide();
-      });
-   </script>
+		$('#pop2').show();
+		$('#close2').click(function() {
+			$('#pop2').hide();
+		});
+	</script>
 	<%
-      }else if(state.equals("재입실")){
-   	%>
+		} else if (state.equals("재입실")) {
+	%>
 	<script>
-      $('#pop3').show();
-      $('#close3').click(function() {
-         $('#pop3').hide();
-      });
-   </script>
+		$('#pop3').show();
+		$('#close3').click(function() {
+			$('#pop3').hide();
+		});
+	</script>
 
 	<%
       }else {
