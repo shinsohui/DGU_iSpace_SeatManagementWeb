@@ -4,6 +4,8 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="model.PageManage"%>
+<%@ page import = "board.noticeDAO"%>
+<%@ page import = "board.notice"%>
 <%@ page import="java.util.*,java.text.*"%>
 <jsp:useBean id="colorBean" class="model.ColorBean" />
 <jsp:setProperty name="colorBean" property="*" />
@@ -381,9 +383,11 @@
 					style="color: black; background: <%=color.get(76)%>; height: 30px; position: absolute; left: 540px; top: 420px; width: 30px; border-radius: 18px">
 			</form>
 		</div>
+		
 
 		<div class="whitebox"
-			style="width: 230px; height: 230px; margin-left: 720px; text-align: center">
+			style="width: 230px; height: 170px; margin-left: 720px; text-align: center">
+			
 			<h5>
 				<b><%=userid%> <%=name%> 님</b> <br> <img
 					src="/iSpace/view/Image/reportimg.png"
@@ -407,11 +411,39 @@
 			<a href="/iSpace/view/logout.jsp">
   		 <button id="logout">로그아웃</button>
 		</a>
-
-
 		</div>
+		</div>
+		<div class="whitebox"
+      style="width: 210px; left: 995px; height: 260px; background-color: yellow; top: 420px; font-size: 17px; padding: 10px" >
 
-	</div>
+      공지사항 <a href="/iSpace/view/BOARD/notice.jsp" style="text-decoration: none">+ <br></a>
+      
+         <%
+            int pageNumber = 1; //기본 페이지 넘버
+            //페이지넘버값이 있을때
+            if (request.getParameter("pageNumber") != null) {
+               pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+            }
+         %> 
+         <br>
+         <%
+    noticeDAO notice = new noticeDAO();
+    ArrayList<notice> list = notice.getList(pageNumber);
+    for (int i = 0; i < list.size(); i++) {
+                %>
+		<table id="subboard">
+         <tr>
+         
+            <td><a href="/iSpace/view/BOARD/view.jsp?noticeId=<%=list.get(i).getNoticeId()%>">
+                  <%=list.get(i).getNoticeTitle()%><br>
+            </a></td>
+         </tr>
+         </table> <%
+    }
+ %>
+   </div>
+		
+	
 
 	<form action="/iSpace/Report" method="get">
 		<div id="pop5" style="display: none;">
@@ -503,86 +535,57 @@
 				type="hidden" name="login_name" value="<%=name%>">
 
 			<div>
-				<b>이용률</b><br> <input type="button" name="time"
-					onclick="submitButtonStyle(this)" id="t0" value="9"
-					style="color: black; background: <%=room1.get(0)%>;"> <input
-					type="button" name="time" onclick="submitButtonStyle(this)" id="t1"
-					value="10" style="color: black; background: <%=room1.get(1)%>;">
-
-				<input type="button" name="time" onclick="submitButtonStyle(this)"
-					id="t2" value="11"
-					style="color: black; background: <%=room1.get(2)%>;"> <input
-					type="button" name="time" onclick="submitButtonStyle(this)" id="t3"
-					value="12" style="color: black; background: <%=room1.get(3)%>;">
-				<input type="button" name="time" onclick="submitButtonStyle(this)"
-					id="t4" value="13"
-					style="color: black; background: <%=room1.get(4)%>;"> <input
-					type="button" name="time" onclick="submitButtonStyle(this)" id="t5"
-					value="14" style="color: black; background: <%=room1.get(5)%>;">
-				<input type="button" name="time" onclick="submitButtonStyle(this)"
-					id="t6" value="15"
-					style="color: black; background: <%=room1.get(6)%>;"> <input
-					type="button" name="time" onclick="submitButtonStyle(this)" id="t7"
-					value="16" style="color: black; background: <%=room1.get(7)%>;">
-				<input type="button" name="time" onclick="submitButtonStyle(this)"
-					id="t8" value="17"
-					style="color: black; background: <%=room1.get(8)%>;"> <input
-					type="button" name="time" onclick="submitButtonStyle(this)" id="t9"
-					value="18" style="color: black; background: <%=room1.get(9)%>;">
-			</div>
-			<input type="hidden" id="time" name="time" value=""> <br>
-
-
-			<!--  시간들 각각 회색인지 확인    -->
-			<%
-         	int temp=0;
-         	for(int i=0;i<10;i++){
-         		if(room1.get(i)=="gray"){
-         
+				<b>이용률</b><br>
+				<table id="util">
+					<tr>
+						<td>09</td>
+						<td>10</td>
+						<td>11</td>
+						<td>12</td>
+						<td>13</td>
+						<td>14</td>
+						<td>15</td>
+						<td>16</td>
+						<td>17</td>
+						<td>18</td>
+					</tr>
+					<tr>
+						<td><label class="container"><input type="radio" name="time"> <span class="checkmark" id="t0"></span> </label></td>
+						<td><label class="container"><input type="radio" name="time"> <span class="checkmark" id="t1"></span> </label></td>
+						<td><label class="container"><input type="radio" name="time"> <span class="checkmark" id="t2"></span> </label></td>
+						<td><label class="container"><input type="radio" name="time"> <span class="checkmark" id="t3"></span> </label></td>
+						<td><label class="container"><input type="radio" name="time"> <span class="checkmark" id="t4"></span> </label></td>
+						<td><label class="container"><input type="radio" name="time"> <span class="checkmark" id="t5"></span> </label></td>
+						<td><label class="container"><input type="radio" name="time"> <span class="checkmark" id="t6"></span> </label></td>
+						<td><label class="container"><input type="radio" name="time"> <span class="checkmark" id="t7"></span> </label></td>
+						<td><label class="container"><input type="radio" name="time"> <span class="checkmark" id="t8"></span> </label></td>
+						<td><label class="container"><input type="radio" name="time"> <span class="checkmark" id="t9"></span> </label></td>
+					</tr>
+				</table>
+				<%
+            int temp=0;
+            for(int i=0;i<10;i++){
+               if(room1.get(i)=="gray"){
          %>
-			<script>
-            var btn = document.getElementById('t<%=temp++%>');
-            btn.disabled = 'disabled';
+         <script>
+            var btn = document.getElementById('t<%=i%>');
+            btn.style.background = 'gray';
+            btn.disabled = 'true';
+            
          </script>
-			<%
-         		}else{
-         			temp++;
-         		}
-         		System.out.println("i="+i+" temp="+temp);
-         	}
+         
+         <%
+            System.out.println("if 문 i="+i+" temp="+temp+"색 : "+room1.get(i));
+               }else{
+                  temp++;
+               }
+            }
          %>
-
-
+       
 
 			<!--       색 확인해서 시간만큼 가능하면 빨간색으로
  -->
-			<script>
-      
-      function submitButtonStyle(_this) {
-         <%
-          System.out.println("파란 시간 눌렀다!!");
-         %>
-         
-         _this.style.background = "red";
-          //var tm = document.getElementById('time');
-          //var tzero = document.getElementById('t0');
-         //tm.attr('value',tzero.value); 
-         document.getElementById('time').value=document.getElementById('t0').value;
-         document.getElementById('time').value=document.getElementById('t1').value;
-         document.getElementById('time').value=document.getElementById('t2').value;
-         document.getElementById('time').value=document.getElementById('t3').value;
-         document.getElementById('time').value=document.getElementById('t4').value;
-         document.getElementById('time').value=document.getElementById('t5').value;
-         document.getElementById('time').value=document.getElementById('t6').value;
-         document.getElementById('time').value=document.getElementById('t7').value;
-         document.getElementById('time').value=document.getElementById('t8').value;       
-         document.getElementById('time').value=document.getElementById('t9').value;
-         document.getElementById('time').value=document.getElementById('t10').value;
-            
-      }
-
-       
-      </script>
+		
 
 
 			<!-- 
@@ -614,7 +617,8 @@
          <br>
 
  -->
-
+ </div>
+  <br>
 			<div>
 				<b>사용인원</b><small>&nbsp&nbsp최소인원:6&nbsp&nbsp&nbsp최대인원:10</small> <select
 					id="total">
@@ -823,5 +827,7 @@
  */      }
       }
    %>
+   
+   
 </body>
 </html>

@@ -36,10 +36,10 @@
 
 <body>
 	<p style="text-align: center;">
-		<a href="/iSpace/view/mainUI.jsp"><img
-			src="/iSpace/view/Image/mainlogo.png"
-			style="width: 400px; height: 80px; padding-top: 3px;"></a>
+		<img src="/iSpace/view/Image/mainlogo.png"
+			style="width: 400px; height: 80px; padding-top: 3px;">
 	</p>
+	
 	<h5 style="text-align: right;">
 		<b><%=userid%> <%=name%> 님</b>, <img
 			src="/iSpace/view/Image/reportimg.png"

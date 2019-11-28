@@ -22,6 +22,10 @@
 	margin-top: 10px;
 	vertical-align: middle;
 	display: inline-block;
+	
+  font-weight: bold; /* 폰트를 굵게 설정 */ 
+  font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */ 
+  color: #252525; 
 }
 
 #text1 {
@@ -102,5 +106,12 @@ html {
 #copyright{
   float: right;
   color: blue;
+}
+
+#subboard{
+	font-size: 13px; /* 폰트 사이즈를 12px로 설정 */ 
+  font-weight: bold; /* 폰트를 굵게 설정 */ 
+  font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */ 
+  color: #252525; 
 }
 

@@ -34,9 +34,8 @@
 
 <body>
 	<p style="text-align: center;">
-		<a href="/iSpace/view/home.jsp"><img
-			src="/iSpace/view/Image/mainlogo.png"
-			style="width: 400px; height: 80px; padding-top: 3px;"></a>
+		<img src="/iSpace/view/Image/mainlogo.png"
+			style="width: 400px; height: 80px; padding-top: 3px;">
 	</p>
 	
       <h5 style="text-align: right;">

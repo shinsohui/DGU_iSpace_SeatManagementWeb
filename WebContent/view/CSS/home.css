@@ -22,6 +22,10 @@
 	margin-top: 10px;
 	vertical-align: middle;
 	display: inline-block;
+		
+  font-weight: bold; /* 폰트를 굵게 설정 */ 
+  font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */ 
+  color: #252525; 
 }
 
 
@@ -92,6 +96,13 @@ html {
   color: blue;
 }
 
+/* 공지 쪼그맣게 보이는거 */
+#subboard{
+	font-size: 13px; /* 폰트 사이즈를 12px로 설정 */ 
+  font-weight: bold; /* 폰트를 굵게 설정 */ 
+  font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */ 
+  color: #252525; 
+}
 
 #pop {
    padding: 5px;
@@ -104,6 +115,8 @@ html {
    left: 500px;
    text-align: center;
    border: 1px solid #000;
+   font-weight: bold; /* 폰트를 굵게 설정 */ 
+  font-family: "Trebuchet MS", Dotum;
 }
 
 #pop2 {
@@ -117,6 +130,8 @@ html {
    left: 500px;
    text-align: center;
    border: 1px solid #000;
+   font-weight: bold; /* 폰트를 굵게 설정 */ 
+  font-family: "Trebuchet MS", Dotum;
 }
 #pop3 {
    padding: 3px;
@@ -129,6 +144,8 @@ html {
    left: 500px;
    text-align: center;
    border: 1px solid #000;
+   font-weight: bold; /* 폰트를 굵게 설정 */ 
+  font-family: "Trebuchet MS", Dotum;
 }
 #pop5 {
    padding: 3px;
@@ -140,6 +157,8 @@ html {
    top: 100px;
    left: 500px;
    border: 1px solid #000;
+   font-weight: bold; /* 폰트를 굵게 설정 */ 
+  font-family: "Trebuchet MS", Dotum;
 }
 #reserve {
    padding: 3px;
@@ -151,6 +170,8 @@ html {
    top: 100px;
    left: 500px;
    border: 1px solid #000;
+   font-weight: bold; /* 폰트를 굵게 설정 */ 
+  font-family: "Trebuchet MS", Dotum;
 }
 #logout {
  color: white;
@@ -163,4 +184,63 @@ html {
  margin: 0;
  padding: 0;
  background: #423bc8 url(image) 0 0 no-repeat;
+}
+
+
+
+
+/* 시설현황 css */
+#util{
+	width : 70%;
+	font-size: 19px; /* 폰트 사이즈를 12px로 설정 */ 
+  font-weight: bold; /* 폰트를 굵게 설정 */ 
+  font-family: "Trebuchet MS", Dotum;
+
+}
+/* The container */
+.container {
+  /* display: block; */ /* 세로로 정렬 */
+  position: relative;
+  padding-left: 30px;/* 
+  margin-bottom: 12px; */
+  cursor: pointer;
+}
+
+/* default radio button 안보이게  */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* 내가 만드는 라디오 버튼 : 하늘  */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0; 
+  height: 25px;
+  width: 25px;
+  background: #29bbf3;
+ /*  border-radius: 50%; */
+}
+
+
+/* 버튼 위에 커서 가져가면 나오는 색깔 : 핑꾸   */
+.container:hover input ~ .checkmark {
+  background: #f64076;
+}
+
+/* 선택되면 나오는 색깔 : 핑꾸   */
+.container input:checked ~ .checkmark {
+  background: #f64076;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;/* 
+	border-radius: 50%; */
+	background: white;
 }

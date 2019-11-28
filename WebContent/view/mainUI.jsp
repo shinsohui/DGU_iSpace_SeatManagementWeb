@@ -1,20 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+   pageEncoding="EUC-KR"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="model.PageManage"%>
 <%@ page import="model.DateCheck"%>
+<%@ page import = "java.io.PrintWriter"%>
+<%@ page import = "board.noticeDAO"%>
+<%@ page import = "board.notice"%>
+<%@ page import = "java.util.ArrayList"%>       
+
 <jsp:useBean id="colorBean" class="model.ColorBean" />
 <jsp:setProperty name="colorBean" property="*" />
+
 <%
-	DateCheck datecheck=DateCheck.getInstance();
-	datecheck.dateCheck();
-	PageManage dao = PageManage.getInstance();   
-    dao.seatColor(colorBean);
-    ArrayList<String> color = (ArrayList<String>)colorBean.getColorList();
-    
+   DateCheck datecheck = DateCheck.getInstance();
+   datecheck.dateCheck();
+   PageManage dao = PageManage.getInstance();
+   dao.seatColor(colorBean);
+   ArrayList<String> color = (ArrayList<String>) colorBean.getColorList();
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -350,16 +356,35 @@
 		</form>
 	</div>
 
-	<!--   <center>
-      <iframe src = "login_frame.jsp" name = "login" width = "150" height = "125" 
-      style = "margin-right: 2%; margin-top:2%; margin-bottom:2%" scrolling="no" frameborder="0"> </iframe> <br>
-        <a href="join.jsp"><input type="submit" value="join us" style="color: blue; background-color: white"></a>
-     </center>  -->
-
 	<div class="whitebox"
-		style="width: 230px; left: 995px; height: 280px; background-color: yellow; top: 420px">
-		<br> NOTICE AREA <br>NOTICE
-	</div>
+      style="width: 210px; left: 995px; height: 260px; background-color: yellow; top: 420px; font-size: 17px; padding: 10px" >
+
+      공지사항 <a href="/iSpace/view/BOARD/notice.jsp" style="text-decoration: none">+ <br></a>
+      
+         <%
+            int pageNumber = 1; //기본 페이지 넘버
+            //페이지넘버값이 있을때
+            if (request.getParameter("pageNumber") != null) {
+               pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+            }
+         %> 
+         <br>
+         <%
+    noticeDAO notice = new noticeDAO();
+    ArrayList<notice> list = notice.getList(pageNumber);
+    for (int i = 0; i < list.size(); i++) {
+                %>
+		<table id="subboard">
+         <tr>
+         
+            <td><a href="/iSpace/view/BOARD/view.jsp?noticeId=<%=list.get(i).getNoticeId()%>">
+                  <%=list.get(i).getNoticeTitle()%><br>
+            </a></td>
+         </tr>
+         </table> <%
+    }
+ %>
+   </div>
 
 </body>
 </html>
