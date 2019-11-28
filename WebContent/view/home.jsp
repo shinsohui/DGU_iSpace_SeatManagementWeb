@@ -81,21 +81,19 @@
 	<div align="center">
 		<nav id="topMenu">
 			<ul>
-				<li class="topMenuLi"><a class="menuLink">SEAT </a></li>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
 				<li>|</li>
 
-				<li class="topMenuLi"><a class="menuLink">NOTICE </a></li>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
 
 				<li>|</li>
 
-				<li class="topMenuLi"><a class="menuLink" href="notice.jsp">SUGGEST
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
 				</a></li>
 
 				<li>|</li>
 
-				<li class="topMenuLi"><a class="menuLink">LOST&FOUND </a></li>
-				<li>|</li>
-				<li class="topMenuLi"><a class="menuLink">MY PAGE</a></li>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
 			</ul>
 		</nav>
 	</div>
@@ -404,19 +402,11 @@
 				%><img src="/iSpace/view/Image/reportimg.png"
 					style="width: 20px; height: 20px;">
 			</h5>
-			<!-- <form action="/iSpace/Logout" method="get">
-				<input type="submit" value="로그아웃" name="logout" id="logout">
-			</form> -->
-			<input type="button" id="logout" onclick="javascript:logout()" value="로그아웃">
-			<script>
-			<%
-				session.invalidate();
-			%>
-  			 function logout(){ alert('로그아웃 되었습니다.'); 
-  			 location.href="/iSpace/view/mainUI.jsp";
-
-  			 }
-  			</script>
+ 			
+				<!-- <input type="button" value="로그아웃" id="logout"> -->
+			<a href="/iSpace/view/logout.jsp">
+  		 <button id="logout">로그아웃</button>
+		</a>
 
 
 		</div>

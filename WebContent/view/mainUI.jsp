@@ -50,22 +50,19 @@
     <div align="center">
 	<nav id="topMenu">
 		<ul>
-			<li class="topMenuLi"><a class="menuLink">SEAT </a></li>
+			<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
 			<li>|</li>
 
-			<li class="topMenuLi"><a class="menuLink">NOTICE </a></li>
+			<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
 
 			<li>|</li>
 
-			<li class="topMenuLi"><a class="menuLink" href="notice.jsp">SUGGEST
+			<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
 			</a></li>
 			
 			<li>|</li>
 			
-			<li class="topMenuLi"><a class="menuLink">LOST&FOUND </a></li>
-			<li>|</li>
-			<li class="topMenuLi"><a class="menuLink">MY PAGE</a>
-				</li>
+			<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
 		</ul>
 	</nav>
 	</div>

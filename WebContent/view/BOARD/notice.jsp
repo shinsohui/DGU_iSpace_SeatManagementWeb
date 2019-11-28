@@ -21,8 +21,10 @@
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
-   String report = (String) session.getAttribute("report");/* 
-                           String selected=(String) session.getAttribute("selected"); */
+   String report = (String) session.getAttribute("report"); 
+   String ifmanager = (String) session.getAttribute("ifmanager"); 
+
+  //String selected=(String) session.getAttribute("selected"); */
 %>
 </head>
 
@@ -34,48 +36,36 @@
 
 <body>
 	<p style="text-align: center;">
-		<a href="/iSpace/view/mainUI.jsp"><img
+		<a href="/iSpace/view/home.jsp"><img
 			src="/iSpace/view/Image/mainlogo.png"
 			style="width: 400px; height: 80px; padding-top: 3px;"></a>
 	</p>
-	
-	<!-- remove -->
-	<a href="/iSpace/view/home.jsp">home.jsp</a>
-	<a href="/iSpace/view/mainUI.jsp">mainUI.jsp</a>
-	
-      <h5 style="text-align: right;">
-         <b><%=userid%> <%=name%> 님</b>, <img
-            src="/iSpace/view/Image/reportimg.png"
-            style="width: 20px; height: 20px;"> 신고<%=report%>회 
-         <img src="/iSpace/view/Image/reportimg.png"
-            style="width: 20px; height: 20px;">
+
+	<h5 style="text-align: right;">
+         <b><%=userid%> <%=name%> 님</b>
       </h5>
       
-      
-	<div id="topMenu">
-		<ul>
-			<li class="topMenuLi"><a class="menuLink">좌석현황</a>
-				<ul class="submenu">
-					<li><a href="about_.html" class="submenuLink"> </a></li>
-				</ul></li>
-			<li>|</li>
+<div align="center">
+		<nav id="topMenu">
+			<ul><% if(userid!=null) {%>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
+				<%}else{ %>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
+				<%} %>
+				<li>|</li>
 
-			<li class="topMenuLi"><a class="menuLink">공지사항</a></li>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
 
-			<li>|</li>
+				<li>|</li>
 
-			<li class="topMenuLi"><a class="menuLink">건의사항</a>
-				<ul class="submenu">
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
+				</a></li>
 
-				</ul></li>
-			<li>|</li>
-			<li class="topMenuLi"><a class="menuLink">분실물센터</a></li>
-			<li>|</li>
-			<li class="topMenuLi"><a class="menuLink">MY PAGE</a>
-				<ul class="submenu">
+				<li>|</li>
 
-				</ul></li>
-		</ul>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
+			</ul>
+		</nav>
 	</div>
 	
 	
@@ -83,13 +73,13 @@
 	<div class="container">
 		<div class="row">
 			<table class="table table-striped"
-				style="text-align: center; border: 1px solid #dddddd">
+				style="text-align: center; border: 1px solid #eeeeee">
 				<thead>
 					<tr>
-						<th style="background-color: red; text-align: center;">번호</th>
-						<th style="background-color: red; text-align: center;">제목</th>
-						<th style="background-color: red; text-align: center;">작성자</th>
-						<th style="background-color: red; text-align: center;">작성일</th>
+						<th style="background-color: #eeeeee; text-align: center;">번호</th>
+						<th style="background-color: #eeeeee; text-align: center;">제목</th>
+						<th style="background-color: #eeeeee; text-align: center;">작성자</th>
+						<th style="background-color: #eeeeee; text-align: center;">작성일</th>
 					</tr>
 				</thead>
 				
@@ -108,13 +98,17 @@
 						ArrayList<notice> list = notice.getList(pageNumber);
 						for (int i = 0; i < list.size(); i++) {
 					%>
+					
+
 					<tr>
 						<td><%=list.get(i).getNoticeId()%></td>
+						
 						<td><a
 							href="view.jsp?noticeId=<%=list.get(i).getNoticeId()%>">
 							<%=list.get(i).getNoticeTitle()%></a></td>
 						<td><%=list.get(i).getUserId()%></td>
-						<td><%=list.get(i).getNoticeDate()%></td>
+                      <td><%=list.get(i).getNoticeDate().substring(0, 11)%></td>
+
 					</tr>
 					<%
 						}
@@ -139,25 +133,23 @@
 		</div>
 	</div>
 
-		<!-- 회원만넘어가도록 -->
-<%-- 				<%
-					//if logined userID라는 변수에 해당 아이디가 담기고 if not null
+	<!-- 회원만넘어가도록 -->
+	<%
+		//if logined userID라는 변수에 해당 아이디가 담기고 if not null
+   if (userid != null) {
+	%>
+	<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+	<%
+		} else {
+	%>
+	<button class="btn btn-primary pull-right"
+		onclick="if(confirm('로그인 하세요'))location.href='mainUI.jsp';"
+		type="button">글쓰기</button>
+	<%
+		}
+	%>
 
-					if (userid != null) {
-					
-				%>
-				<a href="write.jsp" class="btn btn-primary pull-right"><%=userid %>글쓰기</a>
-				<%
-					} else {
-				%>
-				<button class="btn btn-primary pull-right" onclick="if(confirm('로그인 하세요'))location.href='mainUI.jsp';" type="button">글쓰기</button>
-				<%
-					}
-				%> --%>
-				
-				
-				
-				<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+	<!-- <a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a> -->
 				
 	</ul>
 	</div>

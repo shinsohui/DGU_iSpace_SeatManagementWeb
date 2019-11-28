@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
-<%@ page import="board.notice"%>
-<%@ page import="board.noticeDAO"%>
+<%@ page import="board.suggest"%>
+<%@ page import="board.suggestDAO"%>
 <%@ page import="javax.servlet.*" %>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -33,20 +33,16 @@
 <body>
 
 	<%
-	 
-		 
-		int noticeId = 0;
+		int suggestId = 0;
 
-		if (request.getParameter("noticeId") != null) {
-			noticeId = Integer.parseInt(request.getParameter("noticeId"));
-			System.out.println("update.jsp noticeId : "+noticeId);
+		if (request.getParameter("suggestId") != null) {
+			suggestId = Integer.parseInt(request.getParameter("suggestId"));
+			System.out.println("UpdateSuggest.jsp suggestId : "+suggestId);
 		}
 
-		notice notice= new noticeDAO().getNotice(noticeId);
-		
+		suggest suggest = new suggestDAO().getSuggest(suggestId);
 		/* HttpSession session = request.getSession();
-		 */
-		
+		 */		
 	%>
 
 
@@ -91,7 +87,7 @@
 
 	<div class="container">
 		<div class="row">
-			<form method="post" action="updateAction.jsp?noticeID=<%= noticeId%> ">
+			<form method="post" action="updateSuggestAction.jsp?suggestID=<%= suggestId%> ">
 				<table class="table table-striped"
 					style="text-align: center; border: 1px solid #dddddd">
 					<thead>
@@ -106,13 +102,13 @@
 						<tr>
 
 							<td><input type="text" class="form-control"
-								placeholder="글 제목" name="noticeTitle" maxlength="50"
-								value="<%= notice.getNoticeTitle() %>"></td>
+								placeholder="글 제목" name="suggestTitle" maxlength="50"
+								value="<%= suggest.getSuggestTitle() %>"></td>
 						</tr>
 						
 						<tr>
 							<td><textarea class="form-control" placeholder="글 내용"
-									name="noticeContent" maxlength="2048" style="height: 350px;"><%= notice.getNoticeContent() %></textarea></td>
+									name="suggestContent" maxlength="2048" style="height: 350px;"><%= suggest.getSuggestContent() %></textarea></td>
 						</tr>
 					</tbody>
 				</table>

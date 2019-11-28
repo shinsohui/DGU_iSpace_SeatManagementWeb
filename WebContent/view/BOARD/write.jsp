@@ -48,62 +48,49 @@
          style="width: 20px; height: 20px;">
    </h5>
 
+	<%
+		if (ifmanager.equals("0")) {
+			System.out.println("ifmamager:" + ifmanager);
+	%>
+	<script>
+		alert('관리자 권한이 필요합니다.');
+		location.href = 'notice.jsp';
+	</script>
 
-   <%
-   /* if (userid == null) {
-      PrintWriter script = response.getWriter();
-      script.println("<script>");
-      script.println("alert('로그인을 하세요.')");
-      script.println("location.href = 'mainUI.jsp'");
-      script.println("</script>");
-   } */
-   if(ifmanager.equals("0")) {
-      System.out.println("ifmamager:"+ifmanager);
-      
-    %>
-      <script>
-      alert('관리자 권한이 필요합니다.');
-      location.href='notice.jsp';
-      </script>
-   
-   
-   <%   
-   }
-   %>
+	<%
+		}
+	%>
 
-   <%
-      int pageNumber = 1; //기본 페이지 넘버
-      //페이지넘버값이 있을때
-      if (request.getParameter("pageNumber") != null) {
-         pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-      }
-   %>
+	<%
+		int pageNumber = 1; //기본 페이지 넘버
+		//페이지넘버값이 있을때
+		if (request.getParameter("pageNumber") != null) {
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		}
+	%>
 
-   <nav id="topMenu">
-      <ul>
-         <li class="topMenuLi"><a class="menuLink">좌석현황</a>
-            <ul class="submenu">
-               <li><a href="about_.html" class="submenuLink"> </a></li>
-            </ul></li>
-         <li>|</li>
+  <div align="center">
+		<nav id="topMenu">
+			<ul><% if(userid!=null) {%>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
+				<%}else{ %>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
+				<%} %>
+				<li>|</li>
 
-         <li class="topMenuLi"><a class="menuLink">공지사항</a></li>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
 
-         <li>|</li>
+				<li>|</li>
 
-         <li class="topMenuLi"><a class="menuLink">건의사항</a>
-            <ul class="submenu">
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
+				</a></li>
 
-            </ul></li>
-         <li>|</li>
-         <li class="topMenuLi"><a class="menuLink">분실물센터</a></li>
-         <li>|</li>
-         <li class="topMenuLi"><a class="menuLink">MY PAGE</a>
-            <ul class="submenu">
+				<li>|</li>
 
-            </ul></li>
-      </ul>
-   </nav>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
+			</ul>
+		</nav>
+	</div>
 
 <%--    <%
       //라긴안된경우
@@ -192,4 +179,3 @@
 
 </body>
 </html>
-

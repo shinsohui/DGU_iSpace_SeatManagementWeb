@@ -27,10 +27,42 @@
 <meta name="viewport" content="width=device-width" initial-scale="1">
 <!-- 스타일시트 참조  -->
 <link rel="stylesheet" href="css/bootstrap.css">
-<title></title>
+<title>공지사항 view</title>
+<style>
+<%@ include file ="/view/CSS/mainUI.css"%>
+</style>
 
 </head>
 <body>
+
+	<p style="text-align: center;">
+		<a href="/iSpace/view/mainUI.jsp"><img
+			src="/iSpace/view/Image/mainlogo.png"
+			style="width: 400px; height: 80px; padding-top: 3px;"></a>
+	</p>
+
+<div align="center">
+		<nav id="topMenu">
+			<ul><% if(userid!=null) {%>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
+				<%}else{ %>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
+				<%} %>
+				<li>|</li>
+
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
+
+				<li>|</li>
+
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
+				</a></li>
+
+				<li>|</li>
+
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
+			</ul>
+		</nav>
+	</div>
 
 	<%
    /*      //로긴한사람이라면	 userID라는 변수에 해당 아이디가 담기고 그렇지 않으면 null값
@@ -60,7 +92,7 @@
 		notice notice = new noticeDAO().getNotice(noticeId);
 	%>
 
-			<%
+			<%-- <%
 				//라긴안된경우
 				if (userid == null) {
 			%>
@@ -91,14 +123,13 @@
 			
 			<%
 				}
-			%>
+			%> --%>
+			
 <!-- 		</div>
 	</nav> -->
 
 	<!-- 게시판 -->
-
 	<div class="container">
-
 		<div class="row">
 
 				<table class="table table-striped"
@@ -126,12 +157,15 @@
 						</tr>
 						
 						<tr>
-							<td>작성일</td>	
+							<!-- <td>작성일</td> -->	
 							<%-- <td colspan="2"><%= notice.getNoticeDate().substring(0, 11) + notice.getNoticeDate().substring(11, 13) + "시"
 							+ notice.getNoticeDate().substring(14, 16) + "분"%></td> --%>
+							
+							<td>작성일</td>	
+							<td colspan="2"><%= notice.getNoticeDate().substring(0, 11)%></td>
 						</tr>
-						<tr>
 						
+						<tr>						
 						<td>내용</td>
 						<td colspan="2" style="min-height: 200px; text-align: left;"><%=notice.getNoticeContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;")
 					.replaceAll(">", "&gt;").replaceAll("\n", "<br/>")%></td>
@@ -144,14 +178,15 @@
 				<%
 				//글작성자 본인일시 수정 삭제 가능 
 					if(userid != null && userid.equals(notice.getUserId())){
-
 				%>
 
 			 <a href="Update.jsp?noticeId=<%=noticeId%>" class="btn btn-primary">수정</a>
 			<!-- <form action="Update.jsp" method="get">
 			<input type="submit" value="수정" name="update">
 			</form> -->
-			<a href="deleteAction.jsp?noticeId=<%=noticeId%>" class="btn btn-primary">삭제</a>
+			<a onclick="return confirm('정말로 삭제하시겠습니까?')"
+				href="deleteAction.jsp?bbsID=<%=noticeId%>" class="btn btn-primary	">삭제</a>
+
 			<%
 				}
 			%>
