@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("button").click(function() {
+		$(this).toggleClass("btn");
+		
+	});
+	
+});
+</script>
+
+<style>
+button {background:skyblue; padding:10px; boarder-radius:30px;outline:0;}
+.btn {animation:bgColor 0.0s both;}
+
+@keyframes bgColor{
+from {background:red;}
+	to {background:blue; color:white;}
+}
+	</style>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<button>click button</button>
+</body>
+</html>

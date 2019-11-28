@@ -77,34 +77,33 @@
          <td>MY PAGE</td>
       </tr>
    </table> -->
-   
-   <div align="center">
-	<nav id="topMenu">
-		<ul>
-			<li class="topMenuLi"><a class="menuLink">SEAT </a></li>
-			<li>|</li>
 
-			<li class="topMenuLi"><a class="menuLink">NOTICE </a></li>
+	<div align="center">
+		<nav id="topMenu">
+			<ul>
+				<li class="topMenuLi"><a class="menuLink">SEAT </a></li>
+				<li>|</li>
 
-			<li>|</li>
+				<li class="topMenuLi"><a class="menuLink">NOTICE </a></li>
 
-			<li class="topMenuLi"><a class="menuLink" href="notice.jsp">SUGGEST
-			</a></li>
-			
-			<li>|</li>
-			
-			<li class="topMenuLi"><a class="menuLink">LOST&FOUND </a></li>
-			<li>|</li>
-			<li class="topMenuLi"><a class="menuLink">MY PAGE</a>
-				</li>
-		</ul>
-	</nav>
+				<li>|</li>
+
+				<li class="topMenuLi"><a class="menuLink" href="notice.jsp">SUGGEST
+				</a></li>
+
+				<li>|</li>
+
+				<li class="topMenuLi"><a class="menuLink">LOST&FOUND </a></li>
+				<li>|</li>
+				<li class="topMenuLi"><a class="menuLink">MY PAGE</a></li>
+			</ul>
+		</nav>
 	</div>
 
 
 	<br>
-	
-	
+
+
 	<div class="frame">
 		<div class="whitebox"
 			style="width: 700px; height: 460px; margin-left: 10px;">
@@ -116,24 +115,23 @@
 				<!--       
 	    -->
 				<!--        시설		-->
-
 				<button value="3DLAB" name="room"
 					style="color: black; background: skyblue; position: absolute; left: 40px; top: 10px; height: 100px; width: 30px;">
 					3<br>D<br>L<br>A<br>B
 				</button>
 
 				<!-- <form action="/iSpace/Facility" method="post">   -->
-				<button value="seminar1" id="room" name="room1"
+				<button value="seminar1" id="seminar1" name="room1"
 					style="color: black; background: skyblue; height: 100px; position: absolute; left: 40px; top: 130px; width: 30px;">
 					세<br>미<br>나<br>실<br>1
 				</button>
 				<!-- </form>
-   	  <form action="/iSpace/Facility" method="post">  -->
-				<button value="seminar2" id="room" name="room2"
+        <form action="/iSpace/Facility" method="post">  -->
+				<button value="seminar2" id="seminar2" name="room2"
 					style="color: black; background: skyblue; height: 100px; position: absolute; left: 40px; top: 250px; width: 30px;">
 					세<br>미<br>나<br>실<br>2
 				</button>
-				<!--  </form> -->
+
 
 				<!-- <input type="submit" value = "3DLAB" name = "room" 
         style= "color: black; background:skyblue; position: absolute;
@@ -385,12 +383,12 @@
 					style="color: black; background: <%=color.get(76)%>; height: 30px; position: absolute; left: 540px; top: 420px; width: 30px; border-radius: 18px">
 			</form>
 		</div>
-		
+
 		<div class="whitebox"
 			style="width: 230px; height: 230px; margin-left: 720px; text-align: center">
 			<h5>
-				<b><%=userid%> <%=name%> 님</b> <br>
-				<img src="/iSpace/view/Image/reportimg.png"
+				<b><%=userid%> <%=name%> 님</b> <br> <img
+					src="/iSpace/view/Image/reportimg.png"
 					style="width: 20px; height: 20px;">
 				<%
 					if (myseatNo.equals("선택된 좌석이 없습니다.")) {
@@ -406,35 +404,49 @@
 				%><img src="/iSpace/view/Image/reportimg.png"
 					style="width: 20px; height: 20px;">
 			</h5>
-			<form action="/iSpace/Logout" method="get">
-			<input type="submit" value="로그아웃" name="logout" id="logout">
-			</form>
-			
+			<!-- <form action="/iSpace/Logout" method="get">
+				<input type="submit" value="로그아웃" name="logout" id="logout">
+			</form> -->
+			<input type="button" id="logout" onclick="javascript:logout()" value="로그아웃">
+			<script>
+			<%
+				session.invalidate();
+			%>
+  			 function logout(){ alert('로그아웃 되었습니다.'); 
+  			 location.href="/iSpace/view/mainUI.jsp";
+
+  			 }
+  			</script>
+
+
 		</div>
 
 	</div>
 
 	<form action="/iSpace/Report" method="get">
-	<div id="pop5" style="display: none;">
-		<div class="title">
-			<b>신고하기</b>
-		</div>
-		<a href="javascript:popupClose();" class="layerpop_close"
-			id="layerbox_close"></a> <br>
-		<div class="content">
+		<div id="pop5" style="display: none;">
+			<div class="title">
+				<b>신고하기</b>
+			</div>
+			<a href="javascript:popupClose();" class="layerpop_close"
+				id="layerbox_close"></a> <br>
+			<div class="content">
 
-			<h3><b>신고될 좌석 번호 >></b></h3> <select name="selected">
-				<option value="<%=seatNo%>"><%=seatNo%></option>
-			</select> <br> <br> 신고항목을 선택해주세요<br> <select
-				id="reason_selection" name="reason">
-				<option value="너무 시끄러워요.">너무 시끄러워요.</option>
-				<option value="오랫동안 부재인 좌석입니다.">오랫동안 부재인 좌석입니다.</option>
-				<option value="음식 섭취중입니다.">음식 섭취중입니다.</option>
-				<option value="기타">기타</option>
-			</select>
-			<textarea rows="4" cols="50" name="reason" class="hiddenField"
-				id="myTextBox" placeholder="신고 내용을 기재해주세요."></textarea>
-			<script type="text/javascript">
+				<h3>
+					<b>신고될 좌석 번호 >></b>
+				</h3>
+				<select name="selected">
+					<option value="<%=seatNo%>"><%=seatNo%></option>
+				</select> <br> <br> 신고항목을 선택해주세요<br> <select
+					id="reason_selection" name="reason">
+					<option value="너무 시끄러워요.">너무 시끄러워요.</option>
+					<option value="오랫동안 부재인 좌석입니다.">오랫동안 부재인 좌석입니다.</option>
+					<option value="음식 섭취중입니다.">음식 섭취중입니다.</option>
+					<option value="기타">기타</option>
+				</select>
+				<textarea rows="4" cols="50" name="reason" class="hiddenField"
+					id="myTextBox" placeholder="신고 내용을 기재해주세요."></textarea>
+				<script type="text/javascript">
 				$(document).ready(
 						function() {
 							$('#reason_selection').change(
@@ -445,41 +457,41 @@
 									});
 						});
 			</script>
-			<br> <br>
-			<div style="display: inline; float: left; width: 50px">
-				<input type="submit" value="확인">
-			</div>
-			<div style="display: inline; float: left; width: 50px" id="close5">
-				<button value="close">취소</button>
-			</div>
+				<br> <br>
+				<div style="display: inline; float: left; width: 50px">
+					<input type="submit" value="확인">
+				</div>
+				<div style="display: inline; float: left; width: 50px" id="close5">
+					<button value="close">취소</button>
+				</div>
 
+			</div>
 		</div>
-	</div>
-</form>
+	</form>
 
 
 
 	<!-- 시설예약  -->
 	<!-- 날짜, 시간,  -->
-	   
-      <div id="reserve" style="display: none;">
-      <form action="/iSpace/Reservation" method="get">
-         <div>
-            <b>시설 예약</b>
-         </div>
-         <br>
-         <%
+
+	<div id="reserve" style="display: none;">
+		<form action="/iSpace/Reservation" method="get">
+			<div>
+				<b>시설 예약</b>
+			</div>
+			<br>
+			<%
             Calendar cal = Calendar.getInstance();
          %>
-         <div>
-            <b>예약 날짜</b><br>
-            <%=cal.get(Calendar.YEAR)%>년
-            <%=cal.get(Calendar.MONTH) + 1%>월
-            <%=cal.get(Calendar.DATE)%>일
-         </div>
-         <br>
-         
-<%-- <table>
+			<div>
+				<b>예약 날짜</b><br>
+				<%=cal.get(Calendar.YEAR)%>년
+				<%=cal.get(Calendar.MONTH) + 1%>월
+				<%=cal.get(Calendar.DATE)%>일
+			</div>
+			<br>
+
+			<%-- <table>
          <tr>
          <td  class="td1" style="background: <%=room1.get(0)%>;">9<input type="button" class="stylebutton" onclick="submitButtonStyle(this)" id="t1"></td>
          <td  class="td1" style="background: <%=room1.get(1)%>;">10<input type="button" class="button2" onclick="submitButtonStyle2()" id="t2"></td>
@@ -496,85 +508,65 @@
          --%>
 
 
-          <input type="hidden"name="room" value="ROOM1">
-          <input type="hidden"name="login_id" value="<%=userid%>">
-          <input type="hidden"name="login_name" value="<%=name%>">
+			<input type="hidden" name="room" value="ROOM1"> <input
+				type="hidden" name="login_id" value="<%=userid%>"> <input
+				type="hidden" name="login_name" value="<%=name%>">
 
-         <div>
-            <b>이용률</b><br> 
-            <input type="button" name="time" onclick="submitButtonStyle(this)" id="t0" value="9"
-               style="color: black; background: <%=room1.get(0)%>;"> 
-               <input type="button" onclick="submitButtonStyle(this)" id="t1"  value="10"
-               style="color: black; background: <%=room1.get(1)%>;"> 
-               
-               <input type="button" onclick="javascript:seatbtn()" value="11"
-               style="color: black; background: <%=room1.get(2)%>;"> <input
-               type="button" name="time" onclick="javascript:seatbtn()" value="12"
-               style="color: black; background: <%=room1.get(3)%>;"> <input
-               type="button" onclick="javascript:seatbtn()" value="13"
-               style="color: black; background: <%=room1.get(4)%>;"> <input
-               type="button" onclick="javascript:seatbtn()" value="14"
-               style="color: black; background: <%=room1.get(5)%>;"> <input
-               type="button" onclick="javascript:seatbtn()" value="15"
-               style="color: black; background: <%=room1.get(6)%>;"> <input
-               type="button" onclick="javascript:seatbtn()" value="16"
-               style="color: black; background: <%=room1.get(7)%>;"> <input
-               type="button" onclick="javascript:seatbtn()" value="17"
-               style="color: black; background: <%=room1.get(8)%>;"> <input
-               type="button" onclick="javascript:seatbtn()" value="18"
-               style="color: black; background: <%=room1.get(9)%>;">
-         </div>
-          <input type="hidden" id="time" name="time" value="">
-          
-          <br>
+			<div>
+				<b>이용률</b><br> <input type="button" name="time"
+					onclick="submitButtonStyle(this)" id="t0" value="9"
+					style="color: black; background: <%=room1.get(0)%>;"> <input
+					type="button" name="time" onclick="submitButtonStyle(this)" id="t1"
+					value="10" style="color: black; background: <%=room1.get(1)%>;">
+
+				<input type="button" name="time" onclick="submitButtonStyle(this)"
+					id="t2" value="11"
+					style="color: black; background: <%=room1.get(2)%>;"> <input
+					type="button" name="time" onclick="submitButtonStyle(this)" id="t3"
+					value="12" style="color: black; background: <%=room1.get(3)%>;">
+				<input type="button" name="time" onclick="submitButtonStyle(this)"
+					id="t4" value="13"
+					style="color: black; background: <%=room1.get(4)%>;"> <input
+					type="button" name="time" onclick="submitButtonStyle(this)" id="t5"
+					value="14" style="color: black; background: <%=room1.get(5)%>;">
+				<input type="button" name="time" onclick="submitButtonStyle(this)"
+					id="t6" value="15"
+					style="color: black; background: <%=room1.get(6)%>;"> <input
+					type="button" name="time" onclick="submitButtonStyle(this)" id="t7"
+					value="16" style="color: black; background: <%=room1.get(7)%>;">
+				<input type="button" name="time" onclick="submitButtonStyle(this)"
+					id="t8" value="17"
+					style="color: black; background: <%=room1.get(8)%>;"> <input
+					type="button" name="time" onclick="submitButtonStyle(this)" id="t9"
+					value="18" style="color: black; background: <%=room1.get(9)%>;">
+			</div>
+			<input type="hidden" id="time" name="time" value=""> <br>
+
+
+			<!--  시간들 각각 회색인지 확인    -->
+			<%
+         	int temp=0;
+         	for(int i=0;i<10;i++){
+         		if(room1.get(i)=="gray"){
          
-         <%-- 
-         <%
-            for (int i = 0; i < 10; i++) {
-               if (room1.get(i) == "gray") {
          %>
-         <script>
-            var btn = document.getElementById('t1');
-
-            var btn = document.getElementById('btn-world');
+			<script>
+            var btn = document.getElementById('t<%=temp++%>');
             btn.disabled = 'disabled';
          </script>
-         <%
-               }
-            }
-         %>
- --%>
- 
-<!--           시간들 각각 회색인지 확인
- -->      
-          <%
-            if (room1.get(0) == "gray") {
-         %>
-         <script>
-            var btn = document.getElementById('t0');
-            btn.disabled = 'disabled';
-         </script>
-         <%
-            }
-         %>
-         <%
-            if (room1.get(1) == "gray") {
-         %>
-         <script>
-         <%
-          System.out.println("회색회색");
-         %>
-         	alert('이미 예약되어 있는 시간입니다ㅠㅠ');
-            var btn = document.getElementById('t1');
-            btn.disabled = 'disabled';
-         </script>
-         <%
-            }
+			<%
+         		}else{
+         			temp++;
+         		}
+         		System.out.println("i="+i+" temp="+temp);
+         	}
          %>
 
-         <!--       색 확인해서 시간만큼 가능하면 빨간색으로
- -->      
-      <script>
+
+
+			<!--       색 확인해서 시간만큼 가능하면 빨간색으로
+ -->
+			<script>
       
       function submitButtonStyle(_this) {
          <%
@@ -586,14 +578,24 @@
           //var tzero = document.getElementById('t0');
          //tm.attr('value',tzero.value); 
          document.getElementById('time').value=document.getElementById('t0').value;
+         document.getElementById('time').value=document.getElementById('t1').value;
+         document.getElementById('time').value=document.getElementById('t2').value;
+         document.getElementById('time').value=document.getElementById('t3').value;
+         document.getElementById('time').value=document.getElementById('t4').value;
+         document.getElementById('time').value=document.getElementById('t5').value;
+         document.getElementById('time').value=document.getElementById('t6').value;
+         document.getElementById('time').value=document.getElementById('t7').value;
+         document.getElementById('time').value=document.getElementById('t8').value;       
+         document.getElementById('time').value=document.getElementById('t9').value;
+         document.getElementById('time').value=document.getElementById('t10').value;
             
       }
 
        
       </script>
-         
-         
-<!-- 
+
+
+			<!-- 
          <div>
             <b>시작시간</b> <select id="starttime">
                <option value="9">9</option>
@@ -623,23 +625,23 @@
 
  -->
 
-         <div>
-            <b>사용인원</b><small>&nbsp&nbsp최소인원:6&nbsp&nbsp&nbsp최대인원:10</small> <select
-               id="total">
-               <option value="6">6</option>
-               <option value="7">7</option>
-               <option value="8">8</option>
-               <option value="9">9</option>
-               <option value="6">10</option>
-            </select>
-         </div>
-         <br>
-         <div></div>
-         <b>대표자&nbsp&nbsp<%=userid%>&nbsp<%=name%></b><br>
-         <div id="user">
-            <small>이용자
-               학번&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp이용자 이름</small><br>
-            <!--    <input type="text" name="id1">
+			<div>
+				<b>사용인원</b><small>&nbsp&nbsp최소인원:6&nbsp&nbsp&nbsp최대인원:10</small> <select
+					id="total">
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="6">10</option>
+				</select>
+			</div>
+			<br>
+			<div></div>
+			<b>대표자&nbsp&nbsp<%=userid%>&nbsp<%=name%></b><br>
+			<div id="user">
+				<small>이용자
+					학번&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp이용자 이름</small><br>
+				<!--    <input type="text" name="id1">
    <input type="text" name="name1"><br>
    <input type="text" name="id2">
    <input type="text" name="name2"><br>
@@ -652,25 +654,25 @@
    <input type="text" name="id6">
    <input type="text" name="name6"><br> -->
 
-            <textarea rows="1" cols="15" name="id1"></textarea>
-            <textarea rows="1" cols="7" name="name1"></textarea>
-            <br>
-            <textarea rows="1" cols="15" id="id2"></textarea>
-            <textarea rows="1" cols="7" id="name2"></textarea>
-            <br>
-            <textarea rows="1" cols="15" id="id3"></textarea>
-            <textarea rows="1" cols="7" id="name3"></textarea>
-            <br>
-            <textarea rows="1" cols="15" id="id4"></textarea>
-            <textarea rows="1" cols="7" id="name4"></textarea>
-            <br>
-            <textarea rows="1" cols="15" id="id5"></textarea>
-            <textarea rows="1" cols="7" id="name5"></textarea>
-            <br>
-            <textarea rows="1" cols="15" id="id6"></textarea>
-            <textarea rows="1" cols="7" id="name6"></textarea>
-            <br>
-            <!-- <button id="append" onlick="append()">추가하기</button>
+				<textarea rows="1" cols="15" name="id1"></textarea>
+				<textarea rows="1" cols="7" name="name1"></textarea>
+				<br>
+				<textarea rows="1" cols="15" id="id2"></textarea>
+				<textarea rows="1" cols="7" id="name2"></textarea>
+				<br>
+				<textarea rows="1" cols="15" id="id3"></textarea>
+				<textarea rows="1" cols="7" id="name3"></textarea>
+				<br>
+				<textarea rows="1" cols="15" id="id4"></textarea>
+				<textarea rows="1" cols="7" id="name4"></textarea>
+				<br>
+				<textarea rows="1" cols="15" id="id5"></textarea>
+				<textarea rows="1" cols="7" id="name5"></textarea>
+				<br>
+				<textarea rows="1" cols="15" id="id6"></textarea>
+				<textarea rows="1" cols="7" id="name6"></textarea>
+				<br>
+				<!-- <button id="append" onlick="append()">추가하기</button>
    <script>
    function append(){
       /* var txt1 = "<textarea ></textarea><br><textarea ></textarea><br>"; */ 
@@ -681,10 +683,10 @@
    
    </script> -->
 
-         </div>
+			</div>
 
 
-         <!-- <script type="text/javascript">
+			<!-- <script type="text/javascript">
    $(document).ready(function() {
        $('#total').change(function() {
             $(this).val() == "기타"?$('#myTextBox').show():$('#myTextBox').hide();
@@ -694,18 +696,31 @@
    </script> -->
 
 
-         <div style="display: inline; float: left; width: 60px">
-            <button>예약하기</button>
-         </div>
-         </form>
-         <div style="display: inline; float: left; width: 60px" id="close4">
-            <button>취소</button>
-         </div>
-      </div>
-     
-   
+			<div style="display: inline; float: left; width: 60px">
+				<button>예약하기</button>
+			</div>
+		</form>
+		<div style="display: inline; float: left; width: 60px" id="close4">
+			<button>취소</button>
+		</div>
+	</div>
+
+
 	<script>
-		$('#room').click(function() {
+		$('#seminar1').click(function() {
+			$('#reserve').toggle(0, function() {
+				$('#close4').click(function() {
+					$('#reserve').hide();
+				});
+			});
+
+		});/* 
+		   $(function(){
+			    $("#date1").datepicker();
+			}); */
+	</script>
+	<script>
+		$('#seminar2').click(function() {
 			$('#reserve').toggle(0, function() {
 				$('#close4').click(function() {
 					$('#reserve').hide();
