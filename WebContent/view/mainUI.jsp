@@ -41,18 +41,6 @@
 	<a href="/iSpace/view/home.jsp">home.jsp</a>
 	<a href="/iSpace/view/mainUI.jsp">mainUI.jsp</a>
 
-
-
-	<!-- <table border="1" style="width:100%; text-align:center;">
-   <tr>
-   <td><a href="/iSpace/view/home.jsp">SEAT  </a></td>
-   <td>SUGGEST</td>
-   <td>NOTICE</td>
-   <td>LOST&FOUND</td>
-   <td>MY PAGE </td>
-   </tr>
-   </table> -->
-   
     <div align="center">
 	<nav id="topMenu">
 		<ul>
@@ -385,6 +373,8 @@
     }
  %>
    </div>
+
+
 
 </body>
 </html>
