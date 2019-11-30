@@ -46,9 +46,12 @@ public class UpdateService extends HttpServlet {
 		HttpSession session=request.getSession();
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		String fileName = request.getParameter("file");
-		String title=request.getParameter("title")
 		
+		
+		String fileName = request.getParameter("lnfFile");
+//		String title=request.getParameter("lnfTitle");
+//	 String content=request.getParameter("lnfContent");
+//		
 		String lnfId=(String)session.getAttribute("lnfId");
 		int lnfID=Integer.parseInt(lnfId);
 		System.out.println(fileName);
@@ -79,9 +82,9 @@ public class UpdateService extends HttpServlet {
 			MultipartRequest multi = new MultipartRequest(request, saveDir, maxSize, encoding,new DefaultFileRenamePolicy());
 			//      FileDAO dao = new FileDAO();
 
-			String title = multi.getParameter("title");
-			String content = multi.getParameter("content");
-			String file = multi.getFilesystemName("file");
+			String title = multi.getParameter("lnfTitle");
+			String content = multi.getParameter("lnfContent");
+			String file = multi.getFilesystemName("lnfFile");
 
 			if(title.equals("")||content.contentEquals("")) {
 				PrintWriter script = response.getWriter();
@@ -104,7 +107,7 @@ public class UpdateService extends HttpServlet {
 
 					PrintWriter script = response.getWriter();
 					script.println("<script>");
-					script.println("location.href='lnf.jsp'");
+					script.println("location.href='/iSpace/view/BOARD/lnf.jsp'");
 					//script.println("history.back()");
 					script.println("</script>");
 

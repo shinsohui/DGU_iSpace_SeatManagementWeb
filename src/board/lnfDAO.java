@@ -165,8 +165,9 @@ public class lnfDAO {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, lnfTitle);
 			pstmt.setString(2, lnfContent);
-			pstmt.setInt(3, lnfId);
-			pstmt.setString(4, lnfFile);
+			pstmt.setString(3, lnfFile);
+			pstmt.setInt(4, lnfId);
+			
 			return pstmt.executeUpdate();
 
 		} catch (Exception e) {
