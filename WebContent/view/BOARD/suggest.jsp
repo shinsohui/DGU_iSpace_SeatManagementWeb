@@ -41,6 +41,9 @@
       <h5 style="text-align: right;">
          <b><%=userid%> <%=name%> ´Ô</b>
       </h5>
+      <a href="/iSpace/view/logout.jsp">
+  		 <button id="logout">·Î±×¾Æ¿ô</button>
+		</a>
       
      <div align="center">
 		<nav id="topMenu">
