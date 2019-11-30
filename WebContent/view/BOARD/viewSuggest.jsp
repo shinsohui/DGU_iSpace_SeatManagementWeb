@@ -64,7 +64,9 @@
 			</ul>
 		</nav>
 	</div>
-	
+	<a href="/iSpace/view/logout.jsp">
+  		 <button id="logout">로그아웃</button>
+		</a>
 	<%
 
 		int suggestId = 0; //지워진 글인지 판단하기위해

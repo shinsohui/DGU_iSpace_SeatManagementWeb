@@ -62,7 +62,9 @@
 			</ul>
 		</nav>
 	</div>
-	
+	<a href="/iSpace/view/logout.jsp">
+  		 <button id="logout">로그아웃</button>
+		</a>
 	<%
    /*      //로긴한사람이라면	 userID라는 변수에 해당 아이디가 담기고 그렇지 않으면 null값
 			String userid = null;

@@ -2,43 +2,42 @@
 
 
 .frame {
-	width: 980px; 
-	height: 490px;
-	background-color: #b8b8b8;
-	
-	opacity: 0.8;
-	border-radius: 10px;
-	position: absolute;
-	top: 240px;
-	left: 275px;
+   width: 980px; 
+   height: 490px;
+   background-color: #b8b8b8;
+   
+   opacity: 0.8;
+   border-radius: 10px;
+   position: absolute;
+   top: 240px;
+   left: 275px;
 }
 
 .whitebox {
-	background-color: white;
-	position: absolute;
-	border-radius: 10px;
-	opacity: 0.8;
-	margin-right: 10px;
-	margin-top: 10px;
-	vertical-align: middle;
-	display: inline-block;
-	
-  font-weight: bold; /* 폰트를 굵게 설정 */ 
-  font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */ 
-  color: #252525; 
+   background-color: white;
+   position: absolute;
+   border-radius: 10px;
+   opacity: 0.8;
+   margin-right: 10px;
+   margin-top: 10px;
+   vertical-align: middle;
+   display: inline-block;
+   font-weight: bold; /* 폰트를 굵게 설정 */
+   font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */
+   color: #252525;
 }
 
 #text1 {
-	color: #0A122A;
-	font-family: "바탕체";
-	margin-left: 10px;
+   color: #0A122A;
+   font-family: "바탕체";
+   margin-left: 10px;
 }
 
 .seatStyle1 {
-	background-color: skyblue;
-	height: 100px;
-	width: 20px;
-	position: relative;
+   background-color: skyblue;
+   height: 100px;
+   width: 20px;
+   position: relative;
 }
 
 html { 
@@ -84,6 +83,7 @@ html {
   color: white; /* 글씨 색 blue */ 
   background-color: #4b5ef2; /* 배경색을 보라색으로 설정 */ 
   opacity:0.7;
+  text-decoration:none; /* a 태그의 꾸밈 효과 제거 */ 
 } 
 
 #board{
@@ -109,9 +109,8 @@ html {
 }
 
 #subboard{
-	font-size: 13px; /* 폰트 사이즈를 12px로 설정 */ 
+   font-size: 13px; /* 폰트 사이즈를 12px로 설정 */ 
   font-weight: bold; /* 폰트를 굵게 설정 */ 
   font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */ 
   color: #252525; 
 }
-
