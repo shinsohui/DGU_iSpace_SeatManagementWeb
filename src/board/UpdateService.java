@@ -3,7 +3,6 @@ package board;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,15 +13,14 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
-//import board.FileDAO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 /**
- * Servlet implementation class UploadService
+ * Servlet implementation class UpdateService
  */
-@WebServlet("/UploadService")
-public class UploadService extends HttpServlet {
+@WebServlet("/UpdateService")
+public class UpdateService extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -49,7 +47,10 @@ public class UploadService extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		String fileName = request.getParameter("file");
-		String userid=(String)session.getAttribute("id");
+		String title=request.getParameter("title")
+		
+		String lnfId=(String)session.getAttribute("lnfId");
+		int lnfID=Integer.parseInt(lnfId);
 		System.out.println(fileName);
 
 
@@ -89,25 +90,27 @@ public class UploadService extends HttpServlet {
 				script.println("history.back()");
 				script.println("</script>");
 			} else {
-				lnfDAO lnfDAO=new lnfDAO();
-				int result=lnfDAO.write(title, userid, content,file);
-				if(result==-1) {
+				lnfDAO lnfDAO = new lnfDAO();
+
+				int result = lnfDAO.update(lnfID, title, content, file);
+				if (result == -1) {
 					PrintWriter script = response.getWriter();
 					script.println("<script>");
-					script.println("alert('글쓰기에 실패했습니다')");
-					script.println("history.back()");
+					script.println("alert('글수정에 실패했습니다')");
+					script.println("history.back()");		
 					script.println("</script>");
 
-				}else {
+				} else {
 
 					PrintWriter script = response.getWriter();
 					script.println("<script>");
-					script.println("alert('글이 작성되었습니다!')");
-					script.println("location.href='/iSpace/view/BOARD/lnf.jsp'");
-					/* script.println("history.back()"); */
+					script.println("location.href='lnf.jsp'");
+					//script.println("history.back()");
 					script.println("</script>");
-				}
+
+				}		
 			}
+			
 			System.out.println(title);
 			System.out.println(content);
 			System.out.println(file);
@@ -147,6 +150,4 @@ public class UploadService extends HttpServlet {
 
 	}
 
-
 }
-

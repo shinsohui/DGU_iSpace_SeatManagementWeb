@@ -163,7 +163,12 @@
 						
 						<td>내용</td>
 						<td colspan="2" style="min-height: 200px; text-align: left;"><%=lnf.getLnfContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;")
-					.replaceAll(">", "&gt;").replaceAll("\n", "<br/>")%></td>
+					.replaceAll(">", "&gt;").replaceAll("\n", "<br/>")%>
+					<br>
+					<%System.out.println("file check:"+lnf.getLnfFile());%>
+					<img style="width:700px;" src="/iSpace/upload/<%=lnf.getLnfFile()%>">
+					
+					</td>
 					</tr>
 					</tbody>
 				</table>	

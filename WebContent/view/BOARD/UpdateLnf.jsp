@@ -17,8 +17,8 @@
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
    String report = (String) session.getAttribute("report");
-/*    String noticeId = (String) request.getParameter("noticeId");
- */%>
+/* String lnfId = (String) session.getAttribute("lnfId"); */
+ %>
 
 <!DOCTYPE html>
 <html>
@@ -35,7 +35,7 @@
 	<%
 		int lnfId = 0;
 
-		if (request.getParameter("lnfId") != null) {
+		if (session.getAttribute("lnfId") != null) {
 			lnfId = Integer.parseInt(request.getParameter("lnfId"));
 			System.out.println("UpdateLnf.jsp lnfId : "+lnfId);
 		}
@@ -57,7 +57,7 @@
 
 			</button>
 
-			<a class="navbar-brand" href="main.jsp">JSP 게시판</a>
+			<a class="navbar-brand" href="lnf.jsp">JSP 게시판</a>
 
 		</div>
 
@@ -85,7 +85,9 @@
 
 	<div class="container">
 		<div class="row">
-			<form method="post" action="updateLnfAction.jsp?lnfID=<%= lnfId%> ">
+			<form action="/iSpace/UpdateService" method="post"
+      enctype="multipart/form-data">
+
 				<table class="table table-striped"
 					style="text-align: center; border: 1px solid #dddddd">
 					<thead>
@@ -97,21 +99,30 @@
 						</tr>
 					</thead>
 					<tbody>
+					
 						<tr>
 
-							<td><input type="text" class="form-control"
+							<td colspan="2"><input type="text" class="form-control"
 								placeholder="글 제목" name="lnfTitle" maxlength="50"
 								value="<%= lnf.getLnfTitle() %>"></td>
 						</tr>
-						
+						<tr>
+							<td>현재 첨부된 파일</td>
+							<td><img style="width:200px;" src="/iSpace/upload/<%=lnf.getLnfFile()%>"></td>
+						</tr>
+						<tr>	
+							<td colspan="2"><input type="file" value="파일 선택" name="lnfFile"/>
+						</tr>
 						<tr>
 							<td><textarea class="form-control" placeholder="글 내용"
-									name="lnfContent" maxlength="2048" style="height: 350px;"><%= lnf.getLnfContent() %></textarea></td>
+									name="lnfContent" maxlength="2048" style="height: 350px;"><%= lnf.getLnfContent() %></textarea>
+									</td>
 						</tr>
+						
 					</tbody>
 				</table>
 
-				<button type="submit" class="btn btn-primary pull-right">글수정</button>
+				<input type="submit" class="btn btn-primary pull-right" value="글수정">
 			</form>
 		</div>
 	</div>

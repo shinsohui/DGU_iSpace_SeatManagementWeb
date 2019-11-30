@@ -84,7 +84,7 @@
 				
        			lnfDAO lnfDAO = new lnfDAO();
 
-				int result = lnfDAO.update(index, request.getParameter("lnfTitle"), request.getParameter("lnfContent"));
+				int result = lnfDAO.update(index, request.getParameter("lnfTitle"), request.getParameter("lnfContent"), request.getParameter("lnfFile"));
 				if (result == -1) {
 					PrintWriter script = response.getWriter();
 					script.println("<script>");

@@ -28,7 +28,7 @@
    String seatNo = (String) request.getParameter("button");
    String report = (String) session.getAttribute("report"); 
    String ifmanager = (String) session.getAttribute("ifmanager"); 
-                      
+   String lnfId=(String) session.getAttribute("lnfId");                   
 %>
 
 </head>
@@ -138,7 +138,8 @@
 
       <div class="row">
 
-         <form method="post" action="writeLnfAction.jsp">
+         <form action="/iSpace/UploadService" method="post"
+      enctype="multipart/form-data">
 
             <table class="table table-striped"
                style="text-align: center; border: 1px solid #dddddd">
@@ -149,27 +150,30 @@
                         style="background-color: #eeeeee; text-align: center;">분실물 게시판</th>
                   </tr>
                </thead>
-               
-               <tbody>
-                  <tr>
-                     <td><input type="text" class="form-control"
-                        placeholder="글 제목" name="LnfTitle" maxlength="50" /></td>
-                  </tr>
-                  
-                  <tr>
-                     <td><textarea class="form-control" placeholder="글 내용"
-                           name="LnfContent" maxlength="2048"
-                           style="height: 200px; width: 400px;"></textarea></td>
-                  </tr>
-               </tbody>
-            </table>
+
+					<tbody>
+						<tr>
+							<td><input type="text" class="form-control"
+								placeholder="글 제목" name="title" maxlength="50" /></td>
+						</tr>
+
+						<tr>
+							<td><textarea class="form-control" placeholder="글 내용"
+									name="content" maxlength="2048"
+									style="height: 200px; width: 400px;"></textarea></td>
+						</tr>
+						<tr>
+							<td colspan="2"><input type="file" value="파일 선택" name="file" /></td>
+						</tr>
+					</tbody>
+				</table>
             
             <input type="submit" class="btn btn-primary pull-right" value="글쓰기" />
 
          </form>
       </div>
    </div>
-
+<!-- 
    <form action="/iSpace/UploadService" method="post"
       enctype="multipart/form-data">
       <table>
@@ -182,13 +186,14 @@
             <td><input type="text" name="title" /></td>
          </tr>
          <tr>
-            <td colspan="2"><input type="file" value="파일 선택" name="file" /></td>
+            <td>파일업로드 :</td>
+            <td><input type="file" value="파일 선택" name="file" /></td>
          </tr>
          <tr>
             <td colspan="2"><input type="submit" value="업로드" /></td>
          </tr>
       </table>
-   </form>
+   </form> -->
 
    <!-- 애니매이션 담당 JQUERY -->
    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

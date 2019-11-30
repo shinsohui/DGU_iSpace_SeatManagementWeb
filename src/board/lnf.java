@@ -7,6 +7,7 @@ public class lnf {
 	private String lnfDate;
 	private String lnfContent;
 	private int lnfAvailable;
+	private String lnfFile;
 	
 	public int getLnfId() {
 		return lnfId;
@@ -43,6 +44,12 @@ public class lnf {
 	}
 	public void setLnfAvailable(int lnfAvailable) {
 		this.lnfAvailable = lnfAvailable;
+	}
+	public String getLnfFile() {
+		return lnfFile;
+	}
+	public void setLnfFile(String lnfFile) {
+		this.lnfFile = lnfFile;
 	}
 	
 }

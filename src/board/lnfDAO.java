@@ -70,8 +70,8 @@ public class lnfDAO {
 	}
 
 	// int noticeView
-	public int write(String lnfTitle, String userId, String lnfContent) {
-		String SQL = "INSERT INTO LNF VALUES(?, ?, ?, ?, ?, ?)";
+	public int write(String lnfTitle, String userId, String lnfContent, String lnfFile) {
+		String SQL = "INSERT INTO LNF VALUES(?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext());
@@ -80,6 +80,7 @@ public class lnfDAO {
 			pstmt.setString(4, getDate());
 			pstmt.setString(5, lnfContent);
 			pstmt.setInt(6, 1);
+			pstmt.setString(7, lnfFile);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -104,6 +105,7 @@ public class lnfDAO {
 				lnf.setLnfDate(rs.getString(4));
 				lnf.setLnfContent(rs.getString(5));
 				lnf.setLnfAvailable(rs.getInt(6));
+				lnf.setLnfFile(rs.getString(7));
 				list.add(lnf);
 			}
 
@@ -146,6 +148,7 @@ public class lnfDAO {
 				lnf.setLnfDate(rs.getString(4));
 				lnf.setLnfContent(rs.getString(5));
 				lnf.setLnfAvailable(rs.getInt(6));
+				lnf.setLnfFile(rs.getString(7));
 				return lnf;
 			}
 		} catch (Exception e) {
@@ -155,14 +158,15 @@ public class lnfDAO {
 	}
 
 //수정 함수
-	public int update(int lnfId, String lnfTitle, String lnfContent) {
-		String SQL = "UPDATE LNF SET lnfTitle = ?, lnfContent = ? WHERE lnfId = ?";
+	public int update(int lnfId, String lnfTitle, String lnfContent, String lnfFile) {
+		String SQL = "UPDATE LNF SET lnfTitle = ?, lnfContent = ?, lnfFile=? WHERE lnfId = ?";
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, lnfTitle);
 			pstmt.setString(2, lnfContent);
 			pstmt.setInt(3, lnfId);
+			pstmt.setString(4, lnfFile);
 			return pstmt.executeUpdate();
 
 		} catch (Exception e) {

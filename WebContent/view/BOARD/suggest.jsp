@@ -39,11 +39,7 @@
 	</p>
 	
       <h5 style="text-align: right;">
-         <b><%=userid%> <%=name%> ´Ô</b>, <img
-            src="/iSpace/view/Image/reportimg.png"
-            style="width: 20px; height: 20px;"> ½Å°í<%=report%>È¸ 
-         <img src="/iSpace/view/Image/reportimg.png"
-            style="width: 20px; height: 20px;">
+         <b><%=userid%> <%=name%> ´Ô</b>
       </h5>
       
      <div align="center">

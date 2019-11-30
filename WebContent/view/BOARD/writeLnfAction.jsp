@@ -19,6 +19,7 @@
 <jsp:useBean id="lnf" class="board.lnf" scope="page">
 <jsp:setProperty name="lnf" property="lnfTitle" param="LnfTitle"/><!-- bbs.setBbsTitle(requrst) -->
 <jsp:setProperty name="lnf" property="lnfContent" param="LnfContent"/>
+<jsp:setProperty name="lnf" property="lnffile" param="file"/>
 </jsp:useBean>
 
 <%-- <%
@@ -30,7 +31,6 @@
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
-   String report = (String) session.getAttribute("report");
    String ifmanager = (String) session.getAttribute("ifmanager"); 
             
 %>
@@ -79,7 +79,7 @@
 				script.println("</script>");
 
 			}else {
-
+				
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
 				script.println("alert('글이 작성되었습니다!')");
