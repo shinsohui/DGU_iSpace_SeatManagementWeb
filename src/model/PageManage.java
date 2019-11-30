@@ -123,7 +123,7 @@ public class PageManage {
 
 		}catch (Exception e)
 		{
-			System.out.println("SEAT COLOR CHECK ERROR");
+			System.out.println("ROOM1 COLOR CHECK ERROR");
 			e.printStackTrace();
 		}
 	} 
@@ -173,14 +173,14 @@ public class PageManage {
 				//           System.out.println("0번색은 회색이야"); 
 			}
 
-			bean.setRoom1Color(color);
+			bean.setRoom2Color(color);
 
 			DBmanager.close(pstmt);
 			DBmanager.close(conn);
 
 		}catch (Exception e)
 		{
-			System.out.println("SEAT COLOR CHECK ERROR");
+			System.out.println("ROOM2 COLOR CHECK ERROR");
 			e.printStackTrace();
 		}
 	} 

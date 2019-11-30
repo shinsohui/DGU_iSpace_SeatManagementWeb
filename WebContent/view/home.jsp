@@ -14,8 +14,10 @@
 
 	dao.seatColor(colorBean);
 	ArrayList<String> color = (ArrayList<String>) colorBean.getColorList();
+	
 	dao.room1Color(colorBean);
 	ArrayList<String> room1 = (ArrayList<String>) colorBean.getRoom1Color();
+	
 	dao.room2Color(colorBean);
 	ArrayList<String> room2 = (ArrayList<String>) colorBean.getRoom2Color();
 %>
@@ -411,164 +413,234 @@
 
 	<!-- 시설예약  -->
 	<!-- 날짜, 시간,  -->
-
-	<div id="reserve" style="display: none;">
+	<!-- seminar room 1 -->
+	<div id="reserve1" style="display: none;">
 		<form action="/iSpace/Reservation" method="post">
-			<div>
-				<b>시설 예약</b>
-			</div>
-			<br>
+			<b>시설 예약</b> <br>
 			<%
-            Calendar cal = Calendar.getInstance();
-         %>
-			<div>
-				<b>예약 날짜</b><br>
-				<%=cal.get(Calendar.YEAR)%>년
-				<%=cal.get(Calendar.MONTH) + 1%>월
-				<%=cal.get(Calendar.DATE)%>일
-			</div>
-			<br>
-			<div>
-				<b>이용률</b><br>
-				<table id="util">
-					<tr>
-						<td><label class="container"><input type="radio" name="time" value="9"> <span class="checkmark" id="t0">09</span> </label></td>
-						<td><label class="container"><input type="radio" name="time" value="10"> <span class="checkmark" id="t1">10</span> </label></td>
-						<td><label class="container"><input type="radio" name="time" value="11"> <span class="checkmark" id="t2">11</span> </label></td>
-						<td><label class="container"><input type="radio" name="time" value="12"> <span class="checkmark" id="t3">12</span> </label></td>
-						<td><label class="container"><input type="radio" name="time" value="13"> <span class="checkmark" id="t4">13</span> </label></td>
-						<td><label class="container"><input type="radio" name="time" value="14"> <span class="checkmark" id="t5">14</span> </label></td>
-						<td><label class="container"><input type="radio" name="time" value="15"> <span class="checkmark" id="t6">15</span> </label></td>
-						<td><label class="container"><input type="radio" name="time" value="16"> <span class="checkmark" id="t7">16</span> </label></td>
-						<td><label class="container"><input type="radio" name="time" value="17"> <span class="checkmark" id="t8">17</span> </label></td>
-						<td><label class="container"><input type="radio" name="time" value="18"> <span class="checkmark" id="t9">18</span> </label></td>
-					</tr>
-				</table>
-				<%
-            int temp=0;
-            for(int i=0;i<10;i++){
-               if(room1.get(i)=="gray"){
-         %>
-         <script>
-            var btn = document.getElementById('t<%=i%>');
-            btn.style.background = '#a3a3a3';
-            btn.disabled = 'true';
-            
-         </script>
-         
-         <%
-            System.out.println("if 문 i="+i+" temp="+temp+"색 : "+room1.get(i));
-               }else{
-                  temp++;
-               }
-            }
-         %>
- 
- </div>
-			
-						<br> <b>사용인원</b>
-				<small>*&nbsp&nbsp최소인원:6&nbsp&nbsp&nbsp최대인원:10</small>
-			<div id="usersInfo">
-				<select id="total" onchange="numberofusers()">
-					<option value="1">6</option>
-					<option value="2">7</option>
-					<option value="3">8</option>
-					<option value="4">9</option>
-					<option value="5">10</option>
-				</select>
-				<p><b>대표자&nbsp&nbsp</b><br> 
-				<input type="text" size="15" value=<%=userid%>>
-				<input type="text" size="15" value=<%=name%>>
-				<small><br>이용자 학번&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp이용자 이름</small><br>
-				<input type="text" size="15">
-				<input type="text" size="15"><br>
-				<input type="text" size="15">
-				<input type="text" size="15"><br>
-				<input type="text" size="15">
-				<input type="text" size="15"><br>
-				<input type="text" size="15">
-				<input type="text" size="15"><br>
-				<input type="text" size="15">
-				<input type="text" size="15">
-				
-			<script>
-				function numberofusers() {
-					/* alert("infunction"); */
-					var select = document.getElementById('total');
-					var chosen = select.options[select.selectedIndex];
-					
-					var oldinput = document.getElementsByTagName('input');
-					var p1 = document.getElementsByTagName('p');
-					var pNum = p1.length-2; //p 총 몇개인지 
-					/* alert("pNum : " + pNum); //지금의 숫자 
-					alert("chosen :" + chosen.value); //고른 숫자  */
-					
-					//지금의 숫자보다 더 작은 수를 고르면 그만큼 없어져야 함.
-					if (pNum - chosen.value > 0) {
-						var temp = pNum - chosen.value;
-						/* alert(temp); */
-						for (var i = 0; i < temp; i++) {
-							/* alert("remove" + i); */
-							for(var j=0; j<2;j++){
-							usersInfo.removeChild(oldinput[j]);
-							usersInfo.removeChild(p1[j]);
-							}
-						}
-					}
+				Calendar cal = Calendar.getInstance();
+			%>
 
-					if (pNum - chosen.value < 0) {
-						var temp = -(pNum - chosen.value);
-						for (var i = 0; i < temp; i++) {
-							/* alert("generate" + i); */
-							for(var j=0; j<2;j++){
-								var newinput = document.createElement('input');
-								newinput.setAttribute("type", "text");
-								newinput.setAttribute("size", "15");
-								usersInfo.appendChild(newinput);
-							}
-							var p2 = document.createElement('br');
-							usersInfo.appendChild(p2);
-							
-						}
+			<b>예약 날짜</b><br>
+			<%=cal.get(Calendar.YEAR)%>년
+			<%=cal.get(Calendar.MONTH) + 1%>월
+			<%=cal.get(Calendar.DATE)%>일 <br> <b>이용률</b><br>
+			<table id="util">
+				<tr>
+					<td><label class="container"><input type="radio"
+							name="time" value="9"> <span class="checkmark" id="t0">09</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="10"> <span class="checkmark" id="t1">10</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="11"> <span class="checkmark" id="t2">11</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="12"> <span class="checkmark" id="t3">12</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="13"> <span class="checkmark" id="t4">13</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="14"> <span class="checkmark" id="t5">14</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="15"> <span class="checkmark" id="t6">15</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="16"> <span class="checkmark" id="t7">16</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="17"> <span class="checkmark" id="t8">17</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="18"> <span class="checkmark" id="t9">18</span>
+					</label></td>
+				</tr>
+			</table>
+			<%
+				int temp = 0;
+				for (int i = 0; i < 10; i++) {
+					if (room1.get(i) == "gray") {
+			%>
+			<script>
+            var btn = document.getElementById('t<%=i%>');
+				btn.style.background = '#a3a3a3';
+				btn.disabled = 'true';
+			</script>
+
+			<%
+				/* System.out.println("if 문 i=" + i + " temp=" + temp + "색 : " + room1.get(i)); */
+					} else {
+						temp++;
 					}
 				}
-			</script>
+			%>
+
+
+			<br> <b>사용인원</b> <small>*&nbsp&nbsp최소인원:6&nbsp&nbsp&nbsp최대인원:10</small>
+			<br> <b>대표자&nbsp&nbsp</b>
+			<%=userid%>
+			<%=name%><br>
+			<div id="myform">
+				<br>이용자학번&nbsp&nbsp&nbsp&nbsp&nbsp이용자이름<br> 
+				<input type="text" name="id1" size="15"> 
+				<input type="text" name="name1" size="15"><br>
+				<input type="text" name="id2" size="15">
+				<input type="text" name="name2" size="15"><br>
+			    <input type="text" name="id3" size="15">
+				<input type="text" name="name3" size="15"><br> 
+				<input type="text" name="id4" size="15">
+			    <input type="text" name="name4" size="15"><br> 
+				<input type="text" name="id5" size="15"> 
+				<input type="text" name="name5" size="15"><br> 
+				<input type="text" name="id6" size="15">
+				<input type="text" name="name6" size="15"><br> 
+				<input type="text" name="id7" size="15"> 
+				<input type="text" name="name7" size="15"><br> 
+				<input type="text" name="id8" size="15"> 
+				<input type="text" name="name8"	size="15"><br> 
+				<input type="text" name="id9" size="15">
+				<input type="text" name="name9" size="15"><br> 
 			</div>
-
-
 			<div style="display: inline; float: left; width: 60px">
-				<button>예약하기</button>
+				<input type="submit" value="예약하기">
 			</div>
 		</form>
-		<div style="display: inline; float: left; width: 60px" id="close4">
+
+
+		<div style="display: inline; float: left; width: 60px"
+			id="reserve1close">
+			<button>취소</button>
+		</div>
+	</div>
+	
+	
+	<!-- room2 -->
+	<div id="reserve2" style="display: none;">
+		<form action="/iSpace/Reservation2" method="post">
+			<b>시설 예약</b> <br>
+			<%
+				Calendar cal2 = Calendar.getInstance();
+			%>
+
+			<b>예약 날짜</b><br>
+			<%=cal2.get(Calendar.YEAR)%>년
+			<%=cal2.get(Calendar.MONTH) + 1%>월
+			<%=cal2.get(Calendar.DATE)%>일 <br> <b>이용률</b><br>
+			<table id="util">
+				<tr>
+					<td><label class="container"><input type="radio"
+							name="time" value="9"> <span class="checkmark" id="s0">09</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="10"> <span class="checkmark" id="s1">10</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="11"> <span class="checkmark" id="s2">11</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="12"> <span class="checkmark" id="s3">12</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="13"> <span class="checkmark" id="s4">13</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="14"> <span class="checkmark" id="s5">14</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="15"> <span class="checkmark" id="s6">15</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="16"> <span class="checkmark" id="s7">16</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="17"> <span class="checkmark" id="s8">17</span>
+					</label></td>
+					<td><label class="container"><input type="radio"
+							name="time" value="18"> <span class="checkmark" id="s9">18</span>
+					</label></td>
+				</tr>
+			</table>
+			<%
+				int temp2 = 0;
+				for (int i = 0; i < 10; i++) {
+					if (room2.get(i) == "gray") {
+			%>
+			<script>
+            var btn = document.getElementById('s<%=i%>');
+				btn.style.background = '#a3a3a3';
+				btn.disabled = 'true';
+			</script>
+
+			<%
+				/* System.out.println("if 문 i=" + i + " temp=" + temp + "색 : " + room1.get(i)); */
+					} else {
+						temp2++;
+					}
+				}
+			%>
+
+
+			<br> <b>사용인원</b> <small>*&nbsp&nbsp최소인원:6&nbsp&nbsp&nbsp최대인원:10</small>
+			<br> <b>대표자&nbsp&nbsp</b>
+			<%=userid%>
+			<%=name%><br>
+			<div id="myform2">
+				<br>이용자학번&nbsp&nbsp&nbsp&nbsp&nbsp이용자이름<br> 
+				<input type="text" name="id1" size="15"> 
+				<input type="text" name="name1" size="15"><br>
+				<input type="text" name="id2" size="15">
+				<input type="text" name="name2" size="15"><br>
+			    <input type="text" name="id3" size="15">
+				<input type="text" name="name3" size="15"><br> 
+				<input type="text" name="id4" size="15">
+			    <input type="text" name="name4" size="15"><br> 
+				<input type="text" name="id5" size="15"> 
+				<input type="text" name="name5" size="15"><br> 
+				<input type="text" name="id6" size="15">
+				<input type="text" name="name6" size="15"><br> 
+				<input type="text" name="id7" size="15"> 
+				<input type="text" name="name7" size="15"><br> 
+				<input type="text" name="id8" size="15"> 
+				<input type="text" name="name8"	size="15"><br> 
+				<input type="text" name="id9" size="15">
+				<input type="text" name="name9" size="15"><br> 
+			</div>
+			<div style="display: inline; float: left; width: 60px">
+				<input type="submit" value="예약하기">
+			</div>
+		</form>
+
+
+		<div style="display: inline; float: left; width: 60px"
+			id="reserve2close">
 			<button>취소</button>
 		</div>
 	</div>
 
-
 	<script>
 		$('#seminar1').click(function() {
-			$('#reserve').toggle(0, function() {
-				$('#close4').click(function() {
-					$('#reserve').hide();
-				});
-			});
-
-		});/* 
-		   $(function(){
-			    $("#date1").datepicker();
-			}); */
-	</script>
-	<script>
-		$('#seminar2').click(function() {
-			$('#reserve').toggle(0, function() {
-				$('#close4').click(function() {
-					$('#reserve').hide();
+			$('#reserve1').toggle(0, function() {
+				$('#reserve1close').click(function() {
+					$('#reserve1').hide();
 				});
 			});
 
 		});
 	</script>
+	<script>
+		$('#seminar2').click(function() {
+			$('#reserve2').toggle(0, function() {
+				$('#reserve2close').click(function() {
+					$('#reserve2').hide();
+				});
+			});
+
+		});
+	</script>
+
 
 
 <!-- 좌석 관리 div 입. 퇴. 부. 재. 신 -->

@@ -160,7 +160,7 @@ html {
    font-weight: bold; /* 폰트를 굵게 설정 */ 
   font-family: "Trebuchet MS", Dotum;
 }
-#reserve {
+#reserve1, #reserve2 {
    padding: 3px;
    width: 500px;
    height: 500px;

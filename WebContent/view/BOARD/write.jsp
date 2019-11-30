@@ -16,7 +16,6 @@
 
 <!-- 스타일시트 참조  -->
 <link rel="stylesheet" href="css/bootstrap.css">
-<style><%@include file="/view/CSS/home.css"%></style>
 <style><%@include file="/view/CSS/mainUI.css"%></style>
 
 <title>공지사항</title>

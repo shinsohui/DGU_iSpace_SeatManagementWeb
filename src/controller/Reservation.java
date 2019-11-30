@@ -33,15 +33,6 @@ public class Reservation extends HttpServlet {
    }
 
    /**
-    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-    *      response)
-    */
-   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-         throws ServletException, IOException {
-
-   }
-
-   /**
     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
     *      response)
     */
@@ -56,32 +47,63 @@ public class Reservation extends HttpServlet {
       request.setCharacterEncoding("UTF-8");
       response.setContentType("text/html;charset=UTF-8");
 
-      String login_id = request.getParameter("login_id");
-      String login_name = request.getParameter("login_name");
-      String room = request.getParameter("room"); // 선택한 room 정보
+      String login_id = (String) session.getAttribute("id");
+      String login_name =(String)session.getAttribute("name");
+//      String room = request.getParameter("room"); // 선택한 room 정보
       String time = request.getParameter("time");
-      String id1 = request.getParameter("id1");
-      String name1 = request.getParameter("name1");
-      String id2 = request.getParameter("id2");
-      String name2 = request.getParameter("name2");
-      String id3 = request.getParameter("id3");
-      String name3 = request.getParameter("name3");
-      String id4 = request.getParameter("id4");
-      String name4 = request.getParameter("name4");
-      String id5 = request.getParameter("id5");
-      String name5 = request.getParameter("name5");
-      String id6 = request.getParameter("id6");
-      String name6 = request.getParameter("name6");
-
-      String users = "";
-      users = users + id1 + name1 + id2 + name2 + id3 + name3 + id4 + name4 + id5 + name5 + id6 + name6;
-      int Time = (Integer.parseInt(time) - 9);
-      time = Integer.toString(Time);
-
-      String id = (String) session.getAttribute("id"); // 현재 로그인 아이디 얻어옴
-
-      Connection conn = null;
       String page;
+      String reservecomplete="no";
+      String[] usersId= {request.getParameter("id1"),request.getParameter("id2"),
+    		  request.getParameter("id3"),request.getParameter("id4"),request.getParameter("id5"),
+    		  request.getParameter("id6"),request.getParameter("id7"),request.getParameter("id8"),
+    		  request.getParameter("id9")};
+      
+   
+   	  String[] usersName={request.getParameter("name1"),request.getParameter("name2"),
+    		  request.getParameter("name3"),request.getParameter("name4"),request.getParameter("name5"),
+    		  request.getParameter("name6"),request.getParameter("name7"),request.getParameter("name8"),
+    		  request.getParameter("name9")};
+   	  
+   	for(int i=0;i<9;i++) {
+ 		  System.out.println(i+"번째 "+usersId[i]+" "+usersName[i]);
+ 	  }
+ 	  
+   	
+ 	  PrintWriter out = response.getWriter();
+// 	  String problem="";
+// 	  
+ 	  for(int i=0;i<5;i++) {
+ 		  if(usersId[i].equals("")||usersName[i].equals("")) {
+ 			
+          out.println("<script>alert('At least 6 people available to check in.'); location.href='/iSpace/view/home.jsp'; </script>");
+          return;
+ 			
+ 		  }
+ 	  }
+// 	  for(int i=6;i<10;i++) {
+// 		  if(((usersName[i].equals("")==false&&usersId[i].equals(""))||(usersId[i].equals("")==false&&usersName[i].equals("")))) {
+// 			  out.println("<script>alert('There's empty field.'); location.href='/iSpace/view/home.jsp'; </script>");
+// 			  return;
+// 			 
+// 		  }
+// 	  }
+ 	  
+    String users = "";
+    for(int i=0;i<9;i++) {
+  	  users+=usersId[i]+" "+usersName[i]+"\n";
+    }
+    
+        
+    if(time==null) {
+  	  out.println("<script>alert('select TIME'); history.back(); </script>");
+    }
+    int Time = (Integer.parseInt(time) - 9);
+    time = Integer.toString(Time);
+
+   	  
+   
+      Connection conn = null;
+      
 
       try {
          conn = DBmanager.getConnection();
@@ -90,17 +112,16 @@ public class Reservation extends HttpServlet {
          System.out.println("Reservation DB connection error>>> " + e);
       }
       try {
+    	  
+    	  
          // 시설 DB 만들고 쿼리 바꾸기
          System.out.println("login id : " + login_id);
          System.out.println("login name : " + login_name);
-
          System.out.println("time : " + time);
-         System.out.println("id1 : " + id1);
-         System.out.println("name1 : " + name1);
          System.out.println("users : " + users);
 
          
-           String sql = "update " + room +" set id=?,name=?,users=?,date=? where time=?";
+           String sql = "update ROOM1 set id=?,name=?,users=?,date=? where time=?";
            
            PreparedStatement pstmt = conn.prepareStatement(sql); //
            pstmt.setString(1, login_id); 
@@ -118,12 +139,14 @@ public class Reservation extends HttpServlet {
            
           
           
-           System.out.println("reservation check : " + room);
+           System.out.println("reservation check : ROOM1");
            
-           String test = "reservation...facility";
+           reservecomplete = "compelete";
            
-           request.setAttribute("test", test);
+           request.setAttribute("reservecomplete", reservecomplete);
+      //     request.setAttribute("problem", problem);
            
+//           out.println("<script>alert('예약이 완료되었습니다!');</script>");
            page = "/view/home.jsp"; 
            RequestDispatcher dispatcher = request.getRequestDispatcher(page); 
            dispatcher.forward(request, response);
@@ -131,7 +154,7 @@ public class Reservation extends HttpServlet {
            DBmanager.close(conn);
           
       } catch (Exception e) {
-         System.out.println("!!!!status check error!!!");
+         System.out.println("!!!!reservation check error!!!");
          e.printStackTrace();
       }
 
