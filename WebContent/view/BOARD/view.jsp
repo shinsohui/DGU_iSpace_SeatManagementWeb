@@ -100,7 +100,7 @@
 
 
 	<!-- 게시판 -->
-	<div class="container" style="padding-top:60px;">
+	<div class="container" style="padding-top:100px;">
 		<div class="row">
 
 				<table class="table table-striped"

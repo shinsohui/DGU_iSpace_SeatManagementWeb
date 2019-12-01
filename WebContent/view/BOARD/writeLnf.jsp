@@ -37,7 +37,7 @@
 </head>
 
 <style type="text/css">
-<%@include file ="/view/CSS/home.css"%>
+<%@include file ="/view/CSS/mainUI.css"%>
 </style>
 
 
@@ -102,8 +102,9 @@
 
    <!-- 게시판 -->
 
-   <div class="container">
-
+  <div align="center" style="padding-top:50px; font-size: 30px;
+	font-weight: bold;  font-family:'Trebuchet MS', Dotum;  color: #252525;">분실물 게시판</div>
+		<div class="container" style= "padding-top:10px">
       <div class="row">
 
          <form action="/iSpace/UploadService" method="post"
@@ -128,7 +129,7 @@
 						<tr>
 							<td><textarea class="form-control" placeholder="글 내용"
 									name="content" maxlength="2048"
-									style="height: 200px; width: 400px;"></textarea></td>
+									style="height: 200px; width: 980px;"></textarea></td>
 						</tr>
 						<tr>
 							<td colspan="2"><input type="file" value="파일 선택" name="file" /></td>

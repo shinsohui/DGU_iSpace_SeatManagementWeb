@@ -58,9 +58,11 @@
 
 				<li>|</li>
 
-				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
+				
+				<li class="topMenuLi" style="background-color: #df633a;">
+				<a class="menuLink" style="color:white;" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
 				</a></li>
-
+				
 				<li>|</li>
 
 				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
@@ -109,20 +111,18 @@
    %>
 
 	<!-- 게시판 -->
-	<div class="container" style="padding-top:60px;">
+	<div class="container" style="padding-top:100px;">
 		<div class="row">
 
 			<table class="table table-striped"
 				style="text-align: center; border: 1px solid #eeeeee">
 
-		<!-- 		<thead>
-					<tr>
-						<th colspan="3"
-							style="background-color: #eeeeee; text-align: center;">글 보기
-						</th>
-
-					</tr>
-				</thead> -->
+				<thead>
+						<tr>
+							<th colspan="2"
+								style="background-color: #eeeeee; text-align: center; font-size:25px;">건의 게시판</th>
+						</tr>
+					</thead>
 				<tbody>
 
 					<tr>
@@ -150,7 +150,7 @@
 				</tbody>
 			</table>
 
-			<a href="suggest.jsp" class="btn btn-primary">목록</a>
+			<a href="suggest.jsp" class="btn btn-primary pull-right">목록</a>
 
 
 			<%
@@ -158,13 +158,13 @@
 				if (userid != null && userid.equals(suggest.getUserId())) {
 			%>
 
-			<a href="UpdateSuggest.jsp?suggestId=<%=suggestId%>" class="btn btn-primary">수정</a>
+			<a href="UpdateSuggest.jsp?suggestId=<%=suggestId%>" class="btn btn-primary pull-right">수정</a>
 			<!-- <form action="Update.jsp" method="get">
 			<input type="submit" value="수정" name="update">
 			</form> -->
 			<a onclick="return confirm('정말로 삭제하시겠습니까?')"
 				href="deleteSuggestAction.jsp?bbsID=<%=suggestId%>"
-				class="btn btn-primary	">삭제</a>
+				class="btn btn-primary pull-right">삭제</a>
 
 			<%
 				}

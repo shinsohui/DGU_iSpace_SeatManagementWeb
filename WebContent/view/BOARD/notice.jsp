@@ -57,7 +57,9 @@
 				<%} %>
 				<li>|</li>
 
-				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
+
+				<li class="topMenuLi" style="background-color: #df633a;">
+				<a class="menuLink" style="color:white;" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
 
 				<li>|</li>
 
@@ -147,7 +149,7 @@
 		} else {
 	%>
 	<button class="btn btn-primary pull-right"
-		onclick="if(confirm('로그인 하세요'))location.href='mainUI.jsp';"
+		onclick="if(confirm('로그인 하세요'))location.href='/iSpace/view/mainUI.jsp';"
 		type="button">글쓰기</button>
 	<%
 		}

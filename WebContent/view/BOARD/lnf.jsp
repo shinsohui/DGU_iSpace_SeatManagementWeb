@@ -64,14 +64,17 @@
 
 				<li>|</li>
 
-				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
+				<li class="topMenuLi" style="background-color: #df633a;">
+				<a class="menuLink" style="color:white;" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
 			</ul>
 		</nav>
 	</div>
 	
 	
 
-	<div class="container" style= "padding-top:50px">
+	<div align="center" style="padding-top:50px; font-size: 30px;
+  font-weight: bold;  font-family:'Trebuchet MS', Dotum;  color: #252525;">분실물게시판</div>
+	<div class="container" style= "padding-top:10px">
 		<div class="row">
 			<table class="table table-striped"
 				style="text-align: center; border: 1px solid #eeeeee">
@@ -142,7 +145,7 @@
 		} else {
 	%>
 	<button class="btn btn-primary pull-right"
-		onclick="if(confirm('로그인 하세요'))location.href='mainUI.jsp';"
+		onclick="if(confirm('로그인 하세요'))location.href='/iSpace/view/mainUI.jsp';"
 		type="button">글쓰기</button>
 	<%
 		}

@@ -58,7 +58,8 @@
 
 				<li>|</li>
 
-				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
+				<li class="topMenuLi" style="background-color: #df633a;">
+				<a class="menuLink" style="color:white;" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
 				</a></li>
 
 				<li>|</li>
@@ -68,12 +69,17 @@
 		</nav>
 	</div>
 	
-
-	<div class="container" style= "padding-top:50px">
+		<div class="container" style= "padding-top:100px">
 		<div class="row">
 			<table class="table table-striped"
 				style="text-align: center; border: 1px solid #dddddd">
 				<thead>
+				
+						<tr>
+							<th colspan="4"
+								style="background-color: #eeeeee; text-align: center; font-size:25px;">건의 게시판</th>
+						</tr>
+					
 					<tr>
 						<th style="background-color: #eeeeee; text-align: center;">번호</th>
 						<th style="background-color: #eeeeee; text-align: center;">제목</th>
@@ -110,6 +116,23 @@
 					
 				</tbody>
 			</table>
+				<!-- 회원만넘어가도록 -->
+	<%
+		//if logined userID라는 변수에 해당 아이디가 담기고 if not null
+
+		if (userid != null) {
+	%>
+	<a href="writeSuggest.jsp" class="btn btn-primary pull-right">글쓰기</a>
+	<%
+		} else {
+	%>
+	<button class="btn btn-primary pull-right"
+		onclick="if(confirm('로그인 하세요'))location.href='/iSpace/view/mainUI.jsp';"
+		type="button">글쓰기</button>
+	<%
+		}
+	%>
+				
 
 			<%
 				if (pageNumber != 1) {
@@ -128,24 +151,7 @@
 		</div>
 	</div>
 
-		<!-- 회원만넘어가도록 -->
-	<%
-		//if logined userID라는 변수에 해당 아이디가 담기고 if not null
+	
 
-		if (userid != null) {
-	%>
-	<a href="writeSuggest.jsp" class="btn btn-primary pull-right">글쓰기</a>
-	<%
-		} else {
-	%>
-	<button class="btn btn-primary pull-right"
-		onclick="if(confirm('로그인 하세요'))location.href='/iSpace/view/mainUI.jsp';"
-		type="button">글쓰기</button>
-	<%
-		}
-	%>
-				
-	</ul>
-	</div>
 </body>
 </html>

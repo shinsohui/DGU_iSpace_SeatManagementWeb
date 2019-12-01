@@ -36,7 +36,7 @@
 </head>
 
 <style type="text/css">
-<%@include file ="/view/CSS/home.css"%>
+<%@include file ="/view/CSS/mainUI.css"%>
 </style>
 
 <body>
@@ -44,14 +44,6 @@
 		<img src="/iSpace/view/Image/mainlogo.png"
 			style="width: 400px;padding-top: 18px;">
 	</p>
-	
-   <h5 style="text-align: right;">
-      <b><%=userid%> <%=name%> 님</b>, <img
-         src="/iSpace/view/Image/reportimg.png"
-         style="width: 20px; height: 20px;"> 신고<%=report%>회 <img
-         src="/iSpace/view/Image/reportimg.png"
-         style="width: 20px; height: 20px;">
-   </h5>
 
 	<%
 		if (ifmanager.equals("0")) {
@@ -100,8 +92,9 @@
 
    <!-- 게시판 -->
 
-   <div class="container">
-
+  <div align="center" style="padding-top:50px; font-size: 30px;
+  font-weight: bold;  font-family:'Trebuchet MS', Dotum;  color: #252525;">공지사항</div>
+	<div class="container" style= "padding-top:10px">
       <div class="row">
 
          <form method="post" action="writeAction.jsp">
@@ -125,7 +118,7 @@
                   <tr>
                      <td><textarea class="form-control" placeholder="글 내용"
                            name="NoticeContent" maxlength="2048"
-                           style="height: 200px; width: 400px;"></textarea></td>
+                           style="height: 200px; width: 980px;"></textarea></td>
                   </tr>
                </tbody>
             </table>
