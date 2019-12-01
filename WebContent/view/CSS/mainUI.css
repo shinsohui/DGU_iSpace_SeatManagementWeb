@@ -3,16 +3,31 @@
 
 .frame {
    width: 980px; 
-   height: 490px;
+   height: 520px;
    background-color: #b8b8b8;
    
-   opacity: 0.8;
+   opacity: 0.9;
    border-radius: 10px;
    position: absolute;
-   top: 240px;
-   left: 275px;
+   top: 230px;
+   left: 16.4%;
 }
-
+.rightbox{
+   background-color: white;
+   position: absolute;
+   border-radius: 10px;
+   opacity: 0.9;
+   vertical-align: middle;
+}
+.seatinfo{
+	width:650px;
+	height:20px;
+	margin-left:450px;
+	margin-top:15px;
+	font-weight: bold; /* 폰트를 굵게 설정 */
+   font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */
+   color: #252525;
+}
 .whitebox {
    background-color: white;
    position: absolute;
@@ -47,7 +62,9 @@ html {
    -o-background-size: cover;
    background-size: cover;
 }
+
 #topMenu {
+	margin:0 auto;
      height: 40px;
      width: 1010px; 
 }
@@ -57,7 +74,7 @@ html {
   margin-left: 10px;
   margin-right: 0px; /* 메인 메뉴 안의 ul의 margin을 없앰 */ 
   padding: 0px; /* 메인 메뉴 안의 ul의 padding을 없앰 */ 
-
+	display:inline-block;
 } 
 #topMenu ul li { /* 메인 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용(상위/하위메뉴 모두) */ 
   color:white; /* 글씨 색을 흰색으로 설정 */ 
@@ -72,7 +89,7 @@ html {
 .menuLink { /* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */ 
   text-decoration:none; /* a 태그의 꾸밈 효과 제거 */ 
   display: block; /* a 태그의 클릭 범위를 넓힘 */ 
-  width: 190px; /* 기본 넓이를 150px로 설정 */ 
+  width: 241px; /* 기본 넓이를 150px로 설정 */ 
   font-size: 13px; /* 폰트 사이즈를 12px로 설정 */ 
   font-weight: bold; /* 폰트를 굵게 설정 */ 
   font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */ 
@@ -80,10 +97,9 @@ html {
 } 
 
 .topMenuLi:hover .menuLink { /* 상위 메뉴의 li에 마우스오버 되었을 때 스타일 설정 */ 
-  color: white; /* 글씨 색 blue */ 
+  color: white; /* 글씨 색 white */ 
   background-color: #4b5ef2; /* 배경색을 보라색으로 설정 */ 
   opacity:0.7;
-  text-decoration:none; /* a 태그의 꾸밈 효과 제거 */ 
 } 
 
 #board{
@@ -113,4 +129,17 @@ html {
   font-weight: bold; /* 폰트를 굵게 설정 */ 
   font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */ 
   color: #252525; 
+}
+.myloginarea { 
+       clear:both;
+       position: absolute;
+       width: 250;
+       height: 30px;
+       float: right;
+       top: 10px;
+       right: 10px;
+       overflow: hidden;
+       font-family:Arial;
+       font-size:12px;
+       text-align:right;
 }

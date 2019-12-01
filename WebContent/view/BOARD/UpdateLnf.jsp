@@ -5,9 +5,6 @@
 <%@ page import="board.lnfDAO"%>
 <%@ page import="javax.servlet.*" %>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 
 <!-- 세션 유지를 위해  -->
 <%
@@ -27,7 +24,13 @@
 <!-- 뷰포트 -->
 <meta name="viewport" content="width=device-width" initial-scale="1">
 <!-- 스타일시트 참조  -->
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <title>jsp 게시판 웹사이트</title>
 </head>
 <body>
@@ -61,24 +64,7 @@
 
 		</div>
 
-		<!-- <div class="collapse navbar-collapse"
-			id="#bs-example-navbar-collapse-1">
-
-			<ul class="nav navbar-nav">
-				<li><a href="mainUI.jsp">메인</a></li>
-				<li class="active"><a href="notice.jsp">게시판</a></li>
-			</ul>
-			
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">회원관리<span class="caret"></span></a>
-
-					<ul class="dropdown-menu">
-						<li><a href="logoutAction.jsp">로그아웃</a></li>
-					</ul></li>
-			</ul>
-		</div> -->
+		
 	</nav>
 
 	<!-- 게시판 -->

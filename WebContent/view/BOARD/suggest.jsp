@@ -5,14 +5,17 @@
 <%@ page import = "board.suggest"%>
 <%@ page import = "java.util.ArrayList"%> 		
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <title>°Ô½ÃÆÇ</title>
 <%
    //User user = new User();//generate user
@@ -27,7 +30,6 @@
 </head>
 
 <style type="text/css">
-<%@include file ="/view/CSS/mainUI.css"%>
 <%@include file ="/view/CSS/home.css"%>
 </style>
 
@@ -35,18 +37,16 @@
 <body>
 	<p style="text-align: center;">
 		<img src="/iSpace/view/Image/mainlogo.png"
-			style="width: 400px; height: 80px; padding-top: 3px;">
+			style="width: 400px;padding-top: 18px;">
 	</p>
 	
-      <h5 style="text-align: right;">
-         <b><%=userid%> <%=name%> ´Ô</b>
-      </h5>
-      <a href="/iSpace/view/logout.jsp">
-  		 <button id="logout">·Î±×¾Æ¿ô</button>
-		</a>
+      <div class="myloginarea">
+      <%=userid%> <%=name%> ´Ô, È¯¿µÇÕ´Ï´Ù. | <a href="/iSpace/view/logout.jsp"
+         style="text-decoration: none; color: gray;"> ·Î±×¾Æ¿ô </a>
+   </div>
       
      <div align="center">
-		<nav id="topMenu">
+		<nav id="topMenu" style="padding-top:26px;">
 			<ul><% if(userid!=null) {%>
 				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
 				<%}else{ %>
@@ -69,7 +69,7 @@
 	</div>
 	
 
-	<div class="container">
+	<div class="container" style= "padding-top:50px">
 		<div class="row">
 			<table class="table table-striped"
 				style="text-align: center; border: 1px solid #dddddd">

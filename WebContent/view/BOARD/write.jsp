@@ -3,9 +3,6 @@
 
 <%@ page import="java.io.PrintWriter"%>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 <!DOCTYPE html>
 
 <html>
@@ -15,8 +12,13 @@
 <meta name="viewport" content="width=device-width" initial-scale="1">
 
 <!-- 스타일시트 참조  -->
-<link rel="stylesheet" href="css/bootstrap.css">
-<style><%@include file="/view/CSS/mainUI.css"%></style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 <title>공지사항</title>
 
@@ -33,10 +35,14 @@
 
 </head>
 
+<style type="text/css">
+<%@include file ="/view/CSS/home.css"%>
+</style>
+
 <body>
-   <p style="text-align: center;">
+<p style="text-align: center;">
 		<img src="/iSpace/view/Image/mainlogo.png"
-			style="width: 400px; height: 80px; padding-top: 3px;">
+			style="width: 400px;padding-top: 18px;">
 	</p>
 	
    <h5 style="text-align: right;">
@@ -69,7 +75,7 @@
 	%>
 
   <div align="center">
-		<nav id="topMenu">
+		<nav id="topMenu" style="padding-top:26px;">
 			<ul><% if(userid!=null) {%>
 				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
 				<%}else{ %>
@@ -91,47 +97,6 @@
 		</nav>
 	</div>
 
-<%--    <%
-      //라긴안된경우
-      if (userid == null) {
-   %> --%>
-
-<!--    <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown"><a href="#" class="dropdown-toggle"
-         data-toggle="dropdown" role="button" aria-haspopup="true"
-         aria-expanded="false">접속하기<span class="caret"></span></a>
-
-         <ul class="dropdown-menu">
-
-            <li><a href="login.jsp">로그인</a></li>
-
-            <li><a href="join.jsp">회원가입</a></li>
-
-         </ul></li>
-
-   </ul> -->
-
-<%--    <%
-      } else {
-   %>
- --%>
-<!--    <ul class="nav navbar-nav navbar-right">
-
-      <li class="dropdown"><a href="#" class="dropdown-toggle"
-         data-toggle="dropdown" role="button" aria-haspopup="true"
-         aria-expanded="false">회원관리<span class="caret"></span></a>
-
-         <ul class="dropdown-menu">
-
-            <li><a href="logoutAction.jsp">로그아웃</a></li>
-
-         </ul></li>
-
-   </ul>
- -->
-<%--    <%
-      }
-   %> --%>
 
    <!-- 게시판 -->
 

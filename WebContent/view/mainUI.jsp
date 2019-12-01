@@ -37,36 +37,44 @@
 			style="width: 400px; height: 80px; padding-top: 3px;"></a>
 	</p>
 
-	<!-- remove -->
-	<a href="/iSpace/view/home.jsp">home.jsp</a>
-	<a href="/iSpace/view/mainUI.jsp">mainUI.jsp</a>
 
-    <div align="center">
-	<nav id="topMenu">
-		<ul>
-			<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
-			<li>|</li>
 
-			<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
+<div align="center">
+		<nav id="topMenu">
+			<ul>
+				<li class="topMenuLi"><a class="menuLink"
+					href="/iSpace/view/home.jsp">SEAT </a></li>
+				<li>|</li>
 
-			<li>|</li>
+				<li class="topMenuLi"><a class="menuLink"
+					href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
 
-			<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
-			</a></li>
-			
-			<li>|</li>
-			
-			<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
-		</ul>
-	</nav>
+				<li>|</li>
+
+				<li class="topMenuLi"><a class="menuLink"
+					href="/iSpace/view/BOARD/suggest.jsp">SUGGEST </a></li>
+
+				<li>|</li>
+
+				<li class="topMenuLi"><a class="menuLink"
+					href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
+			</ul>
+		</nav>
 	</div>
-	
-	
+
+
+
+
+
 
 	<div class="frame">
-
+	<div class="seatinfo">
+	<img src="/iSpace/view/Image/avail.png" style="width:20px;">&nbsp이용좌석 
+	<img src="/iSpace/view/Image/absence.png" style="width:20px;">&nbsp부재좌석 
+	<img src="/iSpace/view/Image/unavail.png" style="width:20px;">&nbsp이용불가 
+	</div>
 		<div class="whitebox" id="seat"
-			style="width:700px; height: 460px; margin-left: 10px;">
+			style="width: 700px; height: 460px; margin-left: 10px;">
 
 			<p style="text-align: center;">
 
@@ -316,64 +324,75 @@
 				<input type="button" onclick="javascript:seatbtn()" value="77"
 					style="color: black; background: <%=color.get(76)%>; height: 30px; position: absolute; left: 540px; top: 420px; width: 30px; border-radius: 18px">
 		</div>
-	</div>
 
-	<script>
+
+		<script>
    function seatbtn(){ alert('You need to LOGIN first'); }
 
    </script>
 
 
-	<div class="whitebox"
-		style="width: 230px; left: 995px; top: 240px; height: 170px;">
+		<div class="rightbox"
+			style="width: 230px; left: 730px; top: 45px; height: 170px;">
 
-		<form action=/iSpace/DoLogin method="post"
-			style="padding-top: 55px; padding-left: 28px;">
-			<table>
-				<tr>
-					<td><input type="text" name="id" placeholder="ID"
-						autocomplete="on" tabindex="1"></td>
-					<td rowspan=2><input type="submit" value="LOGIN" tabindex="3"></td>
-				</tr>
+			<form action=/iSpace/DoLogin method="post"
+				style="padding-top: 55px; padding-left: 28px;">
+				<table>
+					<tr>
+						<td><input type="text" name="id" placeholder="ID"
+							autocomplete="on" tabindex="1"></td>
+						<td rowspan=2><input type="submit" value="LOGIN" tabindex="3"></td>
+					</tr>
 
-				<tr>
-					<td><input type="password" name="pw" placeholder="PW"
-						autocomplete="off" tabindex="2"></td>
-				</tr>
-			</table>
-		</form>
-	</div>
+					<tr>
+						<td><input type="password" name="pw" placeholder="PW"
+							autocomplete="off" tabindex="2"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
 
-	<div class="whitebox"
-      style="width: 210px; left: 995px; height: 260px; background-color: yellow; top: 420px; font-size: 17px; padding: 10px" >
+		<div class="rightbox"
+			style="width: 210px; left: 730px; height: 260px; background-color: yellow; top: 225px; font-size: 17px; padding: 10px">
 
-      공지사항 <a href="/iSpace/view/BOARD/notice.jsp" style="text-decoration: none">+ <br></a>
-      
-         <%
+			공지사항 <a href="/iSpace/view/BOARD/notice.jsp"
+				style="text-decoration: none">+ <br></a>
+
+			<%
             int pageNumber = 1; //기본 페이지 넘버
             //페이지넘버값이 있을때
             if (request.getParameter("pageNumber") != null) {
                pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
             }
-         %> 
-         <br>
-         <%
+         %>
+			<br>
+			<%
     noticeDAO notice = new noticeDAO();
     ArrayList<notice> list = notice.getList(pageNumber);
     for (int i = 0; i < list.size(); i++) {
                 %>
-		<table id="subboard">
-         <tr>
-         
-            <td><a href="/iSpace/view/BOARD/view.jsp?noticeId=<%=list.get(i).getNoticeId()%>">
-                  <%=list.get(i).getNoticeTitle()%><br>
-            </a></td>
-         </tr>
-         </table> <%
-    }
- %>
-   </div>
+			<table id="subboard">
+			<tr>
 
+				<td><a
+					href="/iSpace/view/BOARD/view.jsp?noticeId=<%=list.get(i).getNoticeId()%>">
+
+						<%
+							if (list.get(i).getNoticeTitle().length() < 20) {
+						%> <%=list.get(i).getNoticeTitle()%><br><%
+ 						} else {
+ 						%>
+						<%=list.get(i).getNoticeTitle().substring(0,19)%>...<br>
+						<%} %>
+				</a></td>
+			</tr>
+		</table>
+		<%
+			}
+		%>
+	</div>
+
+	</div>
 
 
 </body>

@@ -56,15 +56,12 @@
 			style="width: 400px; height: 80px; padding-top: 3px;"></a>
 	</p>
 
-	<!-- remove -->
-	<a href="/iSpace/view/home.jsp">home.jsp</a>
-	<a href="/iSpace/view/mainUI.jsp">mainUI.jsp</a>
-
-
 	<div align="center">
 		<nav id="topMenu">
 			<ul>
-				<li class="topMenuLi"><a class="menuLink"
+				<li class="topMenuLi" style="color: white; /* 글씨 색 white */ 
+  background-color: #4b5ef2; /* 배경색을 보라색으로 설정 */ 
+  opacity:0.9;"><a class="menuLink"
 					href="/iSpace/view/home.jsp">SEAT </a></li>
 				<li>|</li>
 
@@ -89,6 +86,12 @@
 
 
 	<div class="frame">
+	<div class="seatinfo">
+	<img src="/iSpace/view/Image/avail.png" style="width:20px;">&nbsp이용좌석 
+	<img src="/iSpace/view/Image/absence.png" style="width:20px;">&nbsp부재좌석 
+	<img src="/iSpace/view/Image/unavail.png" style="width:20px;">&nbsp이용불가 
+	</div>
+	
 		<div class="whitebox"
 			style="width: 700px; height: 460px; margin-left: 10px;">
 			<p style="text-align: center;">
@@ -349,9 +352,9 @@
 		</div>
 		
 
-		<div class="whitebox"
-			style="width: 230px; height: 170px; margin-left: 720px; text-align: center">
-			
+		<div class="rightbox"
+			style="width: 230px; left: 730px; top: 45px; height: 170px; text-align:center">
+
 			<h5>
 				<b><%=userid%> <%=name%> 님</b> <br> <img
 					src="/iSpace/view/Image/reportimg.png"
@@ -376,40 +379,50 @@
   		 <button id="logout">로그아웃</button>
 		</a>
 		</div>
-		</div>
-		<div class="whitebox"
-      style="width: 210px; left: 995px; height: 260px; background-color: yellow; top: 420px; font-size: 17px; padding: 10px" >
+		
+	<div class="rightbox"
+			style="width: 210px; left: 730px; height: 260px; background-color: yellow; top: 225px; font-size: 17px; padding: 10px">
 
-      공지사항 <a href="/iSpace/view/BOARD/notice.jsp" style="text-decoration: none">+ <br></a>
-      
-         <%
+		공지사항 <a href="/iSpace/view/BOARD/notice.jsp"
+			style="text-decoration: none">+ <br></a>
+
+		<%
             int pageNumber = 1; //기본 페이지 넘버
             //페이지넘버값이 있을때
             if (request.getParameter("pageNumber") != null) {
                pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
             }
-         %> 
-         <br>
-         <%
+         %>
+		<br>
+		<%
     noticeDAO notice = new noticeDAO();
     ArrayList<notice> list = notice.getList(pageNumber);
     for (int i = 0; i < list.size(); i++) {
                 %>
 		<table id="subboard">
-         <tr>
-         
-            <td><a href="/iSpace/view/BOARD/view.jsp?noticeId=<%=list.get(i).getNoticeId()%>">
-                  <%=list.get(i).getNoticeTitle()%><br>
-            </a></td>
-         </tr>
-         </table> <%
-    }
- %>
-   </div>
-		
-	
+			<tr>
 
-	
+				<td><a
+					href="/iSpace/view/BOARD/view.jsp?noticeId=<%=list.get(i).getNoticeId()%>">
+
+						<%
+							if (list.get(i).getNoticeTitle().length() < 20) {
+						%> <%=list.get(i).getNoticeTitle()%><br><%
+ 						} else {
+ 						%>
+						<%=list.get(i).getNoticeTitle().substring(0,19)%>...<br>
+						<%} %>
+				</a></td>
+			</tr>
+		</table>
+		<%
+			}
+		%>
+	</div>
+</div>
+
+
+
 
 	<!-- 시설예약  -->
 	<!-- 날짜, 시간,  -->
