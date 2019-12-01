@@ -17,23 +17,19 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-<title>게시판</title>
+<title>공지게시판</title>
 <%
-   //User user = new User();//generate user
    String userid = (String) session.getAttribute("id");
-   //String useridd= (String) session.setAttribute("userid");
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
    String report = (String) session.getAttribute("report"); 
    String ifmanager = (String) session.getAttribute("ifmanager"); 
-
-  //String selected=(String) session.getAttribute("selected"); */
 %>
 </head>
 
 <style type="text/css">
-<%@include file ="/view/CSS/home.css"%>
+<%@include file ="/view/CSS/mainUI.css"%>
 </style>
 
 
@@ -74,13 +70,16 @@
 	</div>
 	
 	
-	<div align="center" style="padding-top:50px; font-size: 30px;
-  font-weight: bold;  font-family:'Trebuchet MS', Dotum;  color: #252525;">공지사항</div>
-	<div class="container" style= "padding-top:10px">
+	<div class="container" style= "padding-top:100px">
 		<div class="row">
 			<table class="table table-striped"
 				style="text-align: center; border: 1px solid #eeeeee">
 				<thead>
+					<tr>
+						<th colspan="4"
+							style="background-color: white; text-align: center; font-size: 25px;">공지사항</th>
+					</tr>
+
 					<tr>
 						<th style="background-color: #eeeeee; text-align: center;">번호</th>
 						<th style="background-color: #eeeeee; text-align: center;">제목</th>
@@ -121,6 +120,21 @@
 					%>
 				</tbody>
 			</table>
+			
+			<!-- 회원만넘어가도록 -->
+			<%
+				if (userid != null) {
+			%>
+			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+			<%
+				} else {
+			%>
+			<button class="btn btn-primary pull-right"
+				onclick="if(confirm('로그인 하세요'))location.href='/iSpace/view/mainUI.jsp';"
+				type="button">글쓰기</button>
+			<%
+		}
+	%>
 
 			<%
 				if (pageNumber != 1) {
@@ -139,25 +153,5 @@
 		</div>
 	</div>
 
-	<!-- 회원만넘어가도록 -->
-	<%
-		//if logined userID라는 변수에 해당 아이디가 담기고 if not null
-   if (userid != null) {
-	%>
-	<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
-	<%
-		} else {
-	%>
-	<button class="btn btn-primary pull-right"
-		onclick="if(confirm('로그인 하세요'))location.href='/iSpace/view/mainUI.jsp';"
-		type="button">글쓰기</button>
-	<%
-		}
-	%>
-
-	<!-- <a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a> -->
-				
-	</ul>
-	</div>
 </body>
 </html>

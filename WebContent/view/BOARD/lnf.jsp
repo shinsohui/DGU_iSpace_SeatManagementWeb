@@ -19,29 +19,26 @@
 
 <title>게시판</title>
 <%
-   //User user = new User();//generate user
    String userid = (String) session.getAttribute("id");
-   //String useridd= (String) session.setAttribute("userid");
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
-   String report = (String) session.getAttribute("report");/* 
-                           String selected=(String) session.getAttribute("selected"); */
+   String report = (String) session.getAttribute("report");
 %>
 </head>
 
 <style type="text/css">
-<%@include file ="/view/CSS/home.css"%>
+<%@include file ="/view/CSS/mainUI.css"%>
 </style>
 
-
 <body>
+
 	<p style="text-align: center;">
 		<img src="/iSpace/view/Image/mainlogo.png"
-			style="width: 400px;padding-top: 18px;">
+			style="width: 400px; padding-top: 18px;">
 	</p>
-	
-      <div class="myloginarea">
+
+	<div class="myloginarea">
       <%=userid%> <%=name%> 님, 환영합니다. | <a href="/iSpace/view/logout.jsp"
          style="text-decoration: none; color: gray;"> 로그아웃 </a>
    </div>
@@ -69,16 +66,17 @@
 			</ul>
 		</nav>
 	</div>
-	
-	
 
-	<div align="center" style="padding-top:50px; font-size: 30px;
-  font-weight: bold;  font-family:'Trebuchet MS', Dotum;  color: #252525;">분실물게시판</div>
-	<div class="container" style= "padding-top:10px">
+	<div class="container" style="padding-top: 100px">
 		<div class="row">
 			<table class="table table-striped"
 				style="text-align: center; border: 1px solid #eeeeee">
 				<thead>
+					<tr>
+						<th colspan="4"
+							style="background-color: white; text-align: center; font-size: 25px;">분실물게시판</th>
+					</tr>
+
 					<tr>
 						<th style="background-color: #eeeeee; text-align: center;">번호</th>
 						<th style="background-color: #eeeeee; text-align: center;">제목</th>
@@ -86,8 +84,7 @@
 						<th style="background-color: #eeeeee; text-align: center;">작성일</th>
 					</tr>
 				</thead>
-				
-				
+
 				<tbody>
 					<%
 						int pageNumber = 1; //기본 페이지 넘버
@@ -104,9 +101,8 @@
 					%>
 					<tr>
 						<td><%=list.get(i).getLnfId()%></td>
-						<td><a
-							href="viewLnf.jsp?lnfId=<%=list.get(i).getLnfId()%>">
-							<%=list.get(i).getLnfTitle()%></a></td>
+						<td><a href="viewLnf.jsp?lnfId=<%=list.get(i).getLnfId()%>">
+								<%=list.get(i).getLnfTitle()%></a></td>
 						<td><%=list.get(i).getUserId()%></td>
 						<td><%=list.get(i).getLnfDate().substring(0, 11)%></td>
 
@@ -116,11 +112,29 @@
 					%>
 				</tbody>
 			</table>
+			
+			<!-- 회원만넘어가도록 -->
+			<%
+				if (userid != null) {
+			%>
+			
+			<a href="writeLnf.jsp" class="btn btn-primary pull-right">글쓰기</a>
+			
+			<%
+				} else {
+			%>
+			<button class="btn btn-primary pull-right"
+				onclick="if(confirm('로그인 하세요'))location.href='/iSpace/view/mainUI.jsp';"
+				type="button">글쓰기</button>
+			<%
+				}
+			%>
 
 			<%
 				if (pageNumber != 1) {
 			%>
-			<a href="lnf.jsp?pageNumber=<%=pageNumber - 1%>" class= "btn btn-success btn-arraw-left">이전</a>
+			<a href="lnf.jsp?pageNumber=<%=pageNumber - 1%>"
+				class="btn btn-success btn-arraw-left">이전</a>
 			<%
 				}
 				if (lnf.nextPage(pageNumber + 1)) {
@@ -134,26 +148,5 @@
 		</div>
 	</div>
 
-		<!-- 회원만넘어가도록 -->
-	<%
-		//if logined userID라는 변수에 해당 아이디가 담기고 if not null
-
-		if (userid != null) {
-	%>
-	<a href="writeLnf.jsp" class="btn btn-primary pull-right">글쓰기</a>
-	<%
-		} else {
-	%>
-	<button class="btn btn-primary pull-right"
-		onclick="if(confirm('로그인 하세요'))location.href='/iSpace/view/mainUI.jsp';"
-		type="button">글쓰기</button>
-	<%
-		}
-	%>
-
-
-
-	</ul>
-	</div>
 </body>
 </html>

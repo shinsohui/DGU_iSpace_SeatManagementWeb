@@ -8,13 +8,11 @@
 
 <!-- 세션 유지를 위해  -->
 <%
-   //User user = new User();//generate user
    String userid = (String) session.getAttribute("id");
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
    String report = (String) session.getAttribute("report");
-/* String lnfId = (String) session.getAttribute("lnfId"); */
  %>
 
 <!DOCTYPE html>
@@ -31,9 +29,48 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<title>jsp 게시판 웹사이트</title>
+<title>분실물게시판 수정</title>
 </head>
+
+<style type="text/css">
+<%@include file ="/view/CSS/mainUI.css"%>
+</style>
+
 <body>
+
+ <p style="text-align: center;">
+		<img src="/iSpace/view/Image/mainlogo.png"
+			style="width: 400px;padding-top: 18px;">
+	</p>
+
+<!-- 게시판 -->
+	<div align="center">
+      <nav id="topMenu" style="padding-top:26px;">
+         <ul><% if(userid!=null) {%>
+            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
+            <%}else{ %>
+            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
+            <%} %>
+            <li>|</li>
+
+            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
+
+            <li>|</li>
+
+            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
+            </a></li>
+
+            <li>|</li>
+
+            <li class="topMenuLi" style="background-color: #df633a;">
+				<a class="menuLink" style="color:white;"  href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
+         </ul>
+      </nav>
+   </div>
+    <div class="myloginarea">
+      <%=userid%> <%=name%> 님, 환영합니다. | <a href="/iSpace/view/logout.jsp"
+         style="text-decoration: none; color: gray;"> 로그아웃 </a>
+   </div>
 
 	<%
 		int lnfId = 0;
@@ -44,33 +81,12 @@
 		}
 
 		lnf lnf = new lnfDAO().getLnf(lnfId);
-		/* HttpSession session = request.getSession();
-		 */		
+		
 	%>
 	
-	<!-- 네비게이션  -->
-	<nav class="navbar navbar-default">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="bs-example-navbar-collapse-1"
-				aria-expaned="false">
-
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-
-			</button>
-
-			<a class="navbar-brand" href="lnf.jsp">JSP 게시판</a>
-
-		</div>
-
-		
-	</nav>
-
 	<!-- 게시판 -->
-
-	<div class="container">
-		<div class="row">
+	<div class="container" style="padding-left:108px; padding-top:100px;">
+		<div class="row" style = "width:980px">
 			<form action="/iSpace/UpdateService" method="post"
       enctype="multipart/form-data">
 
@@ -79,37 +95,40 @@
 					<thead>
 					
 						<tr>
-							<th colspan="2" style="background-color: #eeeeee; text-align: center;">
-							글 수정
+							<th colspan="2" style="background-color: white; text-align: center; font-size:25px;">
+							분실물게시판
 							</th>
 						</tr>
 					</thead>
 					<tbody>
-					
+
 						<tr>
 
 							<td colspan="2"><input type="text" class="form-control"
 								placeholder="글 제목" name="lnfTitle" maxlength="50"
 								value="<%= lnf.getLnfTitle() %>"></td>
 						</tr>
-						<tr>
-							<td>현재 첨부된 파일</td>
-							<td><img style="width:200px;" src="/iSpace/upload/<%=lnf.getLnfFile()%>"></td>
-						</tr>
-						<tr>	
-							<td colspan="2"><input type="file" value="파일 선택" name="lnfFile"/>
-						</tr>
+					
 						<tr>
 							<td><textarea class="form-control" placeholder="글 내용"
-									name="lnfContent" maxlength="2048" style="height: 350px;"><%= lnf.getLnfContent() %></textarea>
-									</td>
+									name="lnfContent" maxlength="2048"
+									style="height: 200px; width: 980px;"><%=lnf.getLnfContent()%></textarea>
+							</td>
 						</tr>
-						
+						<tr>
+							<td colspan="2"><input type="file" value="파일 선택"
+								name="lnfFile" />
+						</tr>
+							<tr>
+							<td><img style= "width: 100px;" src="/iSpace/upload/<%=lnf.getLnfFile()%>"></td>
+						</tr>
 					</tbody>
 				</table>
 
 				<input type="submit" class="btn btn-primary pull-right" value="글수정">
 			</form>
+	    <a href="lnf.jsp" class="btn btn-primary pull-right">목록</a> 
+			
 		</div>
 	</div>
 

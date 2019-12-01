@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-
 <%@ page import="java.io.PrintWriter"%>
 
 <!DOCTYPE html>
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,14 +21,12 @@
 <title>공지사항</title>
 
 <%
-   //User user = new User();//generate user
    String userid = (String) session.getAttribute("id");
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
    String report = (String) session.getAttribute("report");
    String ifmanager = (String) session.getAttribute("ifmanager"); 
- //String selected=(String) session.getAttribute("selected"); */
 %>
 
 </head>
@@ -91,21 +87,17 @@
 
 
    <!-- 게시판 -->
-
-  <div align="center" style="padding-top:50px; font-size: 30px;
-  font-weight: bold;  font-family:'Trebuchet MS', Dotum;  color: #252525;">공지사항</div>
-	<div class="container" style= "padding-top:10px">
-      <div class="row">
-
+	<div class="container" style= "padding-left:108px; padding-top:100px;">
+      <div class="row" style="width:980px">
          <form method="post" action="writeAction.jsp">
 
-            <table class="table table-striped"
-               style="text-align: center; border: 1px solid #dddddd">
+           <table class="table table-striped"
+					style="text-align: center; border: 1px solid #dddddd; padding-top:10px; padding-left:300px;">
 
                <thead>
                   <tr>
                      <th colspan="2"
-                        style="background-color: #eeeeee; text-align: center;">공지게시판</th>
+                        style="background-color: white; text-align: center; font-size:25px;">공지사항</th>
                   </tr>
                </thead>
                
@@ -122,10 +114,12 @@
                   </tr>
                </tbody>
             </table>
-            
-            <input type="submit" class="btn btn-primary pull-right" value="글쓰기" />
+
+				<input type="submit" class="btn btn-primary pull-right" value="글쓰기" />
 
          </form>
+         				<a href="notice.jsp" class="btn btn-primary pull-right">목록</a> 
+         
       </div>
    </div>
 

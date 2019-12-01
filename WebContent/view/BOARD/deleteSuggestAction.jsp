@@ -11,30 +11,23 @@
 
 <!-- 세션 유지를 위해  -->
 <%
-   //User user = new User();//generate user
    String userid = (String) session.getAttribute("id");
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
    String report = (String) session.getAttribute("report");
    String suggestId = (String) session.getAttribute("suggestId");
-   //String noticeId = (String) request.getAttribute("noticeId");
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>jsp 게시판 웹사이트</title>
+<title>건의게시판 글 삭제</title>
 </head>
 <body>
 
 	<%
-		/* String userId = null;
-		if (session.getAttribute("userId") != null) {//유저아이디이름으로 세션이 존재하는 회원들은 
-			userId = (String) session.getAttribute("userId");//유저아이디에 해당 세션값을 넣어준다.
-		} */
-		
 		if (userid == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
@@ -53,7 +46,6 @@
 		}
 
 		if(index == 0) {
-
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('유효하지 않은 글 입니다')");
@@ -71,7 +63,6 @@
 			script.println("alert('권한이 없습니다')");
 			script.println("location.href='suggest.jsp'");
 			script.println("</script>");			
-
 		}
 
 		else{
@@ -92,7 +83,6 @@
 				script.println("<script>");
 				script.println("location.href='suggest.jsp'");
 				script.println("</script>");
-
 			}
 		}
 	%>

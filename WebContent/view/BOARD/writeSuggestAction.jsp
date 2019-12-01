@@ -34,16 +34,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>분실물게시판</title>
+<title>건의게시판 글 쓰기</title>
 </head>
 
 <body>
 	<%
-		/* String userID = null;
-		if (session.getAttribute("userID") != null) {//유저아이디이름으로 세션이 존재하는 회원들은 
-			userID = (String) session.getAttribute("userID");//유저아이디에 해당 세션값을 넣어준다.
-		} */
-		
 		//로그인 안됐을 때 이건 일단 보류야 왜냐면 처음 화면에 메뉴바 존재여부 결정 안했으니까
 		if (userid == null) {
 			PrintWriter script = response.getWriter();
@@ -83,7 +78,6 @@
 				script.println("</script>");
 			}
 		}
-		//}
 	%>
 
 </body>

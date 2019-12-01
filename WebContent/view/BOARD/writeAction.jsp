@@ -13,7 +13,7 @@
 
 <!-- 한명의 회원정보를 담는 user클래스를 자바 빈즈로 사용 / scope:페이지 현재의 페이지에서만 사용-->
 <jsp:useBean id="notice" class="board.notice" scope="page">
-<jsp:setProperty name="notice" property="noticeTitle" param="NoticeTitle"/><!-- bbs.setBbsTitle(requrst) -->
+<jsp:setProperty name="notice" property="noticeTitle" param="NoticeTitle"/>
 <jsp:setProperty name="notice" property="noticeContent" param="NoticeContent"/>
 </jsp:useBean>
 
@@ -22,14 +22,13 @@
 	System.out.println(notice);
 %> --%>
 <%
-   //User user = new User();//generate user
    String userid = (String) session.getAttribute("id");
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
-   String report = (String) session.getAttribute("report");/* 
-                           String selected=(String) session.getAttribute("selected"); */
+   String report = (String) session.getAttribute("report");
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,11 +39,6 @@
 
 <body>
 	<%
-		/* String userID = null;
-		if (session.getAttribute("userID") != null) {//유저아이디이름으로 세션이 존재하는 회원들은 
-			userID = (String) session.getAttribute("userID");//유저아이디에 해당 세션값을 넣어준다.
-		} */
-		
 		//로그인 안됐을 때 이건 일단 보류야 왜냐면 처음 화면에 메뉴바 존재여부 결정 안했으니까
 		if (userid == null) {
 			PrintWriter script = response.getWriter();
@@ -84,10 +78,8 @@
 				script.println("</script>");
 			}
 		}
-		//}
 	%>
 
 </body>
-
 </html>
 

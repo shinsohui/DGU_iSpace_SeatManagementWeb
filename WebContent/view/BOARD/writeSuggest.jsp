@@ -22,18 +22,15 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 
-<title>건의게시판</title>
+<title>건의게시판 글쓰기</title>
 
 <%
-   //User user = new User();//generate user
    String userid = (String) session.getAttribute("id");
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
    String report = (String) session.getAttribute("report");
    String ifmanager = (String) session.getAttribute("ifmanager"); 
-
-  //String selected=(String) session.getAttribute("selected"); */
 %>
 
 </head>
@@ -94,11 +91,15 @@
 		</nav>
 	</div>
 
-	<!-- 게시판 -->
 
-	<!-- <div align="center" style="padding-top:50px; font-size: 30px;
-	font-weight: bold;  font-family:'Trebuchet MS', Dotum;  color: #252525;">건의게시판</div> -->
-		<div class="container" style="padding-left:108px; padding-top:100px;">
+	<div class="myloginarea">
+		<%=userid%>
+		<%=name%> 님, 환영합니다. | <a href="/iSpace/view/logout.jsp"
+			style="text-decoration: none; color: gray;"> 로그아웃 </a>
+	</div>
+	
+	<!-- 게시판 -->
+   	<div class="container" style="padding-left:108px; padding-top:100px;">
 		<div class="row" style= "width:980px;">
 			<form method="post" action="writeSuggestAction.jsp">
 
@@ -108,7 +109,7 @@
 					<thead>
 						<tr>
 							<th colspan="2"
-								style="background-color: #eeeeee; text-align: center; font-size:25px;">건의 게시판</th>
+								style="background-color: white; text-align: center; font-size:25px;">건의 게시판</th>
 						</tr>
 					</thead>
 					
@@ -130,6 +131,8 @@
 				<input type="submit" class="btn btn-primary pull-right" value="글쓰기" />
 
 			</form>
+		   <a href="suggest.jsp" class="btn btn-primary pull-right">목록</a> 
+			
 		</div>
 	</div>
 

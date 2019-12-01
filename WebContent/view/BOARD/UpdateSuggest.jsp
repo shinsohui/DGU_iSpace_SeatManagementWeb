@@ -8,14 +8,12 @@
 
 <!-- 세션 유지를 위해  -->
 <%
-   //User user = new User();//generate user
    String userid = (String) session.getAttribute("id");
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
    String report = (String) session.getAttribute("report");
-/*    String noticeId = (String) request.getParameter("noticeId");
- */%>
+%>
 
 <!DOCTYPE html>
 <html>
@@ -31,9 +29,48 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<title>jsp 게시판 웹사이트</title>
+<title>건의게시판 수정</title>
 </head>
+
+<style type="text/css">
+<%@include file ="/view/CSS/mainUI.css"%>
+</style>
+
 <body>
+ <p style="text-align: center;">
+		<img src="/iSpace/view/Image/mainlogo.png"
+			style="width: 400px;padding-top: 18px;">
+	</p>
+
+<!-- 게시판 -->
+	<div align="center">
+      <nav id="topMenu" style="padding-top:26px;">
+         <ul><% if(userid!=null) {%>
+            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
+            <%}else{ %>
+            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
+            <%} %>
+            <li>|</li>
+
+            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
+
+            <li>|</li>
+
+             <li class="topMenuLi" style="background-color: #df633a;">
+				<a class="menuLink" style="color:white;" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
+            </a></li>
+
+            <li>|</li>
+
+            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
+         </ul>
+      </nav>
+   </div>
+
+   <div class="myloginarea">
+      <%=userid%> <%=name%> 님, 환영합니다. | <a href="/iSpace/view/logout.jsp"
+         style="text-decoration: none; color: gray;"> 로그아웃 </a>
+   </div>
 
 	<%
 		int suggestId = 0;
@@ -44,60 +81,20 @@
 		}
 
 		suggest suggest = new suggestDAO().getSuggest(suggestId);
-		/* HttpSession session = request.getSession();
-		 */		
 	%>
 
 
-	<!-- 네비게이션  -->
-
-	<nav class="navbar navbar-default">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="bs-example-navbar-collapse-1"
-				aria-expaned="false">
-
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-
-			</button>
-
-			<a class="navbar-brand" href="main.jsp">JSP 게시판</a>
-
-		</div>
-
-		<!-- <div class="collapse navbar-collapse"
-			id="#bs-example-navbar-collapse-1">
-
-			<ul class="nav navbar-nav">
-				<li><a href="mainUI.jsp">메인</a></li>
-				<li class="active"><a href="notice.jsp">게시판</a></li>
-			</ul>
-			
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">회원관리<span class="caret"></span></a>
-
-					<ul class="dropdown-menu">
-						<li><a href="logoutAction.jsp">로그아웃</a></li>
-					</ul></li>
-			</ul>
-		</div> -->
-	</nav>
-
 	<!-- 게시판 -->
-
-	<div class="container">
-		<div class="row">
+	<div class="container" style="padding-left:108px; padding-top:100px;">
+		<div class="row" style = "width:980px">
 			<form method="post" action="updateSuggestAction.jsp?suggestID=<%= suggestId%> ">
 				<table class="table table-striped"
 					style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 					
 						<tr>
-							<th colspan="2" style="background-color: #eeeeee; text-align: center;">
-							글 수정
+							<th colspan="2" style="background-color: white; text-align: center; font-size:25px;">
+							건의게시판
 							</th>
 						</tr>
 					</thead>
@@ -111,13 +108,15 @@
 						
 						<tr>
 							<td><textarea class="form-control" placeholder="글 내용"
-									name="suggestContent" maxlength="2048" style="height: 350px;"><%= suggest.getSuggestContent() %></textarea></td>
+									name="suggestContent" maxlength="2048" style="height: 200px;"><%= suggest.getSuggestContent() %></textarea></td>
 						</tr>
 					</tbody>
 				</table>
 
 				<button type="submit" class="btn btn-primary pull-right">글수정</button>
 			</form>
+					  <a href="suggest.jsp" class="btn btn-primary pull-right">목록</a> 
+			
 		</div>
 	</div>
 

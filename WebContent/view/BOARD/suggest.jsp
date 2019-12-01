@@ -16,11 +16,9 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<title>게시판</title>
+<title>건의 게시판</title>
 <%
-   //User user = new User();//generate user
    String userid = (String) session.getAttribute("id");
-   //String useridd= (String) session.setAttribute("userid");
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
@@ -30,9 +28,8 @@
 </head>
 
 <style type="text/css">
-<%@include file ="/view/CSS/home.css"%>
+<%@include file ="/view/CSS/mainUI.css"%>
 </style>
-
 
 <body>
 	<p style="text-align: center;">
@@ -77,9 +74,8 @@
 				
 						<tr>
 							<th colspan="4"
-								style="background-color: #eeeeee; text-align: center; font-size:25px;">건의 게시판</th>
+								style="background-color: white; text-align: center; font-size:25px;">건의 게시판</th>
 						</tr>
-					
 					<tr>
 						<th style="background-color: #eeeeee; text-align: center;">번호</th>
 						<th style="background-color: #eeeeee; text-align: center;">제목</th>
@@ -87,8 +83,7 @@
 						<th style="background-color: #eeeeee; text-align: center;">작성일</th>
 					</tr>
 				</thead>
-				
-				
+					
 				<tbody>
 					<%
 						int pageNumber = 1; //기본 페이지 넘버
@@ -118,11 +113,11 @@
 			</table>
 				<!-- 회원만넘어가도록 -->
 	<%
-		//if logined userID라는 변수에 해당 아이디가 담기고 if not null
-
 		if (userid != null) {
 	%>
+	
 	<a href="writeSuggest.jsp" class="btn btn-primary pull-right">글쓰기</a>
+	
 	<%
 		} else {
 	%>
@@ -132,8 +127,7 @@
 	<%
 		}
 	%>
-				
-
+	
 			<%
 				if (pageNumber != 1) {
 			%>
@@ -150,8 +144,6 @@
 
 		</div>
 	</div>
-
-	
 
 </body>
 </html>

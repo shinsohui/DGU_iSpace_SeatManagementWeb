@@ -7,15 +7,12 @@
 <%@ page import = "java.util.ArrayList"%> 		
 
 <%
-   //User user = new User();//generate user
    String userid = (String) session.getAttribute("id");
-   //String useridd= (String) session.setAttribute("userid");
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
    String report = (String) session.getAttribute("report");
    String ifmanager = (String) session.getAttribute("ifmanager"); 
-  
 %>
 
 <!DOCTYPE html>
@@ -35,7 +32,7 @@
 <title></title>
 </head>
 <style type="text/css">
-<%@include file ="/view/CSS/home.css"%>
+<%@include file ="/view/CSS/mainUI.css"%>
 </style>
 
 
@@ -115,35 +112,35 @@
 		<div class="row">
 
 			<table class="table table-striped"
-				style="text-align: center; border: 1px solid #eeeeee">
+				style="border: 1px solid #eeeeee">
 
 				<thead>
 						<tr>
 							<th colspan="2"
-								style="background-color: #eeeeee; text-align: center; font-size:25px;">건의 게시판</th>
+								style="background-color: white; text-align: center; font-size:25px;">건의 게시판</th>
 						</tr>
 					</thead>
 				<tbody>
 
 					<tr>
-						<td style="width: 20%;">글 제목</td>
+						<td style="width: 20%; text-align: center">글 제목</td>
 						<td colspan="2"><%=suggest.getSuggestTitle()%></td>
 					</tr>
 
 					<tr>
-						<td>작성자</td>
+						<td style="text-align: center">작성자</td>
 						<td colspan="2"><%=suggest.getUserId()%></td>
 
 					</tr>
 
 					<tr>
-						<td>작성일</td>
+						<td style="text-align: center">작성일</td>
 						<td colspan="2"><%=suggest.getSuggestDate().substring(0, 11)%></td>
 
 					</tr>
 					<tr>
 
-						<td>내용</td>
+						<td style="text-align: center">내용</td>
 						<td colspan="2" style="min-height: 200px; text-align: left;"><%=suggest.getSuggestContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;")
 					.replaceAll(">", "&gt;").replaceAll("\n", "<br/>")%></td>
 					</tr>
@@ -159,9 +156,7 @@
 			%>
 
 			<a href="UpdateSuggest.jsp?suggestId=<%=suggestId%>" class="btn btn-primary pull-right">수정</a>
-			<!-- <form action="Update.jsp" method="get">
-			<input type="submit" value="수정" name="update">
-			</form> -->
+			
 			<a onclick="return confirm('정말로 삭제하시겠습니까?')"
 				href="deleteSuggestAction.jsp?bbsID=<%=suggestId%>"
 				class="btn btn-primary pull-right">삭제</a>

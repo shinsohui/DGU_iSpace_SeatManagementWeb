@@ -6,19 +6,15 @@
 
 <%
 	request.setCharacterEncoding("UTF-8");
-	//sresponse.setContentType("text/html; charset=UTF-8");
 %>
 
 <%
-   //User user = new User();//generate user
    String userid = (String) session.getAttribute("id");
-   //String useridd= (String) session.setAttribute("userid");
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
    String report = (String) session.getAttribute("report"); 
-   String noticeId = (String) session.getAttribute("noticeId");/*
-   String selected=(String) session.getAttribute("selected"); */
+   String noticeId = (String) session.getAttribute("noticeId");
 %>
 
 <!DOCTYPE html>
@@ -26,17 +22,11 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>jsp 게시판 웹사이트</title>
+<title>공지사항 글 수정</title>
 </head>
 <body>
 
 	<%
-		/* String userId = null;
-		if (session.getAttribute("userId") != null) {//유저아이디이름으로 세션이 존재하는 회원들은 
-			userId = (String) session.getAttribute("userId");//유저아이디에 해당 세션값을 넣어준다.
-		}
-		*/
-
 		System.out.println("updateAction.jsp noticeId : " + noticeId);
 		if (userid == null) {
 			PrintWriter script = response.getWriter();

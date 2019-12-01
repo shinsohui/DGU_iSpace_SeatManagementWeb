@@ -359,7 +359,7 @@
 
 			<h4>
             <b><%=userid%> <%=name%> 님</b> <br><br>
-             <img src="/iSpace/view/Image/reportimg.png"
+             <img src="/iSpace/view/Image/king.png"
                style="width: 20px; height: 20px;">
             <%
                if (userseat==0) {
@@ -371,7 +371,7 @@
             좌석 <%=userseat%>번
             <%
                }
-            %><img src="/iSpace/view/Image/reportimg.png"
+            %><img src="/iSpace/view/Image/king.png"
                style="width: 20px; height: 20px;">
          </h4>
  			
@@ -434,7 +434,7 @@
 	<!-- seminar room 1 -->
 	<div id="reserve1" style="display: none;">
 		<form action="/iSpace/Reservation" method="post">
-			<b>시설 예약</b> <br>
+			
 			<%
 				Calendar cal = Calendar.getInstance();
 			%>
@@ -442,7 +442,8 @@
 			<b>예약 날짜</b><br>
 			<%=cal.get(Calendar.YEAR)%>년
 			<%=cal.get(Calendar.MONTH) + 1%>월
-			<%=cal.get(Calendar.DATE)%>일 <br> <b>이용률</b><br>
+			<%=cal.get(Calendar.DATE)%>일 <br><br>
+			 <b>이용현황</b><br>
 			<table id="util">
 				<tr>
 					<td><label class="container"><input type="radio"
@@ -496,13 +497,13 @@
 				}
 			%>
 
-
-			<br> <b>사용인원</b> <small>*&nbsp&nbsp최소인원:6&nbsp&nbsp&nbsp최대인원:10</small>
-			<br> <b>대표자&nbsp&nbsp</b>
-			<%=userid%>
-			<%=name%><br>
+			<br> <b>대표자&nbsp&nbsp<%=userid%><%=name%><br></b>
+			<br><b>이용자</b><small>&nbsp&nbsp최소인원:6&nbsp&nbsp&nbsp최대인원:10</small>
+			
+			
 			<div id="myform">
-				<br>이용자학번&nbsp&nbsp&nbsp&nbsp&nbsp이용자이름<br> 
+				<small>학번&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp이름</small><br> 
 				<input type="text" name="id1" size="15"> 
 				<input type="text" name="name1" size="15"><br>
 				<input type="text" name="id2" size="15">
@@ -522,15 +523,14 @@
 				<input type="text" name="id9" size="15">
 				<input type="text" name="name9" size="15"><br> 
 			</div>
-			<div style="display: inline; float: left; width: 60px">
-				<input type="submit" value="예약하기">
+			<div class="popin" style="padding-top:10px; padding-left:0px;">
+				<input class="but" type="submit" value="예약">
 			</div>
 		</form>
 
 
-		<div style="display: inline; float: left; width: 60px"
-			id="reserve1close">
-			<button>취소</button>
+		<div class="popin" style="padding-top:10px; padding-left:10px;" id="reserve1close">
+			<button class="but">취소</button>
 		</div>
 	</div>
 	
@@ -538,7 +538,7 @@
 	<!-- room2 -->
 	<div id="reserve2" style="display: none;">
 		<form action="/iSpace/Reservation2" method="post">
-			<b>시설 예약</b> <br>
+			
 			<%
 				Calendar cal2 = Calendar.getInstance();
 			%>
@@ -546,7 +546,8 @@
 			<b>예약 날짜</b><br>
 			<%=cal2.get(Calendar.YEAR)%>년
 			<%=cal2.get(Calendar.MONTH) + 1%>월
-			<%=cal2.get(Calendar.DATE)%>일 <br> <b>이용률</b><br>
+			<%=cal2.get(Calendar.DATE)%>일 <br><br>
+			 <b>이용현황</b><br>
 			<table id="util">
 				<tr>
 					<td><label class="container"><input type="radio"
@@ -600,13 +601,12 @@
 				}
 			%>
 
+			<br> <b>대표자&nbsp&nbsp<%=userid%><%=name%><br></b>
+			<br><b>이용자</b><small>&nbsp&nbsp최소인원:6&nbsp&nbsp&nbsp최대인원:10</small>
 
-			<br> <b>사용인원</b> <small>*&nbsp&nbsp최소인원:6&nbsp&nbsp&nbsp최대인원:10</small>
-			<br> <b>대표자&nbsp&nbsp</b>
-			<%=userid%>
-			<%=name%><br>
 			<div id="myform2">
-				<br>이용자학번&nbsp&nbsp&nbsp&nbsp&nbsp이용자이름<br> 
+				<small>학번&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp이름</small><br> 
 				<input type="text" name="id1" size="15"> 
 				<input type="text" name="name1" size="15"><br>
 				<input type="text" name="id2" size="15">
@@ -626,15 +626,14 @@
 				<input type="text" name="id9" size="15">
 				<input type="text" name="name9" size="15"><br> 
 			</div>
-			<div style="display: inline; float: left; width: 60px">
-				<input type="submit" value="예약하기">
+			<div class="popin" style="padding-top:10px; padding-left:0px;">
+				<input class="but" type="submit" value="예약">
 			</div>
 		</form>
 
 
-		<div style="display: inline; float: left; width: 60px"
-			id="reserve2close">
-			<button>취소</button>
+		<div class="popin" style="padding-top:10px; padding-left:10px;" id="reserve2close">
+			<button class="but">취소</button>
 		</div>
 	</div>
 
@@ -662,96 +661,97 @@
 
 
 <!-- 좌석 관리 div 입. 퇴. 부. 재. 신 -->
-
-	<div id="pop" style="display: none;">
+	
+	<div id="pop" style="display:none;">
 		<div style="height: 20px;"><%=seatNo%>번 좌석에 입실하시겠습니까?
 		</div>
 		<form action="/iSpace/CheckIn" method="get">
-			<div style="display: inline; float: left; width: 60px">
-				<button value="<%=seatNo%>" name="button">입실</button>
+			<div class="popin">
+				<button value="<%=seatNo%>" name="button" class="but">입실</button>
 			</div>
 		</form>
-		<div style="display: inline; float: left; width: 60px" id="close1">
-			<button>취소</button>
+		<div class="popin" style="padding-left:20px;" id="close1">
+			<button class="but">취소</button>
 		</div>
 	</div>
-
+	
+	
+	
 	<div id="pop2" style="display: none;">
-		<div style="height: 20px;"><%=seatNo%>번 좌석에서 퇴실하시겠습니까?
+		<div style="height: 20px;"><%=seatNo%>번 좌석에서 퇴실/부재하시겠습니까?
 		</div>
 		<form action="/iSpace/CheckOut" method="get">
-			<div style="display: inline; float: left; width: 60px">
-				<button value="<%=seatNo%>" name="button">퇴실</button>
+			<div class="popin" style="padding-left:130px;">
+				<button value="<%=seatNo%>" name="button" class="but">퇴실</button>
 			</div>
 		</form>
-		<div style="display: inline; float: left; width: 60px" id="close2">
-			<button>취소</button>
-		</div>
+		
 		<form action="/iSpace/Absence" method="get">
-			<div style="display: inline; float: left; width: 60px">
-				<button value="<%=seatNo%>" name="absence">부재</button>
+			<div class="popin" style="padding-left:20px;">
+				<button value="<%=seatNo%>" name="absence" class="but">부재</button>
 			</div>
 		</form>
+		<div class="popin" style="padding-left:20px;" id="close2">
+			<button class="but">취소</button>
+		</div>
 	</div>
-
+	
+	
+	
 	<div id="pop3" style="display: none;">
 		<div style="height: 20px;"><%=seatNo%>번 좌석에 재입실하시겠습니까?
 		</div>
 		<form action="/iSpace/ReCheckIn" method="get">
-			<div style="display: inline; float: left; width: 60px">
-				<button value="<%=seatNo%>" name="button">재입실</button>
+			<div class="popin">
+				<button value="<%=seatNo%>" name="button" class="but">재입실</button>
 			</div>
 		</form>
-		<div style="display: inline; float: left; width: 60px" id="close3">
-			<button>취소</button>
+		<div class="popin" style="padding-left:20px;" id="close3">
+			<button class="but">취소</button>
 		</div>
 	</div>
 	
-<form action="/iSpace/Report" method="get">
-		<div id="pop5" style="display: none;">
-			<div class="title">
-				<b>신고하기</b>
-			</div>
-			<a href="javascript:popupClose();" class="layerpop_close"
-				id="layerbox_close"></a> <br>
-			<div class="content">
 
+	
+		<div id="pop5" style="display: none;">
+			<div class="content">
 				<h3>
-					<b>신고될 좌석 번호 >></b>
+					<b>신고될 좌석 번호 >> <%=seatNo%></b>
 				</h3>
-				<select name="selected">
-					<option value="<%=seatNo%>"><%=seatNo%></option>
-				</select> <br> <br> 신고항목을 선택해주세요<br> <select
-					id="reason_selection" name="reason">
+				 <br> 신고항목을 선택해주세요<br> 
+				 <form action="/iSpace/Report" method="get">
+				 <select id="reason_selection" name="reason">
 					<option value="너무 시끄러워요.">너무 시끄러워요.</option>
 					<option value="오랫동안 부재인 좌석입니다.">오랫동안 부재인 좌석입니다.</option>
 					<option value="음식 섭취중입니다.">음식 섭취중입니다.</option>
 					<option value="기타">기타</option>
 				</select>
-				<textarea rows="4" cols="50" name="reason" class="hiddenField"
+				<br>
+				<textarea rows="4" cols="50" name="reason"
 					id="myTextBox" placeholder="신고 내용을 기재해주세요."></textarea>
 				<script type="text/javascript">
 				$(document).ready(
 						function() {
 							$('#reason_selection').change(
 									function() {
-										$(this).val() == "기타" ? $('#myTextBox')
-												.show() : $('#myTextBox')
-												.hide();
+										$(this).val() == "기타" ? $('#myTextBox').show() : $('#myTextBox').hide();
+										(this).val()==('#myTextBox').val()
+									
 									});
 						});
 			</script>
 				<br> <br>
-				<div style="display: inline; float: left; width: 50px">
-					<input type="submit" value="확인">
+				<div class="popin" style="padding-top:10px; padding-left:0px;">
+					<button value="<%=seatNo%>" name="selected" class="but">신고</button>
 				</div>
-				<div style="display: inline; float: left; width: 50px" id="close5">
-					<button value="close">취소</button>
+				</form>
+				<div class="popin" style="padding-top:10px; padding-left:10px;" id="close5">
+					<button value="close" class="but">취소</button>
 				</div>
 
 			</div>
 		</div>
-	</form>
+	
 
 
 
