@@ -42,7 +42,8 @@
 <div align="center">
 		<nav id="topMenu">
 			<ul>
-				<li class="topMenuLi"><a class="menuLink"
+				<li class="topMenuLi" style="background-color: #df633a;">
+				<a class="menuLink" style="color:white;"
 					href="/iSpace/view/home.jsp">SEAT </a></li>
 				<li>|</li>
 
@@ -353,7 +354,7 @@
 		</div>
 
 		<div class="rightbox"
-			style="width: 210px; left: 730px; height: 260px; background-color: yellow; top: 225px; font-size: 17px; padding: 10px">
+			style="width: 210px; left: 730px; height: 260px; top: 225px; font-size: 17px; padding: 10px">
 
 			공지사항 <a href="/iSpace/view/BOARD/notice.jsp"
 				style="text-decoration: none">+ <br></a>

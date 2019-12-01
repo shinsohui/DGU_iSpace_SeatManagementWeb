@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 
 <%@ page import="java.io.PrintWriter"%>
 
@@ -22,7 +22,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 
-<title>건의사항</title>
+<title>건의게시판</title>
 
 <%
    //User user = new User();//generate user
@@ -40,168 +40,102 @@
 
 
 <style type="text/css">
-<%@include file ="/view/CSS/home.css"%>
+<%@include file ="/view/CSS/mainUI.css"%>
 </style>
 
 
 <body>
 <p style="text-align: center;">
-		<img src="/iSpace/view/Image/mainlogo.png"
-			style="width: 400px;padding-top: 18px;">
-	</p>
-	
-	<h5 style="text-align: right;">
-		<b><%=userid%> <%=name%> 님</b>, <img
-			src="/iSpace/view/Image/reportimg.png"
-			style="width: 20px; height: 20px;"> 신고<%=report%>회 <img
-			src="/iSpace/view/Image/reportimg.png"
-			style="width: 20px; height: 20px;">
-	</h5>
+      <img src="/iSpace/view/Image/mainlogo.png"
+         style="width: 400px;padding-top: 18px;">
+   </p>
 
+   <%
 
-	<%
-		//로긴한사람이라면	 userID라는 변수에 해당 아이디가 담기고 그렇지 않으면 null값
-	/* 	String userID = null;
-		if (session.getAttribute("userId") != null) {
-			userID = (String) session.getAttribute("userId");
-		} */
-	%>
-	
-	<%
-	/* if (userid == null) {
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("alert('로그인을 하세요.')");
-		script.println("location.href = 'mainUI.jsp'");
-		script.println("</script>");
-	} */
-	if(ifmanager == "1"){
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("alert('관리자 권한이 필요합니다.')");
-		script.println("location.href = 'notice.jsp'");
-		script.println("</script>");
-	}
-	%>
-	
+   if(ifmanager == "1"){
+      PrintWriter script = response.getWriter();
+      script.println("<script>");
+      script.println("alert('관리자 권한이 필요합니다.')");
+      script.println("location.href = 'notice.jsp'");
+      script.println("</script>");
+   }
+   %>
+   
 
-	<%
-		int pageNumber = 1; //기본 페이지 넘버
-		//페이지넘버값이 있을때
-		if (request.getParameter("pageNumber") != null) {
-			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-		}
-	%>
+   <%
+      int pageNumber = 1; //기본 페이지 넘버
+      //페이지넘버값이 있을때
+      if (request.getParameter("pageNumber") != null) {
+         pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+      }
+   %>
 
-	<div align="center">
-		<nav id="topMenu" style="padding-top:26px;">
-			<ul><% if(userid!=null) {%>
-				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
-				<%}else{ %>
-				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
-				<%} %>
-				<li>|</li>
+   <div align="center">
+      <nav id="topMenu" style="padding-top:26px;">
+         <ul><% if(userid!=null) {%>
+            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
+            <%}else{ %>
+            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
+            <%} %>
+            <li>|</li>
 
-				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
+            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
 
-				<li>|</li>
+            <li>|</li>
 
-				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
-				</a></li>
+            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
+            </a></li>
 
-				<li>|</li>
+            <li>|</li>
 
-				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
-			</ul>
-		</nav>
-	</div>
+            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
+         </ul>
+      </nav>
+   </div>
 
-<%-- 	<%
-		//라긴안된경우
-		if (userid == null) {
-	%> --%>
+   <!-- 게시판 -->
 
-<!-- 	<ul class="nav navbar-nav navbar-right">
-		<li class="dropdown"><a href="#" class="dropdown-toggle"
-			data-toggle="dropdown" role="button" aria-haspopup="true"
-			aria-expanded="false">접속하기<span class="caret"></span></a>
+   <div align="center" style="padding-top:50px; font-size: 30px;
+   font-weight: bold;  font-family:'Trebuchet MS', Dotum;  color: #252525;">건의게시판</div>
+      <div class="container" style= "padding-top:10px;">
+      <div class="row" style= "width:980px;">
+         <form method="post" action="writeSuggestAction.jsp">
 
-			<ul class="dropdown-menu">
+            <table class="table table-striped"
+               style="text-align: center; border: 1px solid #dddddd; padding-top:10px; padding-left: 100px;">
 
-				<li><a href="login.jsp">로그인</a></li>
+               <thead>
+                  <tr>
+                     <th colspan="2"
+                        style="background-color: #eeeeee; text-align: center;">건의 게시판</th>
+                  </tr>
+               </thead>
+               
+               <tbody>
+                  <tr>
+                     <td><input type="text" class="form-control"
+                        placeholder="글 제목" name="SuggestTitle" maxlength="50" /></td>
+                  </tr>
+                  
+                  <tr>
+                     <td><textarea class="form-control" placeholder="글 내용"
+                           name="SuggestContent" maxlength="2048"
+                           style="height: 200px; width: 980px;"></textarea></td>
+                  </tr>
+               </tbody>
+            </table>
+            
+            <input type="submit" class="btn btn-primary" value="글쓰기" />
 
-				<li><a href="join.jsp">회원가입</a></li>
+         </form>
+      </div>
+   </div>
 
-			</ul></li>
-
-	</ul> -->
-
-<%-- 	<%
-		} else {
-	%>
- --%>
-<!-- 	<ul class="nav navbar-nav navbar-right">
-
-		<li class="dropdown"><a href="#" class="dropdown-toggle"
-			data-toggle="dropdown" role="button" aria-haspopup="true"
-			aria-expanded="false">회원관리<span class="caret"></span></a>
-
-			<ul class="dropdown-menu">
-
-				<li><a href="logoutAction.jsp">로그아웃</a></li>
-
-			</ul></li>
-
-	</ul>
- -->
-<%-- 	<%
-		}
-	%> --%>
-
-	<!-- 게시판 -->
-
-	<div class="container">
-
-		<div class="row">
-
-			<form method="post" action="writeSuggestAction.jsp">
-
-				<table class="table table-striped"
-					style="text-align: center; border: 1px solid #dddddd">
-
-					<thead>
-						<tr>
-							<th colspan="2"
-								style="background-color: #eeeeee; text-align: center;">건의 게시판</th>
-						</tr>
-					</thead>
-					
-					<tbody>
-						<tr>
-							<td><input type="text" class="form-control"
-								placeholder="글 제목" name="SuggestTitle" maxlength="50" /></td>
-						</tr>
-						
-						<tr>
-							<td><textarea class="form-control" placeholder="글 내용"
-									name="SuggestContent" maxlength="2048"
-									style="height: 200px; width: 400px;"></textarea></td>
-						</tr>
-					</tbody>
-				</table>
-				
-				<input type="submit" class="btn btn-primary pull-right" value="글쓰기" />
-
-			</form>
-		</div>
-	</div>
-
-	<!-- 애니매이션 담당 JQUERY -->
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<!-- 부트스트랩 JS  -->
-	<script src="js/bootstrap.js"></script>
+   <!-- 애니매이션 담당 JQUERY -->
+   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+   <!-- 부트스트랩 JS  -->
+   <script src="js/bootstrap.js"></script>
 
 </body>
 </html>
-
 

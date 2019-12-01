@@ -3,8 +3,10 @@
 .frame {
 	width: 980px; 
 	height: 520px;
-	background-color: #b8b8b8;
-	opacity: 0.9;
+	background-color: #f3c044;
+	/*background-color: #ebb64d;*/
+	/* background-color: #f2ae58; */
+	opacity:0.9;
 	border-radius: 10px;
 	position: absolute;
 	top: 230px;
@@ -15,9 +17,39 @@
    background-color: white;
    position: absolute;
    border-radius: 10px;
-   opacity: 0.9;
    vertical-align: middle;
+   font-weight: bold; /* 폰트를 굵게 설정 */
+   font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */
+   color: #252525;
+   
 }
+
+.logoutbox{
+   position: absolute;
+   border-radius: 10px;
+   vertical-align: middle;
+   font-weight: bold; /* 폰트를 굵게 설정 */
+   font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */
+   color: #252525;
+   width: 250px; 
+   left: 730px;
+   height: 40px; 
+   top: 473px; 
+   font-size: 17px;
+
+}
+#logout {
+ color: #ffffff;
+ font-size: 15px;
+  font-weight: bold;
+  font-family: "Trebuchet MS", Dotum;
+ width: 230px;
+ height: 30px;
+ border: none;
+ padding: 0;
+ background: #616056 url(image) 0 0 no-repeat;
+}
+
 .seatinfo{
 	width:650px;
 	height:20px;
@@ -31,10 +63,9 @@
 
 .whitebox {
 	background-color: white;
-	
 	position: absolute;
 	border-radius: 10px;
-	opacity: 0.8;
+
 	margin-right: 10px;
 	margin-top: 10px;
 	vertical-align: middle;
@@ -88,8 +119,8 @@ html {
 
 .topMenuLi:hover .menuLink { /* 상위 메뉴의 li에 마우스오버 되었을 때 스타일 설정 */ 
   color: white; /* 글씨 색 white */ 
-  background-color: #4b5ef2; /* 배경색을 보라색으로 설정 */ 
-  opacity:0.7;
+  background-color: #e7943d; /* 배경색을 보라색으로 설정 */ 
+
 } 
 
 #board{
@@ -190,17 +221,6 @@ html {
    border: 1px solid #000;
    font-weight: bold; /* 폰트를 굵게 설정 */ 
   font-family: "Trebuchet MS", Dotum;
-}
-#logout {
- color: white;
- font-size: 15px;
-  font-weight: bold;
-  font-family: "Trebuchet MS", Dotum;
- width: 100px;
- height: 30px;
- border: none;
- padding: 0;
- background: #423bc8 url(image) 0 0 no-repeat;
 }
 
 

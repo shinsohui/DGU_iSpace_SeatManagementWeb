@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.sql.*"%>
@@ -10,16 +10,28 @@
 <jsp:useBean id="colorBean" class="model.ColorBean" />
 <jsp:setProperty name="colorBean" property="*" />
 <%
-	PageManage dao = PageManage.getInstance();
+   //User user = new User();//generate user
+   String userid = (String) session.getAttribute("id");
+   String name = (String) session.getAttribute("name");
+   String state = (String) request.getAttribute("state");
+   String seatNo = (String) request.getParameter("button");
+   String myseatNo = (String) session.getAttribute("seatNo");
+   String report = (String) session.getAttribute("report");
 
-	dao.seatColor(colorBean);
-	ArrayList<String> color = (ArrayList<String>) colorBean.getColorList();
-	
-	dao.room1Color(colorBean);
-	ArrayList<String> room1 = (ArrayList<String>) colorBean.getRoom1Color();
-	
-	dao.room2Color(colorBean);
-	ArrayList<String> room2 = (ArrayList<String>) colorBean.getRoom2Color();
+   PageManage dao = PageManage.getInstance();
+
+   dao.seatColor(colorBean);
+   ArrayList<String> color = (ArrayList<String>) colorBean.getColorList();
+   
+   dao.room1Color(colorBean);
+   ArrayList<String> room1 = (ArrayList<String>) colorBean.getRoom1Color();
+   
+   dao.room2Color(colorBean);
+   ArrayList<String> room2 = (ArrayList<String>) colorBean.getRoom2Color();
+
+   int userseat=dao.userSeat(userid);      
+   //System.out.println("home에서 seat return : "+userseat);
+   
 %>
 <!DOCTYPE html>
 <html>
@@ -38,15 +50,6 @@
 <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <!-- 드래그 할수 있는 기능을 사용하기 위해서 draggable(); -->
 
-<%
-	//User user = new User();//generate user
-	String userid = (String) session.getAttribute("id");
-	String name = (String) session.getAttribute("name");
-	String state = (String) request.getAttribute("state");
-	String seatNo = (String) request.getParameter("button");
-	String myseatNo = (String) session.getAttribute("seatNo");
-	String report = (String) session.getAttribute("report");
-%>
 </head>
 
 <body>
@@ -59,9 +62,8 @@
 	<div align="center">
 		<nav id="topMenu">
 			<ul>
-				<li class="topMenuLi" style="color: white; /* 글씨 색 white */ 
-  background-color: #4b5ef2; /* 배경색을 보라색으로 설정 */ 
-  opacity:0.9;"><a class="menuLink"
+				<li class="topMenuLi" style="background-color: #df633a;">
+				<a class="menuLink" style="color:white;"
 					href="/iSpace/view/home.jsp">SEAT </a></li>
 				<li>|</li>
 
@@ -87,9 +89,9 @@
 
 	<div class="frame">
 	<div class="seatinfo">
-	<img src="/iSpace/view/Image/avail.png" style="width:20px;">&nbsp이용좌석 
-	<img src="/iSpace/view/Image/absence.png" style="width:20px;">&nbsp부재좌석 
+	<img src="/iSpace/view/Image/avail.png" style="width:20px;">&nbsp이용가능 
 	<img src="/iSpace/view/Image/unavail.png" style="width:20px;">&nbsp이용불가 
+	<img src="/iSpace/view/Image/absence.png" style="width:20px;">&nbsp부재 
 	</div>
 	
 		<div class="whitebox"
@@ -353,35 +355,31 @@
 		
 
 		<div class="rightbox"
-			style="width: 230px; left: 730px; top: 45px; height: 170px; text-align:center">
+			style="width: 230px; left: 730px; top: 45px; height: 100px; padding-top:10px; text-align:center">
 
-			<h5>
-				<b><%=userid%> <%=name%> 님</b> <br> <img
-					src="/iSpace/view/Image/reportimg.png"
-					style="width: 20px; height: 20px;">
-				<%
-					if (myseatNo.equals("선택된 좌석이 없습니다.")) {
-				%>
-				선택된 좌석이 없습니다.
-				<%
-					} else {
-				%>
-				좌석
-				<%=myseatNo%>번
-				<%
-					}
-				%><img src="/iSpace/view/Image/reportimg.png"
-					style="width: 20px; height: 20px;">
-			</h5>
+			<h4>
+            <b><%=userid%> <%=name%> 님</b> <br><br>
+             <img src="/iSpace/view/Image/reportimg.png"
+               style="width: 20px; height: 20px;">
+            <%
+               if (userseat==0) {
+            %>
+            선택된 좌석이 없습니다.
+            <%
+               } else {
+            %>
+            좌석 <%=userseat%>번
+            <%
+               }
+            %><img src="/iSpace/view/Image/reportimg.png"
+               style="width: 20px; height: 20px;">
+         </h4>
  			
-				<!-- <input type="button" value="로그아웃" id="logout"> -->
-			<a href="/iSpace/view/logout.jsp">
-  		 <button id="logout">로그아웃</button>
-		</a>
+		
 		</div>
 		
 	<div class="rightbox"
-			style="width: 210px; left: 730px; height: 260px; background-color: yellow; top: 225px; font-size: 17px; padding: 10px">
+			style="width: 210px; left: 730px; height: 270px; background-color: #ffffff; top: 170px; font-size: 17px; padding: 10px">
 
 		공지사항 <a href="/iSpace/view/BOARD/notice.jsp"
 			style="text-decoration: none">+ <br></a>
@@ -419,6 +417,13 @@
 			}
 		%>
 	</div>
+			<!-- <input type="button" value="로그아웃" id="logout"> -->
+		<div class="logoutbox">
+		<a href="/iSpace/view/logout.jsp">
+  		 <button id="logout">로그아웃</button>
+		</a>
+		</div>
+
 </div>
 
 

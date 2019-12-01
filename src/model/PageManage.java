@@ -21,7 +21,6 @@ public class PageManage {
    }
 
    public void seatColor(ColorBean bean) {
-
       //      String sql="";
       //      PreparedStatement pstmt;
       //      ResultSet rs;
@@ -45,7 +44,8 @@ public class PageManage {
          ArrayList<String> color = new ArrayList<String>();
 
          while (rs.next()) {
-            if(rs.getString("userID").equals("none")) { 
+            String user=rs.getString("userID");
+            if(user.equals("none")) { 
                //              System.out.println("퇴실상태");
                color.add("skyblue");
             }else {
@@ -62,7 +62,6 @@ public class PageManage {
                   //  color.add("#b0cf5a");         
                }
             }
-
          }
          /*
           * for(int i=0;i<color.size();i++) { System.out.println(i+"좌석 : "+color.get(i));
@@ -114,7 +113,7 @@ public class PageManage {
          String now   = new java.text.SimpleDateFormat("HH").format(new java.util.Date());
          System.out.println("현재 시간 : "+now);
          int Now=Integer.parseInt(now);
-         
+
 
          for(int i=0;i<color.size();i++) { 
             //System.out.print("바꾸기 전 ROOM1 시간"+(i+1)+" : "+color.get(i));
@@ -123,7 +122,7 @@ public class PageManage {
             }
             //System.out.println(" // 바꾼 후 ROOM1 시간"+(i+1)+" : "+color.get(i));
          }
-      
+
          bean.setRoom1Color(color);
 
          DBmanager.close(pstmt);
@@ -168,7 +167,7 @@ public class PageManage {
          String now   = new java.text.SimpleDateFormat("HH").format(new java.util.Date());
          System.out.println("현재 시간 : "+now);
          int Now=Integer.parseInt(now);
-         
+
 
          for(int i=0;i<color.size();i++) { 
             if((i+9)<=Now) {
@@ -187,6 +186,43 @@ public class PageManage {
          e.printStackTrace();
       }
    } 
+   public int userSeat(String id) {
+      int seat=0;
+      System.out.println("received id : "+id);
+
+
+      Connection conn = null;
+
+      try {
+         conn = DBmanager.getConnection();
+      } catch (Exception e) {
+         // TODO Auto-generated catch block
+         System.out.println("PageManage DB connection error>>> "+e);
+      }
+      try {
+
+         String sql = "select my_seatNo from USER where id=?";
+         PreparedStatement pstmt = conn.prepareStatement(sql);
+         pstmt.setString(1, id);
+         ResultSet rs=pstmt.executeQuery();
+         rs.next();
+         seat=rs.getInt("my_seatNo");
+//         System.out.println("my_seatNo : "+seat);
+
+         DBmanager.close(pstmt);
+         DBmanager.close(conn);
+         if(seat!=0) {
+            return seat;            
+         }
+
+      }catch (Exception e)
+      {
+         System.out.println("PageManage_user seat CHECK ERROR");
+         e.printStackTrace();
+      }
+      //System.out.println("catch 다음 seat return : "+seat);
+      return seat;
+   }
 
 
 }

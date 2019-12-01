@@ -139,7 +139,7 @@
 		} else {
 	%>
 	<button class="btn btn-primary pull-right"
-		onclick="if(confirm('로그인 하세요'))location.href='mainUI.jsp';"
+		onclick="if(confirm('로그인 하세요'))location.href='/iSpace/view/mainUI.jsp';"
 		type="button">글쓰기</button>
 	<%
 		}
