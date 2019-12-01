@@ -159,59 +159,7 @@ public class Status extends HttpServlet {
                   pstmt33.setString(1,id);
                   pstmt33.execute();
                   DBmanager.close(pstmt33);
-                  
-                  
-////                  //신고횟수 1 증가 
-////                  String sql44 = "update USER set count=count+1, bandate=? where id=?";
-////                  PreparedStatement pstmt44 = conn.prepareStatement(sql44);
-////                  Date dt = new Date();
-////                  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-////                  String currentTime = sdf.format(dt);
-////                  pstmt44.setString(1,currentTime);
-////                  pstmt44.setString(2,seatOwner);
-////                  pstmt44.execute();
-////                  DBmanager.close(pstmt44);
-//                  
-//                  //신고 테이블에 신고된 학번과 이유 및 해당 날짜 저장 
-//                  sql = "insert into REPORT(id, reason, date) values(?,?,?)";
-//                  pstmt = conn.prepareStatement(sql);
-//                  Date date=new Date();
-//                  String currentDate = df.format(date);
-//                  pstmt.setString(1,seatOwner);
-//                  pstmt.setString(2,"부재 처리 후 30분이 지났습니다.(status : 30m over)");
-//                  pstmt.setString(3,currentDate);
-//                  pstmt.execute();
-//                  DBmanager.close(pstmt);
-//                  
-//                  //해당 학번의 report table에 신고되어있는 횟수를 센다. 
-//                  sql="select count(id) as `count` from REPORT where id=? and date=?";
-//                  pstmt = conn.prepareStatement(sql);
-//                  pstmt.setString(1, seatOwner);
-//                  pstmt.setString(2, currentDate);
-//                  rs=pstmt.executeQuery();
-//                  rs.next();
-//                  int reportcount=rs.getInt("count");
-//                  DBmanager.close(pstmt);
-//                  
-//                  //4회째 신고일경우,
-//                  if(reportcount>3) {
-//                     //해당 좌석의 사용자 정보 초기화.
-//                     sql = "update SEAT set userID=? where seatNo=?";
-//                     pstmt = conn.prepareStatement(sql);
-//                     pstmt.setString(1,"none");
-//                     pstmt.setString(2,select);
-//                     pstmt.execute();
-//                     DBmanager.close(pstmt);
-//
-//                     //user 테이블에서 자리 0으로 초기화. 4번째 신고 날짜 사용자 정보에 저장. 
-//                     sql = "update USER set my_seatNo=0, bandate=? where id=?";
-//                     pstmt = conn.prepareStatement(sql);
-//                     Date ban=new Date();
-//                     String bandate_absence=df.format(ban);
-//                     pstmt.setString(1,seatOwner);
-//                     pstmt.setString(2,bandate_absence);
-//                     pstmt.execute();
-//                     DBmanager.close(pstmt);
+           
 //                  }
                   return;
 
@@ -250,7 +198,7 @@ public class Status extends HttpServlet {
                Date reportedDate=df.parse(bandate);
                Date nowDate=df.parse(nowdate);
                long reportDateCompare=nowDate.getTime()-reportedDate.getTime();
-               reportDateCompare=reportDateCompare/(24*60*60*1000);
+               reportDateCompare=reportDateCompare/(60*1000);
                reportDateCompare=Math.abs(reportDateCompare);
                //신고횟수 3회 초과이고, 2주 전이면 입실도 못시키도록 
                //초 : /1000
@@ -261,15 +209,15 @@ public class Status extends HttpServlet {
                System.out.println("reportDateCompare:"+reportDateCompare);
                System.out.println("report횟수 : "+report);
                
-               if(reportDateCompare<1) {
-                  System.out.println("reportDateCompare<40 && report>3");
+               if(reportDateCompare<7) {
+                  System.out.println("reportDateCompare<14 && report>3");
                   PrintWriter out = response.getWriter();
                   out.println("<script>alert('You can not checkIN because you have been reported more than three times..'); location.href='/iSpace/view/home.jsp'</script>");
                   out.flush();
                   return;
                }
-               else if(reportDateCompare>=1) {
-                  System.out.println("reportDateCompare>=40 &&report>3");
+               else if(reportDateCompare>=7) {
+                  System.out.println("reportDateCompare>=14 &&report>3");
                   String sql66= "update USER set bandate=null where id=?";
                   PreparedStatement pstmt66 = conn.prepareStatement(sql66);
                   pstmt66.setString(1,id);

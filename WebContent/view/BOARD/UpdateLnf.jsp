@@ -119,9 +119,13 @@
 							<td colspan="2"><input type="file" value="파일 선택"
 								name="lnfFile" />
 						</tr>
-							<tr>
-							<td><img style= "width: 100px;" src="/iSpace/upload/<%=lnf.getLnfFile()%>"></td>
+						<tr>
+							<td style="text-align:left;">현재 파일 : <img style= "width: 100px;" src="/iSpace/upload/<%=lnf.getLnfFile()%>">
+							<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						<%=lnf.getLnfFile()%></td>
 						</tr>
+						
+						
 					</tbody>
 				</table>
 

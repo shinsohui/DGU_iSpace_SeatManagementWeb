@@ -132,7 +132,7 @@
 					.replaceAll(">", "&gt;").replaceAll("\n", "<br/>")%>
 					<br>
 					<%System.out.println("file check:"+lnf.getLnfFile());%>
-					<img style="width:700px; height:200px;" src="/iSpace/upload/<%=lnf.getLnfFile()%>">
+					<img style="width:500px;" src="/iSpace/upload/<%=lnf.getLnfFile()%>">
 					
 					</td>
 					</tr>
