@@ -103,7 +103,8 @@
 						<td><%=list.get(i).getLnfId()%></td>
 						<td><a href="viewLnf.jsp?lnfId=<%=list.get(i).getLnfId()%>">
 								<%=list.get(i).getLnfTitle()%></a></td>
-						<td><%=list.get(i).getUserId()%></td>
+						<td>°ü¸®ÀÚ</td>
+						<%-- <td><%=list.get(i).getUserId()%></td> --%>
 						<td><%=list.get(i).getLnfDate().substring(0, 11)%></td>
 
 					</tr>

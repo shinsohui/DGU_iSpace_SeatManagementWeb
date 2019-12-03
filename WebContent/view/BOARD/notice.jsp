@@ -111,7 +111,8 @@
 						<td><a
 							href="view.jsp?noticeId=<%=list.get(i).getNoticeId()%>">
 							<%=list.get(i).getNoticeTitle()%></a></td>
-						<td><%=list.get(i).getUserId()%></td>
+							<td>°ü¸®ÀÚ</td>
+						<%-- <td><%=list.get(i).getUserId()%></td> --%>
                       <td><%=list.get(i).getNoticeDate().substring(0, 11)%></td>
 
 					</tr>
