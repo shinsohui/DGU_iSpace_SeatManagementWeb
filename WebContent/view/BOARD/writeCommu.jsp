@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
 
 <!DOCTYPE html>
@@ -10,15 +10,18 @@
 <meta name="viewport" content="width=device-width" initial-scale="1">
 
 <!-- 스타일시트 참조  -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
 <!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-<title>공지사항</title>
+<title>커뮤니티 글쓰기</title>
 
 <%
    String userid = (String) session.getAttribute("id");
@@ -36,14 +39,14 @@
 </style>
 
 <body>
-<div id='top'>
-      <p style="text-align: left; margin-top: 10px; margin-left: 20%;">
-         <img src="/iSpace/view/Image/mainlogo.png" style="width: 300px;">
-      </p>
+	<div id='top'>
+		<p style="text-align: left; margin-top: 10px; margin-left: 20%;">
+			<img src="/iSpace/view/Image/mainlogo.png" style="width: 300px;">
+		</p>
 
 
 
-   <%
+		<%
       int pageNumber = 1; //기본 페이지 넘버
       //페이지넘버값이 있을때
       if (request.getParameter("pageNumber") != null) {
@@ -51,92 +54,99 @@
       }
    %>
 
-  <div align="center">
-     <div align="center" >
-         <nav id="topMenu">
-            <ul>
-            <li style="width: 20%">&nbsp;</li>
-            <% if(userid!=null) {%>
-            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
-            <%}else{ %>
-            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
-            <%} %>
+		
+			<div align="center">
+				<nav id="topMenu">
+					<ul>
+						<li style="width: 20%">&nbsp;</li>
+						<% if(userid!=null) {%>
+						<li class="topMenuLi"><a class="menuLink"
+							href="/iSpace/view/home.jsp">SEAT </a></li>
+						<%}else{ %>
+						<li class="topMenuLi"><a class="menuLink"
+							href="/iSpace/view/mainUI.jsp">SEAT </a></li>
+						<%} %>
 
 
-            <li class="topMenuLi">
-            <a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
+						<li class="topMenuLi"><a class="menuLink"
+							href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
 
 
-            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
-            </a></li>
+						<li class="topMenuLi"><a class="menuLink"
+							href="/iSpace/view/BOARD/suggest.jsp">SUGGEST </a></li>
 
 
-            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
+						<li class="topMenuLi"><a class="menuLink"
+							href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
 
-            <li class="topMenuLi" style="background-color: #df633a;"><a class="menuLink" style="color:white;" 
-               href="/iSpace/view/BOARD/commu.jsp">COMMUNITY </a></li>
-                  <li style="width: 20%;">&nbsp;</li>
-         
-         </ul>
-      </nav>
-   </div>
-</div>
-      <div id='containn'>
-      <div id='box-left'>'</div>
+						<li class="topMenuLi" style="background-color: #df633a;"><a
+							class="menuLink" style="color: white;"
+							href="/iSpace/view/BOARD/commu.jsp">COMMUNITY </a></li>
+						<li style="width: 20%;">&nbsp;</li>
 
-      <div id='box-center'>
-   <!-- 게시판 -->
- <div class="container" style= "padding-top:50px; width : 100%;" >
-      <div class="row">
-         <form method="post" action="writeCommuAction.jsp">
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<div id='containn'>
+			<div id='box-left'>'</div>
 
-           <table class="table table-bordered"
-               style="text-align: center; border: 1px solid #dddddd;">
+			<div id='box-center'>
+				<!-- 게시판 -->
+				<div class="container" style="padding-top: 50px; width: 100%;">
+					<div class="row">
+						<form method="post" action="writeCommuAction.jsp">
 
-               <thead>
-                  <tr>
-                     <th colspan="2"
-                        style="background-color: white; text-align: center; font-size:25px;">커뮤니티</th>
-                  </tr>
-               </thead>
-               
-               <tbody>
-                  <tr>
-                     <td><input type="text" class="form-control"
-                        placeholder="글 제목" name="CommuTitle" maxlength="50" /></td>
-                  </tr>
-                  
-                  <tr>
-                     <td><textarea class="form-control" placeholder="글 내용"
-                           name="CommuContent" maxlength="2048"
-                           style="height: 200px; width: 100%;"></textarea></td>
-                  </tr>
-               </tbody>
-            </table>
+							<table class="table table-bordered"
+								style="text-align: center; border: 1px solid #dddddd;">
 
-            <input type="submit" class="btn btn-primary pull-right" value="글쓰기" />
+								<thead>
+									<tr>
+										<th colspan="2"
+											style="background-color: white; text-align: center; font-size: 25px;">커뮤니티</th>
+									</tr>
+								</thead>
 
-         </form>
-                     <a href="commu.jsp" class="btn btn-primary pull-right">목록</a> 
-         
-      </div>
-   </div>
- </div>
-      <div id='box-right'>
-         <div class="myloginarea">
-                        <%
+								<tbody>
+									<tr>
+										<td><input type="text" class="form-control"
+											placeholder="글 제목" name="CommuTitle" maxlength="50" /></td>
+									</tr>
+
+									<tr>
+										<td><textarea class="form-control" placeholder="글 내용"
+												name="CommuContent" maxlength="2048"
+												style="height: 200px; width: 100%;"></textarea></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<input type="submit" class="btn btn-primary pull-right"
+								value="글쓰기" />
+
+						</form>
+						<a href="commu.jsp" class="btn btn-primary pull-right">목록</a>
+
+					</div>
+				</div>
+			</div>
+
+			<div id='box-right'>
+				<div class="myloginarea">
+					<%
             if(userid != null)
             {
             %>
-            <%=userid %> <%=name %>님, 환영합니다. | <a href="/iSpace/view/logout.jsp" style="text-decoration: none; color: gray;"> 로그아웃 </a>      
-            <% }%>            </div>
-
-      </div>
-   </div>
-   <!-- 애니매이션 담당 JQUERY -->
-   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-   <!-- 부트스트랩 JS  -->
-   <script src="js/bootstrap.js"></script>
-
+					<%=userid %>
+					<%=name %>님, 환영합니다. | <a href="/iSpace/view/logout.jsp"
+						style="text-decoration: none; color: gray;"> 로그아웃 </a>
+					<% }%>
+				</div>
+			</div>
+		</div>
+		<!-- 애니매이션 담당 JQUERY -->
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<!-- 부트스트랩 JS  -->
+		<script src="js/bootstrap.js"></script>
 </body>
 </html>

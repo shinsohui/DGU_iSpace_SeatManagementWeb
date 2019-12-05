@@ -68,25 +68,22 @@
          <ul>
 				<li style="width: 20%">&nbsp;</li>
 				<% if(userid!=null) {%>
-				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
+				<li id="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
 				<%}else{ %>
-				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
+				<li id="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
 				<%} %>
-				<li>|</li>
+				
+				<li id="topMenuLi" style="background-color: #df633a;"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
 
-				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
 
-				<li>|</li>
-
-				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
+				<li id="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
 				</a></li>
 
-				<li>|</li>
+				<li id="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
+			
 
-				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
-				<li>|</li>
-
-            	<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/commu.jsp">COMMUNITY </a></li>
+            	<li id="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/commu.jsp">COMMUNITY </a></li>
+			<li style="width: 20%;">&nbsp;</li>
 			</ul>
 		</nav>
 	</div>
@@ -94,47 +91,48 @@
     
     <div id='containn'>
 		<div id='box-left'>'</div>
-		
+
 		<div id='box-center'>
-				
-   <!-- 게시판 -->
- <div class="container" style= "padding-top:50px; width : 100%;" >
-      <div class="row" >
 
-         <form method="post" action="writeAction.jsp">
+			<!-- 게시판 -->
+			<div class="container" style="padding-top: 50px; width: 100%;">
+				<div class="row">
 
-           <table class="table table-bordered"
-					style="text-align: center; border: 1px solid #dddddd;">
+					<form method="post" action="writeAction.jsp">
 
-               <thead>
-                  <tr>
-                     <th colspan="2"
-                        style="background-color: white; text-align: center; font-size:25px;">공지사항</th>
-                  </tr>
-               </thead>
-               
-               <tbody>
-                  <tr>
-                     <td><input type="text" class="form-control"
-                        placeholder="글 제목" name="NoticeTitle" maxlength="50" /></td>
-                  </tr>
-                  
-                  <tr>
-                     <td><textarea class="form-control" placeholder="글 내용"
-                           name="NoticeContent" maxlength="2048"
-                           style="height: 200px; width: 980px;"></textarea></td>
-                  </tr>
-               </tbody>
-            </table>
+						<table class="table table-bordered"
+							style="text-align: center; border: 1px solid #dddddd;">
 
-				<input type="submit" class="btn btn-primary pull-right" value="글쓰기" />
+							<thead>
+								<tr>
+									<th colspan="2"
+										style="background-color: white; text-align: center; font-size: 25px;">공지사항</th>
+								</tr>
+							</thead>
 
-         </form>
-         				<a href="notice.jsp" class="btn btn-primary pull-right">목록</a> 
-         
-      </div>
-   </div>
-    </div>
+							<tbody>
+								<tr>
+									<td><input type="text" class="form-control"
+										placeholder="글 제목" name="NoticeTitle" maxlength="50" /></td>
+								</tr>
+
+								<tr>
+									<td><textarea class="form-control" placeholder="글 내용"
+											name="NoticeContent" maxlength="2048"
+											style="height: 200px; width: 100%;"></textarea></td>
+								</tr>
+							</tbody>
+						</table>
+
+						<input type="submit" class="btn btn-primary pull-right"
+							value="글쓰기" />
+
+					</form>
+					<a href="notice.jsp" class="btn btn-primary pull-right">목록</a>
+
+				</div>
+			</div>
+		</div>
 		<div id='box-right'>
 			<div class="myloginarea">
 				<%
@@ -142,7 +140,9 @@
 				{
 				%>
 				<%=userid %> <%=name %>님, 환영합니다. | <a href="/iSpace/view/logout.jsp" style="text-decoration: none; color: gray;"> 로그아웃 </a>		
-				<% }%>				
+				<%
+							}
+						%>				
 		
 			</div>
 		</div>
