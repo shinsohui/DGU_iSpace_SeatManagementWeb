@@ -63,6 +63,10 @@
 				<li>|</li>
 
 				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
+				<li>|</li>
+
+            <li class="topMenuLi"><a class="menuLink"
+               href="/iSpace/view/BOARD/commu.jsp">COMMUNITY </a></li>
 			</ul>
 		</nav>
 	</div>
