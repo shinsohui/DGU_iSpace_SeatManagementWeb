@@ -1,10 +1,22 @@
 package board;
 
 public class comment {
+	
+	private int cnum;
 	private String idx;
 	private String writer;
 	private String date;
 	private String content;
+	private int available;
+	
+
+	public int getCnum() {
+		return cnum;
+	}
+	public void setCnum(int cnum) {
+		this.cnum = cnum;
+	}
+	
 	public String getIdx() {
 		return idx;
 	}
@@ -30,6 +42,11 @@ public class comment {
 		this.content = content;
 	}
 	
-	
+	public int getAvailable() {
+		return available;
+	}
+	public void setAvailable(int available) {
+		this.available = available;
+	}
 	
 }

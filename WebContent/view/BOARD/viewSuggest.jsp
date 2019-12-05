@@ -32,48 +32,44 @@
 <title></title>
 </head>
 <style type="text/css">
-<%@include file ="/view/CSS/mainUI.css"%>
+<%@include file ="/view/CSS/board.css"%>
 </style>
 
 
 <body>
-	<p style="text-align: center;">
-		<img src="/iSpace/view/Image/mainlogo.png"
-			style="width: 400px;padding-top: 18px;">
-	</p>
+<div id='top'>
+		<p style="text-align: left; margin-top: 10px; margin-left: 20%;">
+			<img src="/iSpace/view/Image/mainlogo.png" style="width: 300px;">
+		</p>
 
-	<div align="center">
-		<nav id="topMenu" style="padding-top:26px;">
-			<ul><% if(userid!=null) {%>
+		<div align="center" >
+			<nav id="topMenu">
+				<ul>
+				<li style="width: 20%">&nbsp;</li>
+			<% if(userid!=null) {%>
 				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
 				<%}else{ %>
 				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
 				<%} %>
-				<li>|</li>
 
 				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
-
-				<li>|</li>
 
 				
 				<li class="topMenuLi" style="background-color: #df633a;">
 				<a class="menuLink" style="color:white;" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
 				</a></li>
 				
-				<li>|</li>
 
 				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
-				<li>|</li>
 
             <li class="topMenuLi"><a class="menuLink"
                href="/iSpace/view/BOARD/commu.jsp">COMMUNITY </a></li>
+						<li style="width: 20%;">&nbsp;</li>
 			</ul>
-		</nav>
+			</nav>
+		</div>
 	</div>
-	<div class="myloginarea">
-      <%=userid%> <%=name%> 님, 환영합니다. | <a href="/iSpace/view/logout.jsp"
-         style="text-decoration: none; color: gray;"> 로그아웃 </a>
-   </div>
+	
 	<%
 
 		int suggestId = 0; //지워진 글인지 판단하기위해
@@ -110,67 +106,75 @@
    <%
       }
    %>
+	<div id='containn'>
+		<div id='box-left'>'</div>
 
-	<!-- 게시판 -->
-   <div class="container" style= "padding-top:100px; width : 980px;" >
-		<div class="row">
+		<div id='box-center'>
+			<!-- 게시판 -->
+			<div class="container" style="padding-top: 50px; width: 100%;">
+				<div class="row">
 
-			<table class="table table-striped"
-				style="border: 1px solid #eeeeee">
+					<table class="table table-bordered" style="border: 1px solid #eeeeee">
 
-				<thead>
-						<tr>
-							<th colspan="2"
-								style="background-color: white; text-align: center; font-size:25px;">건의 게시판</th>
-						</tr>
-					</thead>
-				<tbody>
+						<thead>
+							<tr>
+								<th colspan="2" style="background-color: white; text-align: center; font-size: 25px;">건의 게시판</th>
+							</tr>
+						</thead>
+						<tbody>
 
-					<tr>
-						<td style="width: 20%; text-align: center">글 제목</td>
-						<td colspan="2"><%=suggest.getSuggestTitle()%></td>
-					</tr>
+							<tr>
+								<td style="width: 20%; text-align: center">글 제목</td>
+								<td colspan="2"><%=suggest.getSuggestTitle()%></td>
+							</tr>
 
-					<tr>
-						<td style="text-align: center">작성자</td>
-						<td colspan="2"><%=suggest.getUserId()%></td>
+							<tr>
+								<td style="text-align: center">작성자</td>
+								<td colspan="2"><%=suggest.getUserId()%></td>
 
-					</tr>
+							</tr>
 
-					<tr>
-						<td style="text-align: center">작성일</td>
-						<td colspan="2"><%=suggest.getSuggestDate().substring(0, 11)%></td>
+							<tr>
+								<td style="text-align: center">작성일</td>
+								<td colspan="2"><%=suggest.getSuggestDate().substring(0, 11)%></td>
 
-					</tr>
-					<tr>
+							</tr>
+							<tr>
 
-						<td style="text-align: center">내용</td>
-						<td colspan="2" style="min-height: 200px; text-align: left;"><%=suggest.getSuggestContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;")
+								<td style="text-align: center">내용</td>
+								<td colspan="2" style="min-height: 200px; text-align: left;"><%=suggest.getSuggestContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;")
 					.replaceAll(">", "&gt;").replaceAll("\n", "<br/>")%></td>
-					</tr>
-				</tbody>
-			</table>
+							</tr>
+						</tbody>
+					</table>
 
-			<a href="suggest.jsp" class="btn btn-primary pull-right">목록</a>
+					<a href="suggest.jsp" class="btn btn-primary pull-right">목록</a>
 
 
-			<%
+					<%
 				//글작성자 본인일시 수정 삭제 가능 
 				if (userid != null && userid.equals(suggest.getUserId())) {
 			%>
 
-			<a href="UpdateSuggest.jsp?suggestId=<%=suggestId%>" class="btn btn-primary pull-right">수정</a>
-			
-			<a onclick="return confirm('정말로 삭제하시겠습니까?')"
-				href="deleteSuggestAction.jsp?bbsID=<%=suggestId%>"
-				class="btn btn-primary pull-right">삭제</a>
+					<a href="UpdateSuggest.jsp?suggestId=<%=suggestId%>" class="btn btn-primary pull-right">수정</a> <a onclick="return confirm('정말로 삭제하시겠습니까?')" href="deleteSuggestAction.jsp?bbsID=<%=suggestId%>" class="btn btn-primary pull-right">삭제</a>
 
-			<%
-				}
-			%>
+					<%
+						}
+					%>
+				</div>
+			</div>
+
+		</div>
+		<div id='box-right'>
+			<div class="myloginarea">
+				<%
+				if(userid != null)
+				{
+				%>
+				<%=userid %> <%=name %>님, 환영합니다. | <a href="/iSpace/view/logout.jsp" style="text-decoration: none; color: gray;"> 로그아웃 </a>		
+				<% }%>				</div>
 		</div>
 	</div>
-
 	<!-- 애니매이션 담당 JQUERY -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 

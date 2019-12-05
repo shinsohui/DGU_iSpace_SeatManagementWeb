@@ -45,23 +45,19 @@
             <li class="topMenuLi" style="background-color: #df633a;">
             <a class="menuLink" style="color:white;"
                href="/iSpace/view/home.jsp">SEAT </a></li>
-            <li>|</li>
+
 
             <li class="topMenuLi"><a class="menuLink"
                href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
 
-            <li>|</li>
 
             <li class="topMenuLi"><a class="menuLink"
                href="/iSpace/view/BOARD/suggest.jsp">SUGGEST </a></li>
 
-            <li>|</li>
 
             <li class="topMenuLi"><a class="menuLink"
                href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
-               
-            <li>|</li>
-
+   
             <li class="topMenuLi"><a class="menuLink"
                href="/iSpace/view/BOARD/commu.jsp">COMMUNITY </a></li>
          </ul>

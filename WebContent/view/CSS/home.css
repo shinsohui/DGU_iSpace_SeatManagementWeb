@@ -98,8 +98,8 @@ html {
 	display:inline-block;
 } 
 #topMenu ul li { /* 메인 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용(상위/하위메뉴 모두) */ 
-  color:white; /* 글씨 색을 흰색으로 설정 */ 
-  background-color: #afafaf; /* 배경 색을 RGB(2D2D2D)로 설정 */
+  color: white; /* 글씨 색을 흰색으로 설정 */ 
+  background-color: #60554d; /* 배경 색을 RGB(2D2D2D)로 설정 */
   float: left; /* 왼쪽으로 나열되도록 설정 */ 
   line-height: 40px; /* 텍스트 한 줄의 높이를 30px로 설정 */ 
   vertical-align: middle; /* 세로 정렬을 가운데로 설정 */ 
@@ -114,7 +114,7 @@ html {
   font-size: 13px; /* 폰트 사이즈를 12px로 설정 */ 
   font-weight: bold; /* 폰트를 굵게 설정 */ 
   font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */ 
-  color: #252525; 
+  color: #ffffff; 
 } 
 
 .topMenuLi:hover .menuLink { /* 상위 메뉴의 li에 마우스오버 되었을 때 스타일 설정 */ 

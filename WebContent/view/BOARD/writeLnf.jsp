@@ -34,15 +34,16 @@
 </head>
 
 <style type="text/css">
-<%@include file ="/view/CSS/mainUI.css"%>
+<%@include file ="/view/CSS/board.css"%>
 </style>
 
 
 <body>
-  <p style="text-align: center;">
-		<img src="/iSpace/view/Image/mainlogo.png"
-			style="width: 400px;padding-top: 18px;">
-	</p>
+ <div id='top'>
+		<p style="text-align: left; margin-top: 10px; margin-left: 20%;">
+			<img src="/iSpace/view/Image/mainlogo.png" style="width: 300px;">
+		</p>
+
 
    <%
       if (ifmanager.equals("0")) {
@@ -66,50 +67,54 @@
       }
    %>
 <div align="center">
-      <nav id="topMenu" style="padding-top:26px;">
-         <ul><% if(userid!=null) {%>
-            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
-            <%}else{ %>
-            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
-            <%} %>
-            <li>|</li>
+      <nav id="topMenu">
+         <ul>
+				<li style="width: 20%">&nbsp;</li>
+				
+					<% if(userid!=null) {%>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
+				<%}else{ %>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
+				<%} %>
 
-            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
 
-            <li>|</li>
 
-            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
-            </a></li>
+				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
+				</a></li>
 
-            <li>|</li>
 
-            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
-            <li>|</li>
+				<li class="topMenuLi" style="background-color: #df633a;">
+				<a class="menuLink" style="color:white;" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
 
-            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/commu.jsp">COMMUNITY </a></li>
-         </ul>
+            <li class="topMenuLi"><a class="menuLink"
+               href="/iSpace/view/BOARD/commu.jsp">COMMUNITY </a></li>
+			<li style="width: 20%;">&nbsp;</li>
+			
+				</ul>
       </nav>
    </div>
-    
-    <div class="myloginarea">
-      <%=userid%> <%=name%> 님, 환영합니다. | <a href="/iSpace/view/logout.jsp"
-         style="text-decoration: none; color: gray;"> 로그아웃 </a>
    </div>
-
+    
+    <div id='containn'>
+		<div id='box-left'>'</div>
+		
+		<div id='box-center'>
+				
    <!-- 게시판 -->
-   <div class="container" style= "padding-top:100px; width : 980px;" >
-      <div class="row" style="width:980px">
+ <div class="container" style= "padding-top:50px; width : 100%;" >
+      <div class="row" >
 
          <form action="/iSpace/UploadService" method="post"
       enctype="multipart/form-data">
 
-            <table class="table table-striped"
+            <table class="table table-bordered"
                style="text-align: center; border: 1px solid #dddddd">
 
                <thead>
                   <tr>
                      <th colspan="2"
-                        style="background-color: white; text-align: center; font-size:25px;">분실물 게시판</th>
+                        style="background-color: white; text-align: center; font-size:25px;">분실물 센터</th>
                   </tr>
                </thead>
 
@@ -122,7 +127,7 @@
 						<tr>
 							<td><textarea class="form-control" placeholder="글 내용"
 									name="content" maxlength="2048"
-									style="height: 200px; width: 980px;"></textarea></td>
+									style="height: 200px; width: 100%;"></textarea></td>
 						</tr>
 						<tr>
 							<td colspan="2"><input type="file" value="파일 선택" name="file" /></td>
@@ -137,6 +142,18 @@
          
       </div>
    </div>
+   </div>
+		<div id='box-right'>
+			<div class="myloginarea">
+				<%
+				if(userid != null)
+				{
+				%>
+				<%=userid %> <%=name %>님, 환영합니다. | <a href="/iSpace/view/logout.jsp" style="text-decoration: none; color: gray;"> 로그아웃 </a>		
+				<% }%>				</div>
+		</div>
+	</div>
+   
 
    <!-- 애니매이션 담당 JQUERY -->
    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

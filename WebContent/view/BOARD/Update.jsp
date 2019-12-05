@@ -32,14 +32,15 @@
 </head>
 
 <style type="text/css">
-<%@include file ="/view/CSS/mainUI.css"%>
+<%@include file="/view/CSS/board.css"%>
 </style>
 
 <body>
- <p style="text-align: center;">
-		<img src="/iSpace/view/Image/mainlogo.png"
-			style="width: 400px;padding-top: 18px;">
-	</p>
+	<div id='top'>
+		<p style="text-align: left; margin-top: 10px; margin-left: 20%;">
+			<img src="/iSpace/view/Image/mainlogo.png" style="width: 300px;">
+		</p>
+
 
 	<%
 		int noticeId = 0;
@@ -54,38 +55,36 @@
 	%>
 
 	<!-- 게시판 -->
-	<div align="center">
-      <nav id="topMenu" style="padding-top:26px;">
-         <ul><% if(userid!=null) {%>
+	<div align="center" >
+			<nav id="topMenu">
+				<ul>
+				<li style="width: 20%">&nbsp;</li>
+         <% if(userid!=null) {%>
             <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
             <%}else{ %>
             <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
             <%} %>
-            <li>|</li>
 
             <li class="topMenuLi" style="background-color: #df633a;">
 				<a class="menuLink" style="color:white;" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
-            <li>|</li>
 
             <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
             </a></li>
 
-            <li>|</li>
 
             <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
-            <li>|</li>
 
             <li class="topMenuLi"><a class="menuLink"
                href="/iSpace/view/BOARD/commu.jsp">COMMUNITY </a></li>
          </ul>
       </nav>
    </div>
-   
-   <div class="myloginarea">
-      <%=userid%> <%=name%> 님, 환영합니다. | <a href="/iSpace/view/logout.jsp"
-         style="text-decoration: none; color: gray;"> 로그아웃 </a>
-   </div>
+</div>
+  <div id='containn'>
+		<div id='box-left'>'</div>
 
+		<div id='box-center'>
+		
 	<div class="container" style="padding-left:108px; padding-top:100px;">
 		<div class="row" style = "width:980px">
 			<form method="post" action="updateAction.jsp?noticeID=<%= noticeId%> ">
@@ -122,6 +121,18 @@
 		</div>
 	</div>
 
+</div>
+		<div id='box-right'>
+			<div class="myloginarea">
+				<%
+				if(userid != null)
+				{
+				%>
+				<%=userid %> <%=name %>님, 환영합니다. | <a href="/iSpace/view/logout.jsp" style="text-decoration: none; color: gray;"> 로그아웃 </a>		
+				<% }%>				</div>
+		</div>
+	</div>
+   
 	<!-- 애니매이션 담당 JQUERY -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<!-- 부트스트랩 JS  -->

@@ -29,54 +29,55 @@
 </head>
 
 <style type="text/css">
-<%@include file ="/view/CSS/mainUI.css"%>
+<%@include file="/view/CSS/board.css"%>
 </style>
 
-
 <body>
-	<p style="text-align: center;">
-		<img src="/iSpace/view/Image/mainlogo.png"
-			style="width: 400px;padding-top: 18px;">
-	</p>
-
-	<div class="myloginarea">
-      <%=userid%> <%=name%> ´Ô, È¯¿µÇÕ´Ï´Ù. | <a href="/iSpace/view/logout.jsp"
-         style="text-decoration: none; color: gray;"> ·Î±×¾Æ¿ô </a>
-   </div>
+	<div id='top'>
+		<p style="text-align: left; margin-top: 10px; margin-left: 20%;">
+			<img src="/iSpace/view/Image/mainlogo.png" style="width: 300px;">
+		</p>
       
 <div align="center">
-		<nav id="topMenu" style="padding-top:26px;">
-			<ul><% if(userid!=null) {%>
+		<nav id="topMenu">
+			<ul>
+			<li style="width: 20%">&nbsp;</li>
+			
+			<% if(userid!=null) {%>
 				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
 				<%}else{ %>
 				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/mainUI.jsp">SEAT </a></li>
 				<%} %>
-				<li>|</li>
 
 
 				<li class="topMenuLi" style="background-color: #df633a;">
 				<a class="menuLink" style="color:white;" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
 
-				<li>|</li>
 
 				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/suggest.jsp">SUGGEST
 				</a></li>
 
-				<li>|</li>
 
 				<li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
-	<li>|</li>
 
             <li class="topMenuLi"><a class="menuLink"
                href="/iSpace/view/BOARD/commu.jsp">COMMUNITY </a></li>
+						<li style="width: 20%;">&nbsp;</li>
+			
 			</ul>
 		</nav>
 	</div>
 	
+		</div>
+		<div id='containn'>
+		<div id='box-left'>'</div>
+
+		<div id='box-center'>
 	
-   <div class="container" style= "padding-top:100px; width : 980px;" >
+	
+   <div class="container" style= "padding-top:50px; width : 100%;" >
 		<div class="row">
-			<table class="table table-striped"
+			<table class="table table-hover"
 				style="text-align: center; border: 1px solid #eeeeee">
 				<thead>
 					<tr>
@@ -157,6 +158,16 @@
 
 		</div>
 	</div>
-
+</div>
+		<div id='box-right'>
+			<div class="myloginarea">
+<%
+				if(userid != null)
+				{
+				%>
+				<%=userid %> <%=name %>´Ô, È¯¿µÇÕ´Ï´Ù. | <a href="/iSpace/view/logout.jsp" style="text-decoration: none; color: gray;"> ·Î±×¾Æ¿ô </a>		
+				<% }%>				</div>
+		</div>
+	</div>
 </body>
 </html>
