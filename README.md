@@ -1,5 +1,6 @@
-# SEED
-동국대학교 iSPACE 좌석 관리 웹사이트
+# 소프트웨어공학개론
+# SEED 
+# 동국대학교 iSPACE 좌석 관리 웹사이트
 
 <b>1. 당일, 입실되어 있는 좌석이 없어 입실하는 경우 
 <img width="1440" alt="1" src="https://user-images.githubusercontent.com/48276633/70257236-41544e00-17cd-11ea-8e59-ede7b224ee54.png">
