@@ -115,8 +115,8 @@
                   <td><a
                      href="viewCommu.jsp?commuId=<%=list.get(i).getCommuId()%>">
                      <%=list.get(i).getCommuTitle()%></a></td>
-                     <td>°ü¸®ÀÚ</td>
-                  <%-- <td><%=list.get(i).getUserId()%></td> --%>
+                    
+                  <td><%=list.get(i).getUserId()%></td>
                       <td><%=list.get(i).getCommuDate().substring(0, 11)%></td>
 
                </tr>

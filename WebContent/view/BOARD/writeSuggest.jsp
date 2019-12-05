@@ -102,7 +102,7 @@
 	</div>
 	
 	<!-- 게시판 -->
-   	<div class="container" style="padding-left:108px; padding-top:100px;">
+   <div class="container" style= "padding-top:100px; width : 980px;" >
 		<div class="row" style= "width:980px;">
 			<form method="post" action="writeSuggestAction.jsp">
 

@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
-<%@ page import="board.lnf"%>
-<%@ page import="board.lnfDAO"%>
+<%@ page import="board.commu"%>
+<%@ page import="board.commuDAO"%>
 <%@ page import="javax.servlet.*" %>
-
 
 <!-- 세션 유지를 위해  -->
 <%
@@ -13,7 +12,7 @@
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
    String report = (String) session.getAttribute("report");
- %>
+%>
 
 <!DOCTYPE html>
 <html>
@@ -29,7 +28,7 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<title>분실물게시판 수정</title>
+<title>커뮤니티 글 수정</title>
 </head>
 
 <style type="text/css">
@@ -37,13 +36,24 @@
 </style>
 
 <body>
-
  <p style="text-align: center;">
 		<img src="/iSpace/view/Image/mainlogo.png"
 			style="width: 400px;padding-top: 18px;">
 	</p>
 
-<!-- 게시판 -->
+	<%
+		int commuId = 0;
+
+		if (request.getParameter("commuId") != null) {
+			commuId = Integer.parseInt(request.getParameter("commuId"));
+			System.out.println("UpdateCommu.jsp commuId : "+commuId);
+		}
+		
+		commu commu= new commuDAO().getCommu(commuId);
+	
+	%>
+
+	<!-- 게시판 -->
 	<div align="center">
       <nav id="topMenu" style="padding-top:26px;">
          <ul><% if(userid!=null) {%>
@@ -53,7 +63,9 @@
             <%} %>
             <li>|</li>
 
-            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
+
+            <li class="topMenuLi">
+            <a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
 
             <li>|</li>
 
@@ -62,80 +74,52 @@
 
             <li>|</li>
 
-            <li class="topMenuLi" style="background-color: #df633a;">
-				<a class="menuLink" style="color:white;"  href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
-				<li>|</li>
+            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
+            <li>|</li>
 
-            <li class="topMenuLi"><a class="menuLink"
+            <li class="topMenuLi" style="background-color: #df633a;"><a class="menuLink" style="color:white;" 
                href="/iSpace/view/BOARD/commu.jsp">COMMUNITY </a></li>
          </ul>
       </nav>
    </div>
-    <div class="myloginarea">
+   
+   <div class="myloginarea">
       <%=userid%> <%=name%> 님, 환영합니다. | <a href="/iSpace/view/logout.jsp"
          style="text-decoration: none; color: gray;"> 로그아웃 </a>
    </div>
 
-	<%
-		int lnfId = 0;
-
-		if (session.getAttribute("lnfId") != null) {
-			lnfId = Integer.parseInt(request.getParameter("lnfId"));
-			System.out.println("UpdateLnf.jsp lnfId : "+lnfId);
-		}
-
-		lnf lnf = new lnfDAO().getLnf(lnfId);
-		
-	%>
-	
-	<!-- 게시판 -->
-   <div class="container" style= "padding-top:100px; width : 980px;" >
+	<div class="container" style="padding-left:108px; padding-top:100px;">
 		<div class="row" style = "width:980px">
-			<form action="/iSpace/UpdateService" method="post"
-      enctype="multipart/form-data">
-
+			<form method="post" action="updateCommuAction.jsp?commuID=<%= commuId%> ">
 				<table class="table table-striped"
 					style="text-align: center; border: 1px solid #dddddd">
-					<thead>
 					
+					<thead>
 						<tr>
 							<th colspan="2" style="background-color: white; text-align: center; font-size:25px;">
-							분실물게시판
+							커뮤니티
 							</th>
 						</tr>
 					</thead>
+					
 					<tbody>
-
 						<tr>
 
-							<td colspan="2"><input type="text" class="form-control"
-								placeholder="글 제목" name="lnfTitle" maxlength="50"
-								value="<%= lnf.getLnfTitle() %>"></td>
+							<td><input type="text" class="form-control"
+								placeholder="글 제목" name="commuTitle" maxlength="50"
+								value="<%= commu.getCommuTitle() %>"></td>
 						</tr>
-					
+						
 						<tr>
 							<td><textarea class="form-control" placeholder="글 내용"
-									name="lnfContent" maxlength="2048"
-									style="height: 200px; width: 980px;"><%=lnf.getLnfContent()%></textarea>
-							</td>
+									name="commuContent" maxlength="2048" style="height: 200px; width: 980px;"><%= commu.getCommuContent() %></textarea></td>
 						</tr>
-						<tr>
-							<td colspan="2"><input type="file" value="파일 선택"
-								name="lnfFile" />
-						</tr>
-						<tr>
-							<td style="text-align:left;">현재 파일 : <img style= "width: 100px;" src="/iSpace/upload/<%=lnf.getLnfFile()%>">
-							<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<%=lnf.getLnfFile()%></td>
-						</tr>
-						
-						
 					</tbody>
 				</table>
 
-				<input type="submit" class="btn btn-primary pull-right" value="글수정">
+				<button type="submit" class="btn btn-primary pull-right">글수정</button>
 			</form>
-	    <a href="lnf.jsp" class="btn btn-primary pull-right">목록</a> 
+		  <a href="commu.jsp" class="btn btn-primary pull-right">목록</a> 
 			
 		</div>
 	</div>

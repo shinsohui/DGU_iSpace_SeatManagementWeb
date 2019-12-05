@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-
 <%@ page import="java.io.PrintWriter"%>
 
 <!DOCTYPE html>
@@ -19,16 +18,15 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-<title>분실물게시판 글쓰기</title>
+<title>공지사항</title>
 
 <%
    String userid = (String) session.getAttribute("id");
    String name = (String) session.getAttribute("name");
    String state = (String) request.getAttribute("state");
    String seatNo = (String) request.getParameter("button");
-   String report = (String) session.getAttribute("report"); 
+   String report = (String) session.getAttribute("report");
    String ifmanager = (String) session.getAttribute("ifmanager"); 
-   String lnfId=(String) session.getAttribute("lnfId");                   
 %>
 
 </head>
@@ -37,35 +35,38 @@
 <%@include file ="/view/CSS/mainUI.css"%>
 </style>
 
-
 <body>
-  <p style="text-align: center;">
+<p style="text-align: center;">
 		<img src="/iSpace/view/Image/mainlogo.png"
 			style="width: 400px;padding-top: 18px;">
 	</p>
 
-   <%
-      if (ifmanager.equals("0")) {
-         System.out.println("ifmamager:" + ifmanager);
-   %>
-   
-   <script>
-      alert('관리자 권한이 필요합니다.');
-      location.href = 'lnf.jsp';
-   </script>
+<div class="myloginarea">
+      <%=userid%> <%=name%> 님, 환영합니다. | <a href="/iSpace/view/logout.jsp"
+         style="text-decoration: none; color: gray;"> 로그아웃 </a>
+   </div>
+	<%-- <%
+		if (ifmanager.equals("0")) {
+			System.out.println("ifmamager:" + ifmanager);
+	%>
+	<script>
+		alert('관리자 권한이 필요합니다.');
+		location.href = 'commu.jsp';
+	</script>
 
-   <%
-      }
-   %>
+	<%
+		}
+	%> --%>
 
-   <%
-      int pageNumber = 1; //기본 페이지 넘버
-      //페이지넘버값이 있을때
-      if (request.getParameter("pageNumber") != null) {
-         pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-      }
-   %>
-<div align="center">
+	<%
+		int pageNumber = 1; //기본 페이지 넘버
+		//페이지넘버값이 있을때
+		if (request.getParameter("pageNumber") != null) {
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		}
+	%>
+
+  <div align="center">
       <nav id="topMenu" style="padding-top:26px;">
          <ul><% if(userid!=null) {%>
             <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/home.jsp">SEAT </a></li>
@@ -74,7 +75,9 @@
             <%} %>
             <li>|</li>
 
-            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
+
+            <li class="topMenuLi">
+            <a class="menuLink" href="/iSpace/view/BOARD/notice.jsp">NOTICE </a></li>
 
             <li>|</li>
 
@@ -86,54 +89,45 @@
             <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/lnf.jsp">LOST&FOUND </a></li>
             <li>|</li>
 
-            <li class="topMenuLi"><a class="menuLink" href="/iSpace/view/BOARD/commu.jsp">COMMUNITY </a></li>
+            <li class="topMenuLi" style="background-color: #df633a;"><a class="menuLink" style="color:white;" 
+               href="/iSpace/view/BOARD/commu.jsp">COMMUNITY </a></li>
          </ul>
       </nav>
    </div>
-    
-    <div class="myloginarea">
-      <%=userid%> <%=name%> 님, 환영합니다. | <a href="/iSpace/view/logout.jsp"
-         style="text-decoration: none; color: gray;"> 로그아웃 </a>
-   </div>
 
    <!-- 게시판 -->
-   <div class="container" style= "padding-top:100px; width : 980px;" >
+	<div class="container" style= "padding-left:108px; padding-top:100px;">
       <div class="row" style="width:980px">
+         <form method="post" action="writeCommuAction.jsp">
 
-         <form action="/iSpace/UploadService" method="post"
-      enctype="multipart/form-data">
-
-            <table class="table table-striped"
-               style="text-align: center; border: 1px solid #dddddd">
+           <table class="table table-striped"
+					style="text-align: center; border: 1px solid #dddddd; padding-top:10px; padding-left:300px;">
 
                <thead>
                   <tr>
                      <th colspan="2"
-                        style="background-color: white; text-align: center; font-size:25px;">분실물 게시판</th>
+                        style="background-color: white; text-align: center; font-size:25px;">커뮤니티</th>
                   </tr>
                </thead>
+               
+               <tbody>
+                  <tr>
+                     <td><input type="text" class="form-control"
+                        placeholder="글 제목" name="CommuTitle" maxlength="50" /></td>
+                  </tr>
+                  
+                  <tr>
+                     <td><textarea class="form-control" placeholder="글 내용"
+                           name="CommuContent" maxlength="2048"
+                           style="height: 200px; width: 980px;"></textarea></td>
+                  </tr>
+               </tbody>
+            </table>
 
-					<tbody>
-						<tr>
-							<td><input type="text" class="form-control"
-								placeholder="글 제목" name="title" maxlength="50" /></td>
-						</tr>
-
-						<tr>
-							<td><textarea class="form-control" placeholder="글 내용"
-									name="content" maxlength="2048"
-									style="height: 200px; width: 980px;"></textarea></td>
-						</tr>
-						<tr>
-							<td colspan="2"><input type="file" value="파일 선택" name="file" /></td>
-						</tr>
-					</tbody>
-				</table>
-            
-            <input type="submit" class="btn btn-primary pull-right" value="글쓰기" />
+				<input type="submit" class="btn btn-primary pull-right" value="글쓰기" />
 
          </form>
-                  <a href="lnf.jsp" class="btn btn-primary pull-right">목록</a> 
+         				<a href="commu.jsp" class="btn btn-primary pull-right">목록</a> 
          
       </div>
    </div>
@@ -145,4 +139,3 @@
 
 </body>
 </html>
-

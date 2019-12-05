@@ -74,7 +74,7 @@
 	</div>
 	
 	
-	<div class="container" style= "padding-top:100px">
+   <div class="container" style= "padding-top:100px; width : 980px;" >
 		<div class="row">
 			<table class="table table-striped"
 				style="text-align: center; border: 1px solid #eeeeee">
